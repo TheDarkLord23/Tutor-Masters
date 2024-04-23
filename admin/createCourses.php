@@ -6,13 +6,13 @@ session_start();
 
 // validation start:
 
-    if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
-        header("Location: ../login.php");
-    }
+if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
+    header("Location: ../login.php");
+}
 
-    if (isset($_SESSION["user"])) {
-        header("Location: ../User/indexUser.php");
-    }
+if (isset($_SESSION["user"])) {
+    header("Location: ../User/indexUser.php");
+}
 
 // validation end
 
@@ -20,6 +20,7 @@ session_start();
 
 if (isset($_POST["submit"])) {
     $subject = $_POST["subject"];
+    $name = $_POST["name"];
     $university = $_POST["university"];
     $roomNumb = $_POST["roomNumb"];
     $date = $_POST["date"];
@@ -30,7 +31,7 @@ if (isset($_POST["submit"])) {
     $duration = $_POST["duration"];
     $picture = fileUpload($_FILES["picture"]);
 
-    $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`, `teacher`, `picture`, `language`, `duration`, `units`, `availability`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$availability}')";
+    $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`, `teacher`, `picture`, `language`, `duration`, `units`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$availability}','{$name}')";
 
     if (mysqli_query($connection, $sql)) {
         echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
@@ -56,6 +57,7 @@ if (isset($_POST["submit"])) {
     <h5>Create a Course:</h5>
     <form action="" method="post" enctype="multipart/form-data">
             <input type="text" placeholder="Subject" name="subject" required>
+            <input type="text" placeholder="Name" name="name" required>
             <input type="text" placeholder="university" name="university">
             <input type="text" placeholder="Room Number" name="roomNumb" required>
             <input type="datetime-local" placeholder="Date" name="date" required>

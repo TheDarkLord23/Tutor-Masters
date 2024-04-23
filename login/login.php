@@ -78,20 +78,25 @@ if (isset($_SESSION["trainer"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../style/loginRegister.css">
 </head>
 
 <body>
 <div class="container">
+        <div class="loginRegister">
+            <h3><a href="login.php">Login</a></h3>
+            <h4><a href="register.php">Registration</a></h4>
+        </div>        
         <h5>Login here:</h5>
         <form action="" method="post">
            
             <div class="emailInput inputFields">
-                <input type="text" placeholder="Email" name="email" required>
+                <input class="input" type="text" placeholder="Email" name="email" required>
                 <p class="errorMessage"><?php echo $error_email?></p>
             </div>
 
             <div class="passwordInput inputFields">
-                <input type="password" placeholder="Password" name="password" required>
+                <input class="input" type="password" placeholder="Password" name="password" required>
                 <p class="errorMessage"><?php echo $error_password?></p>
             </div>
             
@@ -100,7 +105,7 @@ if (isset($_SESSION["trainer"])) {
             </div>
         </form>
         <div class="divLoginBtn">
-            <p>Your dont have an Account? Register here:</p><a class="loginBtn" href="register.php">Register</a>
+            <p>Your dont have an account? <a class="loginBtn" href="register.php">Register</a></p>
         </div>
     </div>
 </body>
