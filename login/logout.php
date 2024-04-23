@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-     <h1>test</h1>
-</body>
-</html>
+<?php
+
+session_start();
+
+if (isset($_GET["logout"])) {
+    unset($_SESSION["admin"]);
+    unset($_SESSION["user"]);
+    unset($_SESSION["trainer"]);
+    session_unset();
+    session_destroy();
+
+    header("Location: login.php");
+}
