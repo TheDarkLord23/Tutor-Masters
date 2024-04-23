@@ -66,7 +66,7 @@ if (isset($_POST["submit"])) {
             <input type="text" placeholder="Room Number" name="roomNumb" required>
         </div>
         <div class="inputFields">
-            <input type="date" placeholder="Date" name="date" required>
+            <input type="datetime" placeholder="Date" name="date" required>
         </div>
         <div class="inputFields">
             <input type="text" placeholder="Teacher" name="teacher" required>
