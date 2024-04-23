@@ -53,6 +53,10 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
   <p class="card-text">Units: '.$row["units"].'</p>
   <p class="card-text">University: '.$row["university"].'</p>
   <p class="card-text">Availability: '.$row["availability"].'</p>
+  <div class="btnAlign">
+  <a class="btn btn-success">Book course</a>
+  <a class="btn btn-danger" href="indexUser.php">Back to home</a></div>
+
 
   
      
@@ -90,18 +94,23 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
        .card-text, .card-title{
         text-align: center;
        }
+       .btnAlign{
+        display: flex;
+        justify-content: space-around;
+       }
     </style>
     
 
 </head>
 
 <body>
+    <br><br>
     <div class="container" >
 
         <?= $layout ?>
 
     </div>
-    <a class="btn btn-danger" href="indexUser.php">Back</a>
+  
 </body>
 
 </html>
