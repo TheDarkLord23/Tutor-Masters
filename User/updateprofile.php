@@ -29,31 +29,31 @@ if (isset($_POST["update"])) {
    
     $address = $_POST["address"];
     $phoneNumber = $_POST["phoneNumber"];
-    $picture = fileUpload($_FILES["picture"]);
+    // $picture = fileUpload($_FILES["picture"]);
 
 
     $pictureArray = fileUpload($_FILES['picture']); 
-    $picture = $pictureArray['fileName'];
+ 
 
-    if ($pictureArray['error'] == 4) {
-        $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}' WHERE id = {$session}";
-    } else {
-        if ($row["picture"] != "../img/account.png") {
-            unlink("../img{$row["picture"]}");
-        }
-        $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}', `picture`='{$pictureArray['fileName']}' WHERE id = {$session}";
-    }
+    // if ($pictureArray->error == 4) {
+        $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`password`='{$password}',`address`='{$address}',`phoneNumber`='{$phoneNumber}',`picture`='{$pictureArray[0]}' WHERE id = {$session}";
+    // } else {
+    //     if ($row["picture"] != "../Images/defaultPic.jpg") {
+    //         unlink("../images{$row["picture"]}");
+    //     }
+    //     $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}', `picture`='{$pictureArray[0]}' WHERE id = {$session}";
+    // }
 
-    if (mysqli_query($connection, $sql) === true) {     
+    if (mysqli_query($connection, $sql)) {     
         $class = "alert alert-success";
         $message = "The record was successfully updated";
-        $uploadError = ($pictureArray['error'] != 0) ? $pictureArray['ErrorMessage'] : '';
-        header("refresh:3;url=indexUser.php?id={$id}");
+        $uploadError = ($pictureArray != 0) ? $pictureArray : '';
+        header("refresh:3;url=indexUser.php?id={$session}");
     } else {
         $class = "alert alert-danger";
         $message = "Error while updating record : <br>" . $connection->error;
-        $uploadError = ($pictureArray['error'] != 0) ? $pictureArray['ErrorMessage'] : '';
-        // header("refresh:3;url=updateprofile.php?id={$id}");
+        // $uploadError = ($pictureArray != 0) ? $pictureArray['ErrorMessage'] : '';
+        header("refresh:3;url=updateprofile.php?id={$session}");
     }
 
 
@@ -148,7 +148,6 @@ if (isset($_POST["update"])) {
            <!-- ' updateError & massage noch bearbeiten' -->
             <div class="alert alert-<?= $class; ?>" role="alert">
                 <p><?= $message ?></p>
-                <p><?= $updateError ?></p> 
                 <a href='dashboard.php'><button class="btn btn-primary" type='button'>Home</button></a>
             </div>
         <?php endif; ?>
