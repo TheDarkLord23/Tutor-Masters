@@ -10,10 +10,10 @@ $goBack = "";
 
 if (isset($_SESSION["admin"])) {
     $session = $_SESSION["admin"];
-    $goBack = "dashboard.php";
+    // $goBack = "index.php";
 } else {
     $session = $_SESSION["user"];
-    $goBack = "home.php";
+    // $goBack = "indexUser.php";
 }
 
 $sql = "SELECT * FROM users WHERE id = {$session}";
@@ -23,37 +23,37 @@ $row = mysqli_fetch_assoc($result);
 
 if (isset($_POST["update"])) {
     $firstName = $_POST["firstName"];
-    $secondName = $_POST["lastName"];
+    $secondName = $_POST["secondName"];
     $email = $_POST["email"];
     $password = $_POST["password"];
    
     $address = $_POST["address"];
     $phoneNumber = $_POST["phoneNumber"];
-    $picture = file_upload($_FILES["picture"]);
+    $picture = fileUpload($_FILES["picture"]);
 
 
-    $pictureArray = file_upload($_FILES['picture']); 
-    $picture = $pictureArray->fileName;
+    $pictureArray = fileUpload($_FILES['picture']); 
+    $picture = $pictureArray['fileName'];
 
-    if ($pictureArray->error == 4) {
-        $update = "UPDATE `users` SET `firstName`='{$firstName}',`lastName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}' WHERE id = {$session}";
+    if ($pictureArray['error'] == 4) {
+        $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}' WHERE id = {$session}";
     } else {
         if ($row["picture"] != "../img/account.png") {
             unlink("../img{$row["picture"]}");
         }
-        $update = "UPDATE `users` SET `firstName`='{$firstName}',`lastName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}', `picture`='{$pictureArray->fileName}' WHERE id = {$session}";
+        $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}', `picture`='{$pictureArray['fileName']}' WHERE id = {$session}";
     }
 
     if (mysqli_query($connection, $sql) === true) {     
         $class = "alert alert-success";
         $message = "The record was successfully updated";
-        $uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
-        header("refresh:3;url=home.php?id={$id}");
+        $uploadError = ($pictureArray['error'] != 0) ? $pictureArray['ErrorMessage'] : '';
+        header("refresh:3;url=indexUser.php?id={$id}");
     } else {
         $class = "alert alert-danger";
-        $message = "Error while updating record : <br>" . $connect->error;
-        $uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
-        header("refresh:3;url=update.php?id={$id}");
+        $message = "Error while updating record : <br>" . $connection->error;
+        $uploadError = ($pictureArray['error'] != 0) ? $pictureArray['ErrorMessage'] : '';
+        // header("refresh:3;url=updateprofile.php?id={$id}");
     }
 
 
@@ -70,7 +70,7 @@ if (isset($_POST["update"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Update your Profile</title>
     <style> .container {
             max-width: 600px;
             margin: auto;
@@ -156,7 +156,7 @@ if (isset($_POST["update"])) {
         <form method="post" enctype="multipart/form-data">
     <label for="firstName">First Name</label>
     <input type="text" name="firstName" placeholder="Change first name" value="<?= isset($row["firstName"]) ? $row["firstName"] : '' ?>">
-    <label for="lastName">Last Name</label> 
+    <label for="secondName">Last Name</label> 
     <input type="text" name="secondName" placeholder="Change last name" value="<?= isset($row["secondName"]) ? $row["secondName"] : '' ?>">
     <label for="email">E-mail</label>
     <input type="text" name="email" placeholder="Change email" value="<?= isset($row["email"]) ? $row["email"] : '' ?>">
