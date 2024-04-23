@@ -8,9 +8,9 @@ require_once "../login/file_upload.php";
 $session = 0;
 $goBack = "";
 
-if (isset($_SESSION["admin"])) {
-    $session = $_SESSION["admin"];
-    // $goBack = "index.php";
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
+    
+    $goBack = "index.php";
 } else {
     $session = $_SESSION["user"];
     // $goBack = "indexUser.php";
@@ -148,7 +148,7 @@ if (isset($_POST["update"])) {
            <!-- ' updateError & massage noch bearbeiten' -->
             <div class="alert alert-<?= $class; ?>" role="alert">
                 <p><?= $message ?></p>
-                <a href='dashboard.php'><button class="btn btn-primary" type='button'>Home</button></a>
+                <a href='indexUser.php'><button class="btn btn-primary" type='button'>Home</button></a>
             </div>
         <?php endif; ?>
 

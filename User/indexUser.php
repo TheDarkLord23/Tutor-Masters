@@ -72,7 +72,136 @@ if (mysqli_num_rows($readResult) == 0) {
     justify-content: space-between;
     
 }
-
+.med-related-prod-wrap{
+    margin: 40px 16px 0px 16px;
+}
+.med-related-prod-wrap .related-prod-heading{
+    margin: 0px;
+    font-size: 18px;
+}
+.med-related-prod-wrap .med-rel-prod-slider{
+    display: flex;
+    column-gap: 8px;
+    margin-top: 20px;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    scroll-behavior: smooth;
+}
+.med-related-prod-wrap .med-rel-prod-slider::-webkit-scrollbar {
+    display: none;
+}
+.med-slider-arrow-section{
+    display: none;
+    align-items: center;
+    justify-content: end;
+    margin-top: 40px;
+    column-gap:10px;
+}
+.med-slider-arrow{
+    --size: 30px;
+    z-index: 9;
+    background: #ffffff;
+    width: var(--size);
+    height: var(--size);
+    border-radius: var(--size);
+    -webkit-transition: opacity .5s,visibility .5s;
+    transition: opacity .5s,visibility .5s;
+    border: 1px solid #dfe1e5;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 4px 8px 0 rgb(0 0 0 / 20%);
+    padding: 0;
+    transform: translate(0,-50%);
+    cursor: pointer;
+    outline: 0!important;
+    transition: 0.2s ease-in-out;
+}
+.med-slider-arrow:after {
+    background-image:  url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12H19' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 5L19 12L12 19' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: 16px;
+    content: '';
+    width: var(--size);
+    height: var(--size);
+    display: block;
+    background-repeat: no-repeat;
+    background-position: 49% 50%;
+    transform:rotate(180deg);
+}
+.med-slider-arrow.btn-left{
+    display: none;
+}
+.med-slider-arrow.med-slider-next:after{
+    transform:rotate(360deg);
+}
+.med-rel-prod-slider .med-product-card{
+    display: inline-grid;
+    grid-auto-rows: min-content auto;
+    text-align: center;
+    
+    padding: 5px 5px;
+    background: #FFFFFF;
+    border: 1px solid #E5E5F0;
+    border-radius: 15px;
+    width: 224px;
+    flex-shrink: 0;
+    cursor: pointer;
+    overflow: hidden;
+}
+.med-rel-prod-slider .med-product-card:hover .related-prod-img{
+    transform: scale(1.1);
+}
+.med-product-card .related-prod-wrapper{
+    height: 140px;
+    width: 100%;
+    overflow: hidden;
+}
+.related-prod-wrapper .related-prod-img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    transition: 0.5s all ease-in-out;
+}
+.med-product-card .rel-med-name{
+    
+    font-size: 24px;
+    padding-top: 0px;
+    color: #232426;
+}
+.med-product-card .rel-no-of-tab{
+    color: #878787;
+    font-size: 18px;
+    
+}
+.med-product-card .rel-company-name{
+    color: #232426;
+    font-size: 14px;
+    text-decoration: underline;
+    font-weight: 600;
+    
+}
+.med-product-card .rel-prod-price{
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 0px;
+}
+.med-product-card .related-prod-detail{
+     margin-top:auto;
+   
+}   
+@media (min-width: 992px){
+.med-related-prod-wrap{
+    margin: 0px 0px 50px 0px;
+}
+.med-related-prod-wrap .related-prod-heading{
+    margin: 0px;
+    font-size: 26px;
+}
+.med-related-prod-wrap .med-rel-prod-slider{
+    margin-top: 40px;
+}
+.med-slider-arrow-section{
+    display: flex;
+}
+}
     </style>
 </head>
 
@@ -91,7 +220,7 @@ if (mysqli_num_rows($readResult) == 0) {
                 Update profile
             </a>
 
-            <a class="navbar-brand" href="logout.php?logout">
+            <a class="navbar-brand" href="../login/logout.php?logout">
                 Logout
             </a>
         </div>
@@ -100,6 +229,180 @@ if (mysqli_num_rows($readResult) == 0) {
     
 
     <br><br>
+    <div class="med-related-prod-wrap" id="med-related-prod-wrapper">
+    <h2 class="related-prod-heading">All Subjects</h2>
+    <div class="med-rel-prod-slider-wrapper">
+        <div class="med-rel-prod-slider carousel-content">
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <a href="subjectsFilter.php" class="rel-med-name">Mathematics</a>
+      
+    </div>
+</div>
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <a href="" class="rel-med-name">Computer Science</p>
+      
+    </div>
+</div>
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">Physics</p>
+      
+    </div>
+</div>
+
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">Literature</p>
+      
+    </div>
+</div>
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">History</p>
+      
+    </div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">Biology</p>
+      
+    </div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">Chemistry</p>
+      
+  
+</div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">Geography</p>
+      
+    
+</div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">Economics</p>
+      
+    
+</div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">Art</p>
+      
+    
+</div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">Biology</p>
+      
+    </div>
+</div>
+
+</div>
+        <div class="med-slider-arrow-section">
+            <button class="med-slider-prev med-slider-arrow btn-left" aria-label="left-arrow" onclick="" id="med-btn-left" type="button"></button>
+            <button class="med-slider-next med-slider-arrow btn-right" aria-label="right-arrow" onclick="" id="med-btn-right" type="button"></button>
+        </div>
+    </div>
+</div>
+<br>
+<div class="med-related-prod-wrap" id="med-related-prod-wrapper">
+    <h2 class="related-prod-heading">All Universities</h2>
+    <div class="med-rel-prod-slider-wrapper">
+        <div class="med-rel-prod-slider carousel-content">
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">ABC University</p>
+      
+    </div>
+</div>
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">XYZ College</p>
+      
+    </div>
+</div>
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">123 Institute</p>
+      
+    </div>
+</div>
+
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">DEF School</p>
+      
+    </div>
+</div>
+
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">GHI University</p>
+      
+    </div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">MNO College</p>
+      
+    </div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">PQR Institute</p>
+      
+    </div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">STU School</p>
+      
+    </div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">VWX College</p>
+      
+    </div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">YZA University</p>
+      
+    </div>
+</div>
+<div class="med-product-card">
+    <div class="related-prod-detail">
+        <p class="rel-med-name">university of vienna</p>
+      
+    </div>
+</div>
+
+</div>
+        <div class="med-slider-arrow-section">
+            <button class="med-slider-prev med-slider-arrow btn-left" aria-label="left-arrow" onclick="" id="med-btn-left" type="button"></button>
+            <button class="med-slider-next med-slider-arrow btn-right" aria-label="right-arrow" onclick="" id="med-btn-right" type="button"></button>
+        </div>
+    </div>
+</div>
+<br><br>
     <div width="100%">
         
        
@@ -109,7 +412,57 @@ if (mysqli_num_rows($readResult) == 0) {
             <?= $layout ?>
         </div>
     </div>
+    <script>
+    const bindCarouselEvents = (containerId) => {
+        const wrapper = document.getElementById(containerId);
+        const btn_left = wrapper.getElementsByClassName('btn-left')[0]
+        const btn_right = wrapper.getElementsByClassName('btn-right')[0]
+        const content = wrapper.getElementsByClassName('carousel-content')[0]
+        const content_scroll_width = content.scrollWidth;
+        let content_scoll_left = content.scrollLeft;
+        if (btn_right) {
+            btn_right.addEventListener('click', () => {
+                content_scoll_left += 224;
+                if (content_scoll_left >= content_scroll_width) { 
+                    content_scoll_left = content_scroll_width;
+                }
+                content.scrollLeft = content_scoll_left;
+            });
+        }
+        if (btn_left) {
+            btn_left.addEventListener('click', () => {
+                content_scoll_left -= 224;
+                content.scrollLeft = content_scoll_left;
+            });
+        }
 
+        // scroll binding
+        content.addEventListener('scroll', () => {
+            let scrollLeft = Math.ceil(content.scrollLeft)
+            let contentScrollWidth = content.scrollWidth
+            let contentWidth = content.clientWidth
+            let rightEdge = (contentScrollWidth - contentWidth)
+            if (scrollLeft >= rightEdge) {
+                btn_right.style.display = "none"
+            } else if (scrollLeft < rightEdge) {
+                btn_right.style.display = "block"
+            }
+
+            if (scrollLeft == 0) {
+                btn_left.style.display = "none"
+            } else if (scrollLeft > 0) {
+                btn_left.style.display = "block"
+            }
+
+            content_scoll_left = scrollLeft
+        });
+    }
+
+    // javascript for scroll on click
+    window.addEventListener('DOMContentLoaded', function(){
+        bindCarouselEvents('med-related-prod-wrapper')
+    });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
