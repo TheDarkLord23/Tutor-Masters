@@ -54,15 +54,15 @@ if (isset($_SESSION["trainer"])) {
             if ($count == 1) {
                 if ($row["Status"]=="admin") {
                     $_SESSION["admin"] = $row["id"];
-                    header("Location: ./admin/indexAdmin.php");
+                    header("Location: ../admin/indexAdmin.php");
                 }else if ($row["Status"]=="user"){
                     $_SESSION["user"] = $row["id"];
                     
-                    header("Location: ./user/userIndex.php");
+                    header("Location: ../User/indexUser.php");
                 }else{
                     $_SESSION["trainer"] = $row["id"];
                     
-                    header("Location: ./trainer/trainerIndex.php");
+                    header("Location: ../Trainer/indexTrainer.php");
                 }
             }else{
                 $error_password = "Your email or password is not correct!";
@@ -78,7 +78,6 @@ if (isset($_SESSION["trainer"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../Style/loginRegister.css">
 </head>
 
 <body>

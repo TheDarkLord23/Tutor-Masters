@@ -61,7 +61,7 @@ if (isset($_POST["submit"])) {
         $secondNameError = "Please insert a last name";
     }else if (strlen($secondName)<3){
         $error = true;
-        $lastNameError = "You last name has to be 3 char long";
+        $secondNameError = "You last name has to be 3 char long";
     }else if(!preg_match("/^[a-zA-Z\s]+$/", $secondName)){
         $error = true;
         $secondNameError = "The last Name can only contain letters and spaces";
@@ -123,7 +123,6 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../Style/loginRegister.css">
 </head>
 <body>
 

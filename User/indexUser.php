@@ -1,5 +1,6 @@
 <?php
 
+require_once "../db_connection.php";
 
 $readQuery = "SELECT * from courses";
 $readResult = mysqli_query($connection, $readQuery);
@@ -16,11 +17,11 @@ if (mysqli_num_rows($readResult) == 0) {
         <div class='card' style='width: 18rem;'>
         <img src='img/{$value["picture"]}' class='card-img-top' alt='...'>
         <div class='card-body'>
-          <h5 class='card-title'>{$value["name"]}</h5>
+          <h5 class='card-title'>{$value["subject"]}</h5>
           <p class='card-text'>Date:{$value["date"]}</p>
           <p class='card-text'>Duration:{$value["duration"]}</p>
           <div class='btnAlign'>
-          <a href='adopt.php?id={$value['id']}' class='btn btn-warning'>book course</a>
+          <a href='book.php?id={$value['id']}' class='btn btn-warning'>book course</a>
           <a href='details.php?id={$value["id"]}' class='btn btn-success'>Details</a>
        </div> </div>
       </div>
@@ -76,13 +77,11 @@ if (mysqli_num_rows($readResult) == 0) {
 </head>
 
 <body>
-    {# <nav class="navbar bg-body-tertiary">
+     <nav class="navbar bg-body-tertiary">
         <div class="container">
          
-               <small class="smalltext"><?= $row["email"] ?></small>
-             <img src="img/<?= $row["picture"] ?>" alt="#" width="30" height="24">
-            
-            <a class="navbar-brand" href="subjectFilter.php">
+           
+            <a class="navbar-brand" href="subjectsFilter.php">
                 filter classes
             </a>
             <a class="navbar-brand" href="universityFilter.php">
@@ -96,7 +95,7 @@ if (mysqli_num_rows($readResult) == 0) {
                 Logout
             </a>
         </div>
-    </nav>  #}
+    </nav>  
 
     
 
