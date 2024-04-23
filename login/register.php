@@ -38,8 +38,9 @@ if (isset($_POST["submit"])) {
     $email = ($_POST["email"]);
     $phoneNumber = ($_POST["phoneNumber"]);
     $address = ($_POST["address"]);
-    $picture = ($_FILES["picture"]);
+    $picture = fileUpload($_FILES["picture"]);
     $password = ($_POST["password"]);
+
 
 // validation first name start:
     if (empty($firstName)) {
