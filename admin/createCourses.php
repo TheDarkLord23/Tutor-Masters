@@ -11,7 +11,7 @@ session_start();
     }
 
     if (isset($_SESSION["user"])) {
-        header("Location: ../home.php");
+        header("Location: ../User/indexUser.php");
     }
 
 // validation end
@@ -20,7 +20,7 @@ session_start();
 
 if (isset($_POST["submit"])) {
     $subject = $_POST["subject"];
-    $universtity = $_POST["universtity"];
+    $university = $_POST["university"];
     $roomNumb = $_POST["roomNumb"];
     $date = $_POST["date"];
     $teacher = $_POST["teacher"];
@@ -30,7 +30,7 @@ if (isset($_POST["submit"])) {
     $duration = $_POST["duration"];
     $picture = fileUpload($_FILES["picture"]);
 
-    $sql = "INSERT INTO `courses`(`subject`, `universtity`, `roomNumb`, `date`, `teacher`, `picture`, `language`, `duration`, `units`, `avaiability`) VALUES ('{$subject}','{$universtity}','{$roomNumb}','{$date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$availability}')";
+    $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`, `teacher`, `picture`, `language`, `duration`, `units`, `availability`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$availability}')";
 
     if (mysqli_query($connection, $sql)) {
         echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
@@ -53,43 +53,20 @@ if (isset($_POST["submit"])) {
 </head>
 <body>
 
-<div class="container">
     <h5>Create a Course:</h5>
     <form action="" method="post" enctype="multipart/form-data">
-        <div class="inputFields">
             <input type="text" placeholder="Subject" name="subject" required>
-        </div>
-        <div class="inputFields">
-            <input type="text" placeholder="university" name="universtity">
-        </div>
-        <div class="inputFields">
+            <input type="text" placeholder="university" name="university">
             <input type="text" placeholder="Room Number" name="roomNumb" required>
-        </div>
-        <div class="inputFields">
-            <input type="datetime" placeholder="Date" name="date" required>
-        </div>
-        <div class="inputFields">
+            <input type="datetime-local" placeholder="Date" name="date" required>
             <input type="text" placeholder="Teacher" name="teacher" required>
-        </div>
-        <div class="inputFields">
             <input type="text" placeholder="Language" name="language" required>
-        </div>
-        <div class="inputFields">
             <input type="text" placeholder="Availability" name="availability" required>
-        </div>
-        <div class="inputFields">
             <input type="text" placeholder="Number of Units" name="units" required>
-        </div>
-        <div class="inputFields">
             <input type="text" placeholder="Duration" name="duration" required>
-        </div>
-        <div class="imgInput inputFields">
             <input type="file" name="picture">
-        </div>
-        <div class="submitInput">
             <input class="submitBtn" type="submit" name="submit">
-        </div>
     </form>
-</div>
+
 </body>
 </html>
