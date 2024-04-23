@@ -21,37 +21,35 @@ session_start();
 
 
 $id = $_GET["id"];
-$sql = "SELECT * FROM `animal` WHERE animal_id = $id";
+$sql = "SELECT * FROM `courses` WHERE id = $id";
 $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
-
-
-$sqlUser= "SELECT * FROM `user` WHERE user_id = {$_SESSION["admin"]}";
-$runSqlUser = mysqli_query($connection, $sqlUser);
-$rowsUser = mysqli_fetch_assoc($runSqlUser);
 
 // Get Data from table end
 
 // update start:
 
 if (isset($_POST["submit"])) {
-    $animal_name = $_POST["animal_name"];
-    $animal_description = $_POST["animal_description"];
-    $animal_location = $_POST["animal_location"];
-    $animal_size = $_POST["animal_size"];
-    $animal_age = $_POST["animal_age"];
-    $animal_vaccinated = $_POST["animal_vaccinated"];
-    $animal_breed = $_POST["animal_breed"];
-    $animal_status = $_POST["animal_status"];
-    $animal_photo = fileUpload($_FILES["animal_photo"]);
+    $subject = $_POST["subject"];
+    $name = $_POST["name"];
+    $university = $_POST["university"];
+    $roomNumb = $_POST["roomNumb"];
+    $date = $_POST["date"];
+    $teacher = $_POST["teacher"];
+    $language = $_POST["language"];
+    $availability = $_POST["availability"];
+    $units = $_POST["units"];
+    $duration = $_POST["duration"];
+    $picture = fileUpload($_FILES["picture"]);
 
-    $sql = "UPDATE `animal` SET `animal_name`='{$animal_name}',`animal_photo`='{$animal_photo[0]}',`animal_location`='{$animal_location}',`animal_description`='{$animal_description}',`animal_size`='{$animal_size}',`animal_age`='{$animal_age}',`animal_vaccinated`='{$animal_vaccinated}',`animal_breed`='{$animal_breed}',`animal_status`='{$animal_status}' WHERE animal_id = $id";
+    $sql = "UPDATE `courses` SET `subject`='{$subject}',`university`='{$university}',`roomNumb`='{$roomNumb}',`date`='{$date}',`teacher`='{$date}',`picture`='{$picture[0]}',`language`='{$language}',`duration`='{$duration}',`units`='{$units}',`availability`='{$availability}',`name`='{$name}' WHERE id = $id";
+
 
     if (mysqli_query($connection, $sql)) {
-        echo "<div class='containerAlert'><p>Animal has been updated!</p></div>";
-        header("refresh: 3; url=dashboard.php");
+        echo "<p>Course has been updated!</p>";
+        header("refresh: 3; url=indexAdmin.php");
     } else {
-        echo "<div><p>Something went wrong.Please try again later!</p></div>";
+        echo "<p>Something went wrong.Please try again later!</p>";
     }
 }
 
@@ -68,46 +66,37 @@ mysqli_close($connection);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Style/CRUD.css">
-    <link rel="stylesheet" href="navbarDashboard.php">
-    <link rel="stylesheet" href="/Style/navbarHome.css">
 </head>
 <body>
 
-<div class="container">
-    <h5>Please insert your data:</h5>
+
+    <h5>Update a course:</h5>
     <form action="" method="post" enctype="multipart/form-data">
-        <div class="inputFields">
-            <input type="text" value="<?=$row["animal_name"]?>" name="animal_name" required>
-        </div>
-        <div class="inputFields">
-            <input type="text" value="<?=$row["animal_description"]?>" name="animal_description">
-        </div>
-        <div class="inputFields">
-            <input type="text" value="<?=$row["animal_location"]?>" name="animal_location" required>
-        </div>
-        <div class="inputFields">
-            <input type="text" value="<?=$row["animal_size"]?>" name="animal_size" required>
-        </div>
-        <div class="inputFields">
-            <input type="text" value="<?=$row["animal_age"]?>" name="animal_age" required>
-        </div>
-        <div class="inputFields">
-            <input type="text" value="<?=$row["animal_vaccinated"]?>"" name="animal_vaccinated" required>
-        </div>
-        <div class="inputFields">
-            <input type="text" value="<?=$row["animal_breed"]?>" name="animal_breed" required>
-        </div>
-        <div class="inputFields">
-            <input type="text" value="<?=$row["animal_status"]?>" name="animal_status" required>
-        </div>
-        <div class="imgInput inputFields">
-            <input type="file" name="animal_photo">
-        </div>
-        <div class="submitInput">
-            <input class="submitBtn" type="submit" name="submit">
-        </div>
+
+            <input type="text" value="<?=$row["subject"]?>" name="subject" required>
+
+            <input type="text" value="<?=$row["name"]?>" name="name">
+
+            <input type="text" value="<?=$row["university"]?>" name="university" required>
+
+            <input type="text" value="<?=$row["roomNumb"]?>" name="roomNumb" required>
+
+            <input type="datetime-local" value="<?=$row["date"]?>" name="date" required>
+
+            <input type="text" value="<?=$row["teacher"]?>"" name="teacher" required>
+
+            <input type="text" value="<?=$row["language"]?>" name="language" required>
+
+            <input type="text" value="<?=$row["availability"]?>" name="availability" required>
+
+            <input type="text" value="<?=$row["units"]?>" name="units" required>
+
+            <input type="text" value="<?=$row["duration"]?>" name="duration" required>
+
+            <input type="file" name="picture">
+
+            <input type="submit" name="submit">
     </form>
-</div>
+
 </body>
 </html>
