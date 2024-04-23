@@ -1,5 +1,6 @@
 <?php
 
+require_once "../db_connection.php";
 
 $readQuery = "SELECT * from courses";
 $readResult = mysqli_query($connection, $readQuery);
