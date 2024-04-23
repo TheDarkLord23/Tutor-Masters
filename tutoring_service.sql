@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 23. Apr 2024 um 11:12
--- Server-Version: 10.4.32-MariaDB
--- PHP-Version: 8.2.12
+-- Erstellungszeit: 23. Apr 2024 um 12:38
+-- Server-Version: 10.4.28-MariaDB
+-- PHP-Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,24 +51,26 @@ CREATE TABLE `courses` (
   `language` varchar(50) DEFAULT NULL,
   `duration` varchar(50) DEFAULT NULL,
   `units` varchar(100) DEFAULT NULL,
-  `availability` enum('avaiable','not avaiable') DEFAULT NULL
+  `availability` enum('avaiable','not avaiable') DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Daten für Tabelle `courses`
 --
 
-INSERT INTO `courses` (`id`, `subject`, `university`, `roomNumb`, `date`, `teacher`, `picture`, `language`, `duration`, `units`, `availability`) VALUES
-(1, 'Mathematics', 'ABC University', 'Room 101', NULL, 'Dr. Smith', 'math_picture.jpg', 'English', '60', '3', NULL),
-(2, 'Computer Science', 'XYZ College', 'Room 201', NULL, 'Prof. Johnson', 'cs_picture.jpg', 'English', '90', '4', NULL),
-(3, 'Physics', '123 Institute', 'Room 301', NULL, 'Prof. Williams', 'physics_picture.jpg', 'English', '75', '3', NULL),
-(4, 'Literature', 'DEF School', 'Room 102', NULL, 'Ms. Brown', 'lit_picture.jpg', 'English', '45', '2', NULL),
-(5, 'History', 'GHI University', 'Room 202', NULL, 'Dr. Davis', 'history_picture.jpg', 'English', '60', '3', NULL),
-(6, 'Biology', 'MNO College', 'Room 302', NULL, 'Dr. Martinez', 'bio_picture.jpg', 'English', '60', '3', NULL),
-(7, 'Chemistry', 'PQR Institute', 'Room 103', NULL, 'Prof. Thompson', 'chem_picture.jpg', 'English', '90', '4', NULL),
-(8, 'Geography', 'STU School', 'Room 203', NULL, 'Ms. Garcia', 'geo_picture.jpg', 'English', '45', '2', NULL),
-(9, 'Economics', 'VWX College', 'Room 303', NULL, 'Dr. Robinson', 'eco_picture.jpg', 'English', '75', '3', NULL),
-(10, 'Art', 'YZA University', 'Room 104', NULL, 'Prof. Lee', 'art_picture.jpg', 'English', '60', '3', NULL);
+INSERT INTO `courses` (`id`, `subject`, `university`, `roomNumb`, `date`, `teacher`, `picture`, `language`, `duration`, `units`, `availability`, `name`) VALUES
+(1, 'Mathematics', 'ABC University', 'Room 101', NULL, 'Dr. Smith', 'math_picture.jpg', 'English', '60', '3', 'avaiable', NULL),
+(2, 'Computer Science', 'XYZ College', 'Room 201', NULL, 'Prof. Johnson', 'cs_picture.jpg', 'English', '90', '4', NULL, NULL),
+(3, 'Physics', '123 Institute', 'Room 301', NULL, 'Prof. Williams', 'physics_picture.jpg', 'English', '75', '3', NULL, NULL),
+(4, 'Literature', 'DEF School', 'Room 102', NULL, 'Ms. Brown', 'lit_picture.jpg', 'English', '45', '2', NULL, NULL),
+(5, 'History', 'GHI University', 'Room 202', NULL, 'Dr. Davis', 'history_picture.jpg', 'English', '60', '3', NULL, NULL),
+(6, 'Biology', 'MNO College', 'Room 302', NULL, 'Dr. Martinez', 'bio_picture.jpg', 'English', '60', '3', NULL, NULL),
+(7, 'Chemistry', 'PQR Institute', 'Room 103', NULL, 'Prof. Thompson', 'chem_picture.jpg', 'English', '90', '4', NULL, NULL),
+(8, 'Geography', 'STU School', 'Room 203', NULL, 'Ms. Garcia', 'geo_picture.jpg', 'English', '45', '2', NULL, NULL),
+(9, 'Economics', 'VWX College', 'Room 303', NULL, 'Dr. Robinson', 'eco_picture.jpg', 'English', '75', '3', NULL, NULL),
+(10, 'Art', 'YZA University', 'Room 104', NULL, 'Prof. Lee', 'art_picture.jpg', 'English', '60', '3', NULL, NULL),
+(11, 'Biology', 'university of vienna', 'A293', '2024-04-25 12:00:00', 'Dr.Smith', 'defaultPic.jpg', 'English', '120', '3', 'avaiable', NULL);
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT für Tabelle `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT für Tabelle `review`
