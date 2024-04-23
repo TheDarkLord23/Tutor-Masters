@@ -135,14 +135,16 @@ h5 {
 
   .loginRegister {
     flex-direction: column;
-    text-align: center;
+    justify-content: center;
+    max-width: 90px;
   }
 
   .registerLogin {
     flex-direction: column;
-    text-align: center;
+    justify-content: center;
+    max-width: 200px;
   }
   .divLoginBtn {
-    
+    text-align: center;
   }
 }
