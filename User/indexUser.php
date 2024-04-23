@@ -20,10 +20,9 @@ if (mysqli_num_rows($readResult) == 0) {
           <h5 class='card-title'>{$value["subject"]}</h5>
           <p class='card-text'>Date:{$value["date"]}</p>
           <p class='card-text'>Duration:{$value["duration"]}</p>
-          <div class='btnAlign'>
-          <a href='book.php?id={$value['id']}' class='btn btn-warning'>book course</a>
+          
           <a href='details.php?id={$value["id"]}' class='btn btn-success'>Details</a>
-       </div> </div>
+      </div>
       </div>
         </div>";
     }
