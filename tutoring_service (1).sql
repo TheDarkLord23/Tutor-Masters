@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 22. Apr 2024 um 14:52
+-- Erstellungszeit: 23. Apr 2024 um 11:12
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -43,22 +43,22 @@ CREATE TABLE `bookings` (
 CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `subject` varchar(50) DEFAULT NULL,
-  `universtity` varchar(50) DEFAULT NULL,
+  `university` varchar(50) DEFAULT NULL,
   `roomNumb` varchar(50) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   `teacher` varchar(100) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
   `language` varchar(50) DEFAULT NULL,
   `duration` varchar(50) DEFAULT NULL,
   `units` varchar(100) DEFAULT NULL,
-  `avaiability` enum('avaiable','not avaiable') DEFAULT NULL
+  `availability` enum('avaiable','not avaiable') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Daten für Tabelle `courses`
 --
 
-INSERT INTO `courses` (`id`, `subject`, `universtity`, `roomNumb`, `date`, `teacher`, `picture`, `language`, `duration`, `units`, `avaiability`) VALUES
+INSERT INTO `courses` (`id`, `subject`, `university`, `roomNumb`, `date`, `teacher`, `picture`, `language`, `duration`, `units`, `availability`) VALUES
 (1, 'Mathematics', 'ABC University', 'Room 101', NULL, 'Dr. Smith', 'math_picture.jpg', 'English', '60', '3', NULL),
 (2, 'Computer Science', 'XYZ College', 'Room 201', NULL, 'Prof. Johnson', 'cs_picture.jpg', 'English', '90', '4', NULL),
 (3, 'Physics', '123 Institute', 'Room 301', NULL, 'Prof. Williams', 'physics_picture.jpg', 'English', '75', '3', NULL),
@@ -99,7 +99,7 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   `phoneNumber` varchar(50) DEFAULT NULL,
-  `Status` enum('user','admin','trainer') DEFAULT NULL,
+  `Status` enum('user','admin','trainer') DEFAULT 'user',
   `picture` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -117,7 +117,8 @@ INSERT INTO `users` (`id`, `firstName`, `secondName`, `email`, `password`, `addr
 (7, 'Kevin', 'Taylor', 'kevin.taylor@example.com', '123123', '456 Birch Blvd, Hamlet', '456-789-1230', 'user', NULL),
 (8, 'Emma', 'Garcia', 'emma.garcia@example.com', '123123', '789 Spruce Dr, Manor', '789-012-3456', 'trainer', NULL),
 (9, 'James', 'Lee', 'james.lee@example.com', '123123', '123 Fir Pl, Ranch', '123-456-7890', 'user', NULL),
-(10, 'Sophia', 'Rodriguez', 'sophia.rodriguez@example.com', '123123', '456 Aspen Ct, Farm', '456-789-0123', 'user', NULL);
+(10, 'Sophia', 'Rodriguez', 'sophia.rodriguez@example.com', '123123', '456 Aspen Ct, Farm', '456-789-0123', 'user', NULL),
+(11, 'Mario', 'Geremicca', 'mario@gmail.com', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'straße1', '05156161', 'user', 'defaultPic.jpg');
 
 --
 -- Indizes der exportierten Tabellen
@@ -171,7 +172,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints der exportierten Tabellen
