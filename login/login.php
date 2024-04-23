@@ -58,7 +58,7 @@ if (isset($_SESSION["trainer"])) {
                 }else if ($row["Status"]=="user"){
                     $_SESSION["user"] = $row["id"];
                     
-                    header("Location: ./user/userIndex.php");
+                    header("Location: ./user/indexUser.php");
                 }else{
                     $_SESSION["trainer"] = $row["id"];
                     
