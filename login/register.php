@@ -128,33 +128,39 @@ if (isset($_POST["submit"])) {
 <body>
 
     <div class="container">
+        <div class="registerLogin">
+            <h4><a href="login.php">Login</a></h3>
+            <h3><a href="register.php">Registration</a></h4>
+        </div>        
         <h5>Register here:</h5>
         <form action="" method="post" enctype="multipart/form-data">
-            <div class="fNameInput inputFields">
-                <input type="text" placeholder="First Name" name="firstName" value="<?=$firstName?>" required>
-                <p class="errorMessage"><?php echo $firstNameError?></p>
-            </div>
-            <div class="lNameInput inputFields">
-                <input type="text" placeholder="Last Name" name="secondName" value="<?=$secondName?>" required>
-                <p class="errorMessage"><?php echo $secondNameError?></p>
-            </div>
+            <div class="fnlNameInput">
+                <div class="fNameInput inputFields">
+                    <input class="input" type="text" placeholder="First Name" name="firstName" value="<?=$firstName?>" required>
+                    <p class="errorMessage"><?php echo $firstNameError?></p>
+                </div>
+                <div class="lNameInput inputFields">
+                    <input class="input" type="text" placeholder="Last Name" name="secondName" value="<?=$secondName?>" required>
+                    <p class="errorMessage"><?php echo $secondNameError?></p>
+                </div>
+            </div> 
             <div class="emailInput inputFields">
-                <input type="text" placeholder="Email" name="email" value="<?=$email?>" required>
+                <input class="input" type="text" placeholder="Email" name="email" value="<?=$email?>" required>
                 <p class="errorMessage"><?php echo $emailError?></p>
             </div>
             <div class="phoneNumberInput inputFields">
-                <input type="text" placeholder="Phone Number" name="phoneNumber" value="<?=$phoneNumber?>" required>
+                <input class="input" type="text" placeholder="Phone Number" name="phoneNumber" value="<?=$phoneNumber?>" required>
                 <p class="errorMessage"><?php echo $phoneNumberError?></p>
             </div>
             <div class="ageInput inputFields">
-                <input type="text" name="address" placeholder="Address" value="<?=$address?>" required>
+                <input class="input" type="text" name="address" placeholder="Address" value="<?=$address?>" required>
                 <p class="errorMessage"><?php echo $addressError?></p>
             </div>
             <div class="imgInput inputFields">
-                <input type="file" name="picture">
+                <input class="input" type="file" name="picture">
             </div>
             <div class="passwordInput inputFields">
-                <input type="password" placeholder="Password" name="password" required>
+                <input class="input" type="password" placeholder="Password" name="password" required>
                 <p class="errorMessage"><?php echo $passwordError?></p>
             </div>
             <div class="submitInput">
@@ -162,8 +168,7 @@ if (isset($_POST["submit"])) {
             </div>
         </form>
         <div class="divLoginBtn">
-            <p>Your already have a account? Login here:</p>
-            <a class="loginBtn" href="login.php">Login</a>
+            <p>You already have an account? <a class="loginBtn" href="login.php">Login</a></p>
         </div>
     </div>
     
