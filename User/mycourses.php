@@ -7,9 +7,8 @@ session_start();
 include_once '../db_connection.php';
 
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
     header("Location: ../login/login.php");
-    exit;
 }
 
 

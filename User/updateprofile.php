@@ -1,5 +1,13 @@
 <?php
 
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
+    
+    $goBack = "index.php";
+} else {
+    $session = $_SESSION["user"];
+    // $goBack = "indexUser.php";
+}
+
 session_start();
 
 require_once "../db_connection.php";

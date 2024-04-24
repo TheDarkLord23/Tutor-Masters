@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
+    header("Location: ../login/login.php");
+}
+
+
 require_once "../db_connection.php";
 
 $readQuery = "SELECT * from courses";
