@@ -26,20 +26,35 @@ if (mysqli_num_rows($readResult) == 0) {
         </div>";
     }
 }
-
+$body1 = "";
+$body2 = "";
 $queryFilter = "SELECT * from courses";
 $filterResult = mysqli_query($connection, $queryFilter);
 
 
-$body = "";
+
 
 if (mysqli_num_rows($filterResult) == 0) {
-    $body = "No courses found!";
+    $body1 = "No courses found!";
 } else {
-    $data = mysqli_fetch_all($filterResult, MYSQLI_ASSOC);
-    foreach ($data as $val) {
+    $data1 = mysqli_fetch_all($filterResult, MYSQLI_ASSOC);
+    foreach ($data1 as $val1) {
      
-        $body .= "<a href='subjectsFilter.php?id={$val['subject']}'>{$val['subject']}</a>";
+        $body1 .= "<a href='subjectsFilter.php?id={$val1['subject']}'>{$val1['subject']}</a>";
+        
+    }}
+
+
+$queryFilterUni = "SELECT * from courses";
+$filterResultUni = mysqli_query($connection, $queryFilterUni);
+
+if (mysqli_num_rows($filterResultUni) == 0) {
+        $body2 = "No courses found!";
+    } else {
+        $data2 = mysqli_fetch_all($filterResultUni, MYSQLI_ASSOC);
+    foreach ($data2 as $val2) {
+     
+        $body2 .= "<a href='universityFilter.php?id={$val2['university']}'>{$val2['university']}</a>";
         
     }
 }
@@ -77,8 +92,9 @@ if (mysqli_num_rows($filterResult) == 0) {
         </div>
     </nav>  
 
+    <?php echo $body1 ?>
+    <?php echo $body2 ?>
 
-    <?= $body ?>
     <div width="100%">
 
         <div class="cont" width="100%">
