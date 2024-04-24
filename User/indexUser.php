@@ -44,13 +44,11 @@ if (mysqli_num_rows($readResult) == 0) {
      <nav class="navbar bg-body-tertiary">
         <div class="container">
          
-           
-            <a class="navbar-brand" href="subjectsFilter.php">
-                filter classes
+        <a class="navbar-brand" href="mycourses.php?id={$session}">
+                My Courses
             </a>
-            <a class="navbar-brand" href="universityFilter.php">
-                filter university
-            </a>
+
+     
             <a class="navbar-brand" href="updateprofile.php">
                 Update profile
             </a>
