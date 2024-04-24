@@ -2,8 +2,12 @@
 
 session_start();
 
-if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
+if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
     header("Location: ../login/login.php");
+}
+
+if (isset($_SESSION["user"])) {
+    header("Location: ../User/indexUser.php");
 }
 
 
