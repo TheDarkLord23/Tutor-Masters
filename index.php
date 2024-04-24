@@ -8,6 +8,41 @@ $readQuery = "SELECT * from courses";
 $readResult = mysqli_query($connection, $readQuery);
 
 $layout = "";
+$body1 = "";
+$body2 = "";
+
+$queryFilter = "SELECT * from courses";
+$filterResult = mysqli_query($connection, $queryFilter);
+
+
+
+
+if (mysqli_num_rows($filterResult) == 0) {
+    $body1 = "No courses found!";
+} else {
+    $data1 = mysqli_fetch_all($filterResult, MYSQLI_ASSOC);
+    foreach ($data1 as $val1) {
+     
+        $body1 .= "<a href='subjectsFilter.php?id={$val1['subject']}'>{$val1['subject']}</a>";
+        
+    }}
+
+
+$queryFilterUni = "SELECT * from courses";
+$filterResultUni = mysqli_query($connection, $queryFilterUni);
+
+if (mysqli_num_rows($filterResultUni) == 0) {
+        $body2 = "No courses found!";
+    } else {
+        $data2 = mysqli_fetch_all($filterResultUni, MYSQLI_ASSOC);
+    foreach ($data2 as $val2) {
+     
+        $body2 .= "<a href='universityFilter.php?id={$val2['university']}'>{$val2['university']}</a>";
+        
+    }
+}
+
+
 
 
 if (mysqli_num_rows($readResult) == 0) {
@@ -23,7 +58,7 @@ if (mysqli_num_rows($readResult) == 0) {
           <p class='card-text'>Date:{$value["date"]}</p>
           <p class='card-text'>Duration:{$value["duration"]}</p>
           
-          <a href='details.php?id={$value["id"]}' class='btn btn-success'>Details</a>
+          <a href='details4all.php?id={$value["id"]}' class='btn btn-success'>Details</a>
       </div>
       </div>
         </div>";
@@ -43,116 +78,9 @@ if (mysqli_num_rows($readResult) == 0) {
 </head>
 
 <body>
-
-
-
-    <div class="med-related-prod-wrap" id="med-related-prod-wrapper">
-        <h2 class="related-prod-heading">All Subjects</h2>
-        <div class="med-rel-prod-slider-wrapper">
-            <div class="med-rel-prod-slider carousel-content">
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">Mathematics</a>
-                    </div>
-                </div>
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">Computer Science</a>
-                    </div>
-                </div>
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">Literature</a>
-                    </div>
-                </div>
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">History</a>
-                    </div>
-                </div>
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">Biology</a>
-                    </div>
-                </div>
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">Chemistry</a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-    <br>
-    <div class="med-related-prod-wrap" id="med-related-prod-wrapper">
-        <h2 class="related-prod-heading">All Universities</h2>
-        <div class="med-rel-prod-slider-wrapper">
-            <div class="med-rel-prod-slider carousel-content">
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">University of Vienna</a>
-                    </div>
-                </div>
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">Vienna University of Technology</a>
-                    </div>
-                </div>
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">University of Graz</a>
-                    </div>
-                </div>
-
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">University of Innsbruck</a>
-                    </div>
-                </div>
-
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">Medical University of Vienna</a>
-                    </div>
-                </div>
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">University of Salzburg</a>
-                    </div>
-                </div>
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">University of Klagenfurt </a>
-                    </div>
-                </div>
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">Graz University of Technology</a>
-                    </div>
-                </div>
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">Johannes Kepler University Linz</a>
-                    </div>
-                </div>
-                <div class="med-product-card">
-                    <div class="related-prod-detail">
-                        <a href="subjectsFilter.php" class="rel-med-name">University of Veterinary Medicine Vienna</a>
-                    </div>
-                </div>
-            </div>
+<?php echo $body1 ?>
+<br>
+    <?php echo $body2 ?>
 
             <br><br>
             <div width="100%">
