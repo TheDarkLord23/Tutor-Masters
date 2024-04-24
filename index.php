@@ -4,8 +4,10 @@ require_once "db_connection.php";
 require_once "navbar.php";
 // require_once "footer.php";
 
-$readQuery = "SELECT * from courses";
+$readQuery = "SELECT * FROM courses
+ORDER BY `date` ASC LIMIT 4";
 $readResult = mysqli_query($connection, $readQuery);
+
 
 $layout = "";
 $body1 = "";
@@ -22,23 +24,22 @@ if (mysqli_num_rows($filterResult) == 0) {
 } else {
     $data1 = mysqli_fetch_all($filterResult, MYSQLI_ASSOC);
     foreach ($data1 as $val1) {
-     
+
         $body1 .= "<a href='subjectsFilter.php?id={$val1['subject']}'>{$val1['subject']}</a>";
-        
-    }}
+    }
+}
 
 
 $queryFilterUni = "SELECT * from courses";
 $filterResultUni = mysqli_query($connection, $queryFilterUni);
 
 if (mysqli_num_rows($filterResultUni) == 0) {
-        $body2 = "No courses found!";
-    } else {
-        $data2 = mysqli_fetch_all($filterResultUni, MYSQLI_ASSOC);
+    $body2 = "No courses found!";
+} else {
+    $data2 = mysqli_fetch_all($filterResultUni, MYSQLI_ASSOC);
     foreach ($data2 as $val2) {
-     
+
         $body2 .= "<a href='universityFilter.php?id={$val2['university']}'>{$val2['university']}</a>";
-        
     }
 }
 
@@ -50,17 +51,16 @@ if (mysqli_num_rows($readResult) == 0) {
 } else {
     $rows = mysqli_fetch_all($readResult, MYSQLI_ASSOC);
     foreach ($rows as $value) {
-        $layout .= "<div class='center'>
-        <div class='card' style='width: 18rem;'>
-        <img src='img/{$value["picture"]}' class='card-img-top' alt='...'>
-        <div class='card-body'>
-          <h5 class='card-title'>{$value["subject"]}</h5>
-          <p class='card-text'>Date:{$value["date"]}</p>
-          <p class='card-text'>Duration:{$value["duration"]}</p>
-          
-          <a href='details4all.php?id={$value["id"]}' class='btn btn-success'>Details</a>
-      </div>
-      </div>
+        $layout .= "
+        <div class='card-holder'>
+            <img src='img/{$value["picture"]}' alt='Image description' />
+            <h4>{$value["subject"]}</h4>
+            <p>
+            Date:{$value["date"]}
+            </p>
+            <p>
+            Duration:{$value["duration"]}
+            </p><a href='details.php?id={$value["id"]}' class='card-btn'>Details</a>
         </div>";
     }
 }
@@ -68,6 +68,7 @@ if (mysqli_num_rows($readResult) == 0) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <meta charset="UTF-8">
@@ -78,73 +79,96 @@ if (mysqli_num_rows($readResult) == 0) {
 </head>
 
 <body>
-<?php echo $body1 ?>
-<br>
-    <?php echo $body2 ?>
-
-            <br><br>
-            <div width="100%">
-
-                <div class="cont" width="100%">
-
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-5  grid" width="100%">
-                        <?= $layout ?>
-                    </div>
+    <div class="background">
+        <img class="bkgr" src="/Images/backgr.jpg" alt="">
+        <div class="hero">
+            <div class="left">
+                <h1 class="title">Unlock your potential<br> with the best<br> univercity tutors.</h1>
+                <a class="submitInput" href="courses.php">
+                    <input class="submitBtn" type="submit" name="submit" value="Get Started">
+                </a>
+            </div>
+            <div class="right">
+                <img class="banner" src="images/banner.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="info">
+        <div class="grid">
+            <div class="grid-item">
+                <div><img class="icon" src="/Images/star.png" alt=""></div>
+                <div>
+                    <h6>Expert teaching staff comprised of leading educators in various fields.</h6>
                 </div>
-                <?php include 'footer.php'; ?>
+            </div>
+            <div class="grid-item">
+                <div><img class="icon" src="/Images/person.png" alt=""></div>
+                <div>
+                    <h6>Personalized mentorship tailored to individual learning styles and needs.</h6>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div><img class="icon" src="/Images/book.png" alt=""></div>
+                <div>
+                    <h6>Comprehensive study materials and resources to aid in exam preparation.</h6>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div><img class="icon" src="/Images/seo.png" alt=""></div>
+                <div>
+                    <h6>Proven strategies and techniques for optimizing academic performance.</h6>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div><img class="icon" src="/Images/calendar.png" alt=""></div>
+                <div>
+                    <h6>Flexible scheduling options to accommodate busy student lifestyles.</h6>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div><img class="icon" src="/Images/flag.png" alt=""></div>
+                <div>
+                    <h6>Continuous support and guidance throughout the university admission process.</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="courses">
+            <h3 class="upcoming">Upcoming Courses</h3>
+            <div class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1">
+                <?= $layout ?>
+            </div>
+            <a class="submitInput" href="courses.php">
+                <input class="courses-btn" type="submit" name="submit" value="All Courses">
+            </a>
+        </div>
+    </div>
 
-                <script>
-                    const bindCarouselEvents = (containerId) => {
-                        const wrapper = document.getElementById(containerId);
-                        const btn_left = wrapper.getElementsByClassName('btn-left')[0]
-                        const btn_right = wrapper.getElementsByClassName('btn-right')[0]
-                        const content = wrapper.getElementsByClassName('carousel-content')[0]
-                        const content_scroll_width = content.scrollWidth;
-                        let content_scoll_left = content.scrollLeft;
-                        if (btn_right) {
-                            btn_right.addEventListener('click', () => {
-                                content_scoll_left += 224;
-                                if (content_scoll_left >= content_scroll_width) {
-                                    content_scoll_left = content_scroll_width;
-                                }
-                                content.scrollLeft = content_scoll_left;
-                            });
-                        }
-                        if (btn_left) {
-                            btn_left.addEventListener('click', () => {
-                                content_scoll_left -= 224;
-                                content.scrollLeft = content_scoll_left;
-                            });
-                        }
-
-                        // scroll binding
-                        content.addEventListener('scroll', () => {
-                            let scrollLeft = Math.ceil(content.scrollLeft)
-                            let contentScrollWidth = content.scrollWidth
-                            let contentWidth = content.clientWidth
-                            let rightEdge = (contentScrollWidth - contentWidth)
-                            if (scrollLeft >= rightEdge) {
-                                btn_right.style.display = "none"
-                            } else if (scrollLeft < rightEdge) {
-                                btn_right.style.display = "block"
-                            }
-
-                            if (scrollLeft == 0) {
-                                btn_left.style.display = "none"
-                            } else if (scrollLeft > 0) {
-                                btn_left.style.display = "block"
-                            }
-
-                            content_scoll_left = scrollLeft
-                        });
-                    }
-
-                    // javascript for scroll on click
-                    window.addEventListener('DOMContentLoaded', function() {
-                        bindCarouselEvents('med-related-prod-wrapper')
-                    });
-                </script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <div class="testimonials">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="..." alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="..." alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="..." alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
