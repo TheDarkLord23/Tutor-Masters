@@ -1,0 +1,46 @@
+@import url(chillax.css);
+
+* {
+  font-family: "Chillax", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-icon {
+  width: 2rem;
+}
+
+.navbar {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 4px 29px 0px;
+}
+
+.med-rel-prod-slider {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.related-prod-detail {
+  border: 1px solid #0ca678;
+  border-radius: 3px;
+}
+
+.related-prod-detail a {
+  color: #0ca678;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.related-prod-detail:hover {
+  background-color: #0ca678;
+}
+
+.related-prod-detail a:hover {
+  color: white;
+}
+
+.med-product-card {
+  display: flex;
+  flex-direction: column;
+}
