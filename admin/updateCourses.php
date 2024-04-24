@@ -7,13 +7,18 @@ session_start();
 
 // validation start:
 
-    if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
-        header("Location: ../login.php");
-    }
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
+["user"])) {
+    header("Location: ../login/login.php");
+}
 
-    if (isset($_SESSION["user"])) {
-        header("Location: ../User/indexUser.php");
-    }
+if (isset($_SESSION["user"])) {
+    header("Location: ../User/indexUser.php");
+}
+
+if (isset($_SESSION["trainer"])) {
+    header("Location: ../Trainer/indexTrainer.php");
+}
 
 // validation end
 
