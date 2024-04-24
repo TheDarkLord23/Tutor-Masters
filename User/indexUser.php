@@ -7,7 +7,6 @@ $readResult = mysqli_query($connection, $readQuery);
 
 $layout = "";
 
-
 if (mysqli_num_rows($readResult) == 0) {
     $layout = "No courses found!";
 } else {
@@ -27,6 +26,25 @@ if (mysqli_num_rows($readResult) == 0) {
         </div>";
     }
 }
+
+$queryFilter = "SELECT * from courses";
+$filterResult = mysqli_query($connection, $queryFilter);
+
+
+$body = "";
+
+if (mysqli_num_rows($filterResult) == 0) {
+    $body = "No courses found!";
+} else {
+    $data = mysqli_fetch_all($filterResult, MYSQLI_ASSOC);
+    foreach ($data as $val) {
+     
+        $body .= "<a href='subjectsFilter.php?id={$val['subject']}'>{$val['subject']}</a>";
+        
+    }
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -60,115 +78,7 @@ if (mysqli_num_rows($readResult) == 0) {
     </nav>  
 
 
-<div class="med-related-prod-wrap" id="med-related-prod-wrapper">
-<h2 class="related-prod-heading">All Subjects</h2>
-<div class="med-rel-prod-slider-wrapper">
-<div class="med-rel-prod-slider carousel-content">
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">Mathematics</a>
-    </div>
-</div>
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">Computer Science</a>
-    </div>
-</div>
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-    <a href="subjectsFilter.php" class="rel-med-name">Literature</a>
-    </div>
-</div>
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">History</a>
-    </div>
-</div>
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">Biology</a>
-    </div>
-</div>
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">Chemistry</a>
-    </div>
-</div>
-
-</div>
-
-    </div>
-</div>
-
-<br>
-<div class="med-related-prod-wrap" id="med-related-prod-wrapper">
-    <h2 class="related-prod-heading">All Universities</h2>
-    <div class="med-rel-prod-slider-wrapper">
-        <div class="med-rel-prod-slider carousel-content">
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-    <a href="subjectsFilter.php" class="rel-med-name">University of Vienna</a>
-    </div>
-</div>
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-    <a href="subjectsFilter.php" class="rel-med-name">Vienna University of Technology</a>
-    </div>
-</div>
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">University of Graz</a>
-    </div>
-</div>
-
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">University of Innsbruck</a>
-    </div>
-</div>
-
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">Medical University of Vienna</a>
-    </div>
-</div>
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">University of Salzburg</a> 
-    </div>
-</div>
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">University of Klagenfurt </a>
-    </div>
-</div>
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">Graz University of Technology</a>
-    </div>
-</div>
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">Johannes Kepler University Linz</a>
-    </div>
-</div>
-<div class="med-product-card">
-    <div class="related-prod-detail">
-        <a href="subjectsFilter.php" class="rel-med-name">University of Veterinary Medicine Vienna</a>
-    </div>
-</div>
-</div>
-
-<br><br>
+    <?= $body ?>
     <div width="100%">
 
         <div class="cont" width="100%">
