@@ -6,7 +6,8 @@ $readQuery = "SELECT * from courses";
 $readResult = mysqli_query($connection, $readQuery);
 
 $layout = "";
-
+$body1 = "";
+$body2 = "";
 if (mysqli_num_rows($readResult) == 0) {
     $layout = "No courses found!";
 } else {
@@ -26,8 +27,7 @@ if (mysqli_num_rows($readResult) == 0) {
         </div>";
     }
 }
-$body1 = "";
-$body2 = "";
+
 $queryFilter = "SELECT * from courses";
 $filterResult = mysqli_query($connection, $queryFilter);
 
@@ -93,6 +93,7 @@ if (mysqli_num_rows($filterResultUni) == 0) {
     </nav>  
 
     <?php echo $body1 ?>
+    <br>
     <?php echo $body2 ?>
 
     <div width="100%">
