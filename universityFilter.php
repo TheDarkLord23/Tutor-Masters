@@ -3,17 +3,12 @@
 session_start();
 
 
-if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
-    header("Location: ../login/login.php");
-}
-
-
-require_once "../db_connection.php";
+require_once "db_connection.php";
 
 
 $id = $_GET["id"];
 
-$selectID = "SELECT * FROM `courses` WHERE `subject` = '{$id}'";
+$selectID = "SELECT * FROM `courses` WHERE university = '{$id}'";
 
 $result = mysqli_query($connection, $selectID);
 
@@ -32,7 +27,7 @@ if (mysqli_num_rows($result) == 0) {
           <p class='card-text'>Date:{$value["date"]}</p>
           <p class='card-text'>Duration:{$value["duration"]}</p>
           
-          <a href='details.php?id={$value["id"]}' class='btn btn-success'>Details</a>
+          <a href='details4all.php?id={$value["id"]}' class='btn btn-success'>Details</a>
       </div>
       </div>
         </div>";

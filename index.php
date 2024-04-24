@@ -2,6 +2,7 @@
 
 require_once "db_connection.php";
 require_once "navbar.php";
+// require_once "footer.php";
 
 $readQuery = "SELECT * FROM courses
 ORDER BY `date` ASC LIMIT 4";
@@ -9,6 +10,40 @@ $readResult = mysqli_query($connection, $readQuery);
 
 
 $layout = "";
+$body1 = "";
+$body2 = "";
+
+$queryFilter = "SELECT * from courses";
+$filterResult = mysqli_query($connection, $queryFilter);
+
+
+
+
+if (mysqli_num_rows($filterResult) == 0) {
+    $body1 = "No courses found!";
+} else {
+    $data1 = mysqli_fetch_all($filterResult, MYSQLI_ASSOC);
+    foreach ($data1 as $val1) {
+
+        $body1 .= "<a href='subjectsFilter.php?id={$val1['subject']}'>{$val1['subject']}</a>";
+    }
+}
+
+
+$queryFilterUni = "SELECT * from courses";
+$filterResultUni = mysqli_query($connection, $queryFilterUni);
+
+if (mysqli_num_rows($filterResultUni) == 0) {
+    $body2 = "No courses found!";
+} else {
+    $data2 = mysqli_fetch_all($filterResultUni, MYSQLI_ASSOC);
+    foreach ($data2 as $val2) {
+
+        $body2 .= "<a href='universityFilter.php?id={$val2['university']}'>{$val2['university']}</a>";
+    }
+}
+
+
 
 
 if (mysqli_num_rows($readResult) == 0) {
@@ -40,7 +75,7 @@ if (mysqli_num_rows($readResult) == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="./style/index.css">
 </head>
 
 <body>

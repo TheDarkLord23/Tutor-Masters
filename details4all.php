@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require "../db_connection.php";
+require "db_connection.php";
 
 
 if($_GET["id"]) {
@@ -57,10 +57,9 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
   <p class="card-text">University: '.$row["university"].'</p>
   <p class="card-text">Availability: '.$row["availability"].'</p>
   <div class="btnAlign">
-  <form method="post">
-  <input class="btn btn-success" type="submit" name="bookings" value="book course">
+ 
   </form>
-  <a class="btn btn-danger" href="indexUser.php">back to home</a></div>
+  <a class="btn btn-danger" href="index.php">back to home</a></div>
 </div>
 </div>
 </div>

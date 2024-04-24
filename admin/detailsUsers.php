@@ -1,8 +1,7 @@
-<?php 
-
-require_once "../db_connection.php";
+<?php
 
 session_start();
+
 
 if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
 ["user"])) {
@@ -17,25 +16,15 @@ if (isset($_SESSION["trainer"])) {
     header("Location: ../Trainer/indexTrainer.php");
 }
 
+require_once "../db_connection.php";
+
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM `courses` WHERE id = $id";
-$result = mysqli_query($connection, $sql);
+$selectID = "SELECT * FROM `users` WHERE id = '{$id}'";
+
+$result = mysqli_query($connection, $selectID);
 $row = mysqli_fetch_assoc($result);
-if ($row["picture"] != "defaultPic.jpg") {
-    unlink("../Images/{$row["picture"]}");
-}
-
-$delete = "DELETE FROM `courses` WHERE id = $id";
-
-if(mysqli_query($connection, $delete)){
-    header("Location: indexAdmin.php");
-}else {
-    echo "Error";
-}
-
-mysqli_close($connection);
 
 ?>
 
@@ -47,7 +36,12 @@ mysqli_close($connection);
     <title>Document</title>
 </head>
 <body>
-
-    
+    <img class='imgCarts' src=../Images/<?=$row["picture"]?> alt='image'>
+        <p><?=$row["firstName"]?></p>
+        <p><?=$row["secondName"]?></p>
+        <p><?=$row["email"]?></p>
+        <p><?=$row["address"]?></p>
+        <p><?=$row["phoneNumber"]?></p>
+        <p><?= $row["Status"]?></p>
 </body>
 </html>
