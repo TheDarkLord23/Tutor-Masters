@@ -130,7 +130,7 @@ if (isset($_POST["submit"])) {
 
 <body>
     <div class="logoContainer">
-        <img class="logo" src="../Images/logo.png" alt="logo">
+        <a href="../index.php"><img class="logo" src="../Images/logo.png" alt="logo"></a>
     </div>
     <div class="container">
         <div class="registerLogin">
