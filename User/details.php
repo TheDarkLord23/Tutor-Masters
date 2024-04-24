@@ -4,39 +4,42 @@ session_start();
 require "../db_connection.php";
 
 
-
-
 if($_GET["id"]) {
     $id = $_GET["id"];
     $sql= "SELECT * FROM courses WHERE id = {$id}";
     $result = mysqli_query($connection, $sql);
     $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
     if(mysqli_num_rows($result) == 1) {
-        $data = mysqli_fetch_assoc($result);
-    } else {
-        header("location: error.php");
-    }
-    mysqli_close($connection);
-} else {
-    header("location: error.php");
-}
+        $data = mysqli_fetch_assoc($result);}}
+//     } else {
+//         // header("location: error.php");
+//     }
+//     // mysqli_close($connection);
+// } else {
+//     // header("location: error.php");
+// }
 
 // if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
 //     header("Location: login.php");
 // }
 
-
-
-
-// $id = $_GET["id"];
-
-// $sql = "SELECT * FROM `animal` WHERE id = {$id}";
-
-
-// $result = mysqli_query($conn, $sql);
-
-// $rows = mysqli_fetch_assoc($result);
-
+if (isset($_SESSION["user"])) {
+    $sqlUser= "SELECT * FROM `users` WHERE id = {$_SESSION["user"]}";
+    $runSqlUser = mysqli_query($connection, $sqlUser);
+    $rowsUser = mysqli_fetch_assoc($runSqlUser);
+// // adoption start
+if (isset($_POST["bookings"])) {
+    $user_id = $_SESSION["user"];
+    $course_id = $_GET["id"];
+    $booking_date = date("Y-m-d");
+    $bookingSql = "INSERT INTO `bookings`(`fk_user_id`, `fk_course_id`) VALUES ('{$user_id}','{$course_id}')";
+    if (mysqli_query($connection,$bookingSql)) {
+        echo "Course has been booked. Gratulation!";
+    } else {
+        echo "Something went wrong.Please try again!";
+    }
+}
+}
 
 foreach($rows as $row) {
 
@@ -54,14 +57,10 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
   <p class="card-text">University: '.$row["university"].'</p>
   <p class="card-text">Availability: '.$row["availability"].'</p>
   <div class="btnAlign">
-  <a class="btn btn-success">Book course</a>
-  <a class="btn btn-danger" href="indexUser.php">Back to home</a></div>
-
-
-  
-     
-  
-  
+  <form method="post">
+  <input class="btn btn-success" type="submit" name="bookings" value="book course">
+  </form>
+  <a class="btn btn-danger" href="indexUser.php">back to home</a></div>
 </div>
 </div>
 </div>
