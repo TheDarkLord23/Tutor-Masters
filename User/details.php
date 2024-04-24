@@ -14,11 +14,11 @@ if($_GET["id"]) {
     if(mysqli_num_rows($result) == 1) {
         $data = mysqli_fetch_assoc($result);
     } else {
-        header("location: error.php");
+        // header("location: error.php");
     }
     mysqli_close($connection);
 } else {
-    header("location: error.php");
+    // header("location: error.php");
 }
 
 // if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
@@ -54,7 +54,7 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
   <p class="card-text">University: '.$row["university"].'</p>
   <p class="card-text">Availability: '.$row["availability"].'</p>
   <div class="btnAlign">
-  <a class="btn btn-success">Book course</a>
+  <a class="btn btn-success" href="book.php?id='.$id.'">Book course</a>
   <a class="btn btn-danger" href="indexUser.php">Back to home</a></div>
 
 
