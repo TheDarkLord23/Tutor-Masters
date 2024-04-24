@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "../db_connection.php";
 
 $readQuery = "SELECT * from courses";
@@ -8,6 +8,7 @@ $readResult = mysqli_query($connection, $readQuery);
 $layout = "";
 $body1 = "";
 $body2 = "";
+
 if (mysqli_num_rows($readResult) == 0) {
     $layout = "No courses found!";
 } else {
