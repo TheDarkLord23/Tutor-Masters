@@ -136,7 +136,6 @@ foreach ($reviewsRows as $value) {
             </a>
         </div>
     </div>
-
     <div class="testimonials">
         <div id="testimonials" class="carousel slide">
             <div class="carousel-inner">
