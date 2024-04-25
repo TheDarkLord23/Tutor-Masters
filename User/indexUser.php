@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
+    header("Location: ../login/login.php");
+}
+
 
 require_once "../db_connection.php";
 
@@ -8,6 +14,7 @@ $readResult = mysqli_query($connection, $readQuery);
 $layout = "";
 $body1 = "";
 $body2 = "";
+
 if (mysqli_num_rows($readResult) == 0) {
     $layout = "No courses found!";
 } else {

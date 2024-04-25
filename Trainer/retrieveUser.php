@@ -4,17 +4,12 @@ session_start();
 
 // Validation start:
 
-if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
-["user"])) {
+if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
     header("Location: ../login/login.php");
 }
 
 if (isset($_SESSION["user"])) {
     header("Location: ../User/indexUser.php");
-}
-
-if (isset($_SESSION["trainer"])) {
-    header("Location: ../Trainer/indexTrainer.php");
 }
 
 // Validation end
@@ -30,24 +25,22 @@ require_once "../functions.php";
 $layout = "";
 
 
-$sql = "SELECT * FROM `courses`";
+$sql = "SELECT * FROM `users`";
 $runSql = mysqli_query($connection, $sql);
 
 
 
 if (mysqli_num_rows($runSql)==0) {
-    $layout= "No results";
+    $laylout= "No results";
 } else {
     $rows = mysqli_fetch_all($runSql, MYSQLI_ASSOC);
     foreach ($rows as $val) {
         $layout .=
         "
             <img src='../Images/{$val["picture"]}' alt='' class='imgCarts'/>
-            <p>{$val["name"]}</p>
-            <p>{$val["subject"]}</p>
-            <a href='detailsCourses.php?id={$val["id"]}'>Details</a>
-            <a href='deleteCourses.php?id={$val["id"]}'>Delete</a>
-            <a href='updateCourses.php?id={$val["id"]}'>Update</a>
+            <p>{$val["firstName"]}</p>
+            <p>{$val["secondName"]}</p>
+            <a href='detailsUsers.php?id={$val["id"]}'>Details</a>
             
         ";
     }
@@ -63,8 +56,6 @@ if (mysqli_num_rows($runSql)==0) {
     <title>Document</title>
 </head>
 <body>
-
-<a href='createCourses.php'>Create new Courses</a>
 
 <?=$layout?>  
 

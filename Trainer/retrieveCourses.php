@@ -4,17 +4,12 @@ session_start();
 
 // Validation start:
 
-if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
-["user"])) {
+if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
     header("Location: ../login/login.php");
 }
 
 if (isset($_SESSION["user"])) {
     header("Location: ../User/indexUser.php");
-}
-
-if (isset($_SESSION["trainer"])) {
-    header("Location: ../Trainer/indexTrainer.php");
 }
 
 // Validation end
@@ -29,14 +24,16 @@ require_once "../functions.php";
 
 $layout = "";
 
+$user_id = $_SESSION['trainer'];
 
-$sql = "SELECT * FROM `courses`";
+
+$sql = "SELECT * FROM `courses` WHERE id = $user_id";
 $runSql = mysqli_query($connection, $sql);
 
 
 
 if (mysqli_num_rows($runSql)==0) {
-    $layout= "No results";
+    $layout= 'No results';
 } else {
     $rows = mysqli_fetch_all($runSql, MYSQLI_ASSOC);
     foreach ($rows as $val) {

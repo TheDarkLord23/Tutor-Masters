@@ -150,10 +150,10 @@ if (isset($_POST["submit"])) {
                 <p class="errorMessage"><?php echo $phoneNumberError?></p>
             </div>
             <label for="status">Status:</label>
-                <select name="status" id="status" required>
-                    <option value="user">user</option>
-                    <option value="admin">admin</option>
-                    <option value="trainer">trainer</option>
+                <select name="status" required>
+                    <option value="user" <?= $row["Status"] == "user" ? 'selected' : '' ?>>user</option>
+                    <option value="admin" <?= $row["Status"] == "admin" ? 'selected' : '' ?>>admin</option>
+                    <option value="trainer" <?= $row["Status"] == "trainer" ? 'selected' : '' ?>>trainer</option>
                  </select>
             <div class="ageInput inputFields">
                 <input class="input" type="text" name="address" placeholder="Address" value="<?=$address?>" required>

@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
+    header("Location: ../login/login.php");
+}
+
 require "../db_connection.php";
 
 

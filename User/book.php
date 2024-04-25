@@ -4,13 +4,12 @@
 //neu!!!!
 session_start();
 
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
+    header("Location: ../login/login.php");
+}
+
 include_once '../db_connection.php';
 
-// if session is not set this will redirect to login page
-if (!isset($_SESSION['user'])) {
-    header("Location: ../login/login.php");
-    exit;
-}
 
 if (isset($_SESSION["user"])) {
     $sqlUser= "SELECT * FROM `users` WHERE id = {$_SESSION["user"]}";
