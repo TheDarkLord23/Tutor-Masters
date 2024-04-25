@@ -15,7 +15,7 @@
             Contact Us
         </a>
 
-        <a class="navbar-brand" href="../login/logout.php?logout">
+        <a class="navbar-brand" href="../login/login.php">
             Login
         </a>
     </div>
