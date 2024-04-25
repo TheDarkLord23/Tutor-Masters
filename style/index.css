@@ -398,13 +398,25 @@ footer {
     margin-top: 20px;
   }
 }
-@media screen and (max-width: 430px) {
-  .footer-container p,
+@media screen and (max-width: 576px) {
+  .footer-container p
   .list-footer li,
   #copyright p {
     font-size: 11px;
   }
   .list-footer h1 {
     font-size: 14px;
+  }
+  .containerForm {
+    max-width: 80%;
+  }
+  .divLoginBtn {
+    text-align: center;
+  }
+  .fnlNameInput {
+    display: block;
+    .input {
+      width: 100%;
+    }
   }
 }
