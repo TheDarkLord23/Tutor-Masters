@@ -35,9 +35,15 @@ if (mysqli_num_rows($review_result) == 0) {
             $layout .= "<div class='center'>
                 <div class='card' style='width: 18rem;'>
                     <div class='card-body'>
-                        <h5 class='card-title'>Rating: {$review_row["rating"]}</h5>
+                        <h5 class='card-title'>Rating: {$review_row["rating"]}/5</h5>
                         <p class='card-text'>Comment: {$review_row["comment"]}</p>
-                        <p class='card-text'>Course: {$course_row["subject"]}</p> <!-- Displaying course subject -->
+                        <p class='card-text'>Subject: {$course_row["subject"]}</p> 
+                        <p class='card-text'>Teacher: {$course_row["teacher"]}</p> 
+                        <p class='card-text'>Date: {$course_row["date"]}</p> 
+                        <div class='btnAlign'>
+                        <a class='btn btn-warning' href='updatereview.php?id={$review_row['id']}'>Update</a>
+                        <a href='deletereview.php?id={$review_row["id"]}' class='btn btn-success'>Delete</a>
+                      
                     </div>
                 </div>
             </div>";
