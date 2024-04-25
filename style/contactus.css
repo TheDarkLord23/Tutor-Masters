@@ -93,6 +93,7 @@
 
 .submitInput {
   margin: 40px auto 0 auto;
+  width: 100%;
 }
 
 .submitBtn {
@@ -189,5 +190,11 @@
 
   .divLoginBtn {
     text-align: center;
+  }
+  .boxRow {
+    display: block;
+  }
+  .contactBox {
+    max-width: 80%;
   }
 }
