@@ -44,7 +44,7 @@ if (isset($_POST["bookings"])) {
     }
 }
 }
-
+$user_id = $_SESSION["user"];
 foreach($rows as $row) {
 
 $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
@@ -64,6 +64,7 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
   <form method="post">
   <input class="btn btn-success" type="submit" name="bookings" value="book course">
   </form>
+  <a class="btn btn-warning" href="review.php?course_id='.$row["id"].'&user_id='.$user_id.'">rate this course</a>
   <a class="btn btn-danger" href="indexUser.php">back to home</a></div>
 </div>
 </div>

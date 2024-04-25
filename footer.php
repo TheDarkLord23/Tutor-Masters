@@ -1,4 +1,4 @@
-<div id="footer">
+<footer>
 
   <div class="footer-container">
 
@@ -60,7 +60,7 @@
       </div>
     </div>
   </div>
-</div>
+</footer>
 <div id="copyright">
   <p>Copyright © 2024 All Rights Reserved. Designed by CodeFactorys best students.</p>
 </div>
