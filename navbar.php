@@ -8,15 +8,15 @@
         <a class="navbar-brand" href="courses.php">
             Courses
         </a>
-        <a class="navbar-brand" href="universityFilter.php">
+        <a class="navbar-brand" href="aboutus.php">
             About Us
         </a>
-        <a class="navbar-brand" href="updateprofile.php">
+        <a class="navbar-brand" href="contactus.php">
             Contact Us
         </a>
 
         <a class="navbar-brand" href="../login/logout.php?logout">
-            Logout
+            Login
         </a>
     </div>
 </nav>

@@ -60,7 +60,7 @@ if (mysqli_num_rows($readResult) == 0) {
             </p>
             <p>
             Duration:{$value["duration"]}
-            </p><a href='details.php?id={$value["id"]}' class='card-btn'>Details</a>
+            </p><a href='details4all.php?id={$value["id"]}' class='card-btn'>Details</a>
         </div>";
     }
 }
