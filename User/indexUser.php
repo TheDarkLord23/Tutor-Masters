@@ -87,7 +87,9 @@ if (mysqli_num_rows($filterResultUni) == 0) {
         <a class="navbar-brand" href="mycourses.php?id={$session}">
                 My Courses
             </a>
-
+            <a class="navbar-brand" href="myreviews.php?id={$session}">
+                My Reviews
+            </a>
      
             <a class="navbar-brand" href="updateprofile.php">
                 Update profile

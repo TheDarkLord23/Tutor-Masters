@@ -23,27 +23,32 @@ if($_GET["id"]) {
 //     // header("location: error.php");
 // }
 
-// if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
-//     header("Location: login.php");
-// }
 
-if (isset($_SESSION["user"])) {
-    $sqlUser= "SELECT * FROM `users` WHERE id = {$_SESSION["user"]}";
-    $runSqlUser = mysqli_query($connection, $sqlUser);
-    $rowsUser = mysqli_fetch_assoc($runSqlUser);
-// // adoption start
 if (isset($_POST["bookings"])) {
     $user_id = $_SESSION["user"];
     $course_id = $_GET["id"];
-    $booking_date = date("Y-m-d");
-    $bookingSql = "INSERT INTO `bookings`(`fk_user_id`, `fk_course_id`) VALUES ('{$user_id}','{$course_id}')";
-    if (mysqli_query($connection,$bookingSql)) {
-        echo "Course has been booked. Gratulation!";
+
+    // Überprüfen, ob der Benutzer bereits für diesen Kurs angemeldet ist
+    $checkBookingSql = "SELECT * FROM `bookings` WHERE `fk_user_id` = '{$user_id}' AND `fk_course_id` = '{$course_id}'";
+    $checkBookingResult = mysqli_query($connection, $checkBookingSql);
+
+    if (mysqli_num_rows($checkBookingResult) > 0) {
+        echo "You already subscribed to this course!";
     } else {
-        echo "Something went wrong.Please try again!";
+        // Wenn der Benutzer nicht angemeldet ist, die Buchung durchführen
+        $booking_date = date("Y-m-d");
+        $bookingSql = "INSERT INTO `bookings`(`fk_user_id`, `fk_course_id`) VALUES ('{$user_id}','{$course_id}')";
+
+        if (mysqli_query($connection, $bookingSql)) {
+            echo "Course has been booked. Gratulation!";
+        } else {
+            echo "Something went wrong. Please try again!";
+        }
     }
 }
-}
+
+
+
 $user_id = $_SESSION["user"];
 foreach($rows as $row) {
 
