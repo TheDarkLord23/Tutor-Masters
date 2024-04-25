@@ -25,7 +25,7 @@ $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
 
 
-$delete = "DELETE FROM `reviews` WHERE id = $id";
+$delete = "DELETE FROM `review` WHERE id = $id";
 
 if(mysqli_query($connection, $delete)){
     header("Location: myreviews.php");
