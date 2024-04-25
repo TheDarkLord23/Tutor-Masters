@@ -298,7 +298,7 @@
 }
 ------------------------------------------------------------------------------------------------------------------------------------------
 /* footer  */
-#footer {
+footer {
   background-color: #099268;
   color: white;
 }
@@ -308,6 +308,8 @@
   align-items: top;
   justify-content: center;
   padding: 80px;
+  background-color: #099268;
+  color: white;
 }
 .logo-footer {
   display: flex;
