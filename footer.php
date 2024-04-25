@@ -35,11 +35,11 @@
           <h1>FIND US ON</h1>
 
           <ul class="footerSocials">
-            <li><img src="./Images/instagram.png" alt="" width="40px" height="40px"></li>
-            <li><img src="./Images/facebook.png" alt="" width="40px" height="40px"></li>
-            <li><img src="./Images/youtube.png" alt="" width="40px" height="40px"></li>
-            <li><img src="./Images/linkedin.png" alt="" width="40px" height="40px"></li>
-            <li><img src="./Images/twitter.png" alt="" width="40px" height="40px"></li>
+            <li><img class="socials" src="./Images/instagram.png" alt="" width="40px" height="40px"></li>
+            <li><img class="socials" src="./Images/facebook.png" alt="" width="40px" height="40px"></li>
+            <li><img class="socials" src="./Images/youtube.png" alt="" width="40px" height="40px"></li>
+            <li><img class="socials" src="./Images/linkedin.png" alt="" width="40px" height="40px"></li>
+            <li><img class="socials" src="./Images/twitter.png" alt="" width="40px" height="40px"></li>
           </ul>
 
         </div>

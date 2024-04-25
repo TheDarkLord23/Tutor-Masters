@@ -20,15 +20,15 @@ if (isset($_SESSION["trainer"])) {
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM `courses` WHERE id = $id";
+$sql = "SELECT * FROM `users` WHERE id = $id";
 $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
 
 
-$delete = "DELETE FROM `review` WHERE id = $id";
+$delete = "DELETE FROM `courses` WHERE id = $id";
 
 if(mysqli_query($connection, $delete)){
-    header("Location: myreviews.php");
+    header("Location: mycourses.php");
 }else {
     echo "Error";
 }

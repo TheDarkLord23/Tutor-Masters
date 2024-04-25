@@ -40,6 +40,7 @@ if (mysqli_num_rows($booking_result) == 0) {
                         <p class='card-text'>Date: {$course_row["date"]}</p>
                         <p class='card-text'>Duration: {$course_row["duration"]}</p>
                         <a href='details.php?id={$course_row["id"]}' class='btn btn-success'>Details</a>
+                        <a href='deletecourses.php?id={$course_row["id"]}' class='btn btn-success'>Delete</a>
                     </div>
                 </div>
             </div>";
