@@ -30,7 +30,7 @@ if ($row["picture"] != "defaultPic.jpg") {
 $delete = "DELETE FROM `users` WHERE id = $id";
 
 if(mysqli_query($connection, $delete)){
-    header("Location: indexAdmin.php");
+    header("Location: retrieveUser.php");
 }else {
     echo "Error";
 }

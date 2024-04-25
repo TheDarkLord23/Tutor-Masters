@@ -47,7 +47,7 @@ if (isset($_POST["submit"])) {
     $duration = $_POST["duration"];
     $picture = fileUpload($_FILES["picture"]);
 
-    $sql = "UPDATE `courses` SET `subject`='{$subject}',`university`='{$university}',`roomNumb`='{$roomNumb}',`date`='{$date}',`teacher`='{$date}',`picture`='{$picture[0]}',`language`='{$language}',`duration`='{$duration}',`units`='{$units}',`availability`='{$availability}',`name`='{$name}' WHERE id = $id";
+    $sql = "UPDATE `courses` SET `subject`='{$subject}',`university`='{$university}',`roomNumb`='{$roomNumb}',`date`='{$date}',`teacher`='{$teacher}',`picture`='{$picture[0]}',`language`='{$language}',`duration`='{$duration}',`units`='{$units}',`availability`='{$availability}',`name`='{$name}' WHERE id = $id";
 
 
     if (mysqli_query($connection, $sql)) {
