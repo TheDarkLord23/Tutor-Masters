@@ -22,7 +22,7 @@ require_once "../db_connection.php";
 $user_id = $_SESSION['admin'];
 
 
-$booking_query = "SELECT courses.subject,courses.teacher,courses.date , users.firstName,users.secondName FROM users JOIN bookings ON bookings.fk_user_id = users.id JOIN courses ON bookings.fk_course_id = courses.id;";
+$booking_query = "SELECT courses.subject,courses.teacher,courses.date , users.firstName,users.secondName,bookings.booking_id FROM users JOIN bookings ON bookings.fk_user_id = users.id JOIN courses ON bookings.fk_course_id = courses.id;";
 
 $booking_result = mysqli_query($connection, $booking_query);
 
@@ -44,9 +44,8 @@ if (mysqli_num_rows($booking_result) == 0) {
                         <p>Teacher: {$val["teacher"]}</p>
                         <p>Date: {$val["date"]}</p>
 
-                        <a href='detailsCourses.php?id={$val["booking_id"]}'>Details</a>
+                        <a href='detailsBookings.php?id={$val["booking_id"]}'>Details</a>
                         <a href='deleteBookings.php?id={$val["booking_id"]}'>Delete</a>
-                        <a href='updateBookings.php?id={$val["booking_id"]}'>Update</a>
                 ";
         }
 

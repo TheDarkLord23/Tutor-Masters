@@ -43,5 +43,6 @@ $row = mysqli_fetch_assoc($result);
         <p><?=$row["address"]?></p>
         <p><?=$row["phoneNumber"]?></p>
         <p><?= $row["Status"]?></p>
+        
 </body>
 </html>
