@@ -13,9 +13,6 @@ if (isset($_SESSION["user"])) {
 require "../db_connection.php";
 require "../login/file_upload.php";
 
-
-
-// $booking_query = "SELECT * FROM `courses` WHERE `teacher` = {$_SESSION['trainer']}";
 $booking_query = "SELECT * FROM courses WHERE fk_user_id = {$_SESSION['trainer']}";
 
 $booking_result = mysqli_query($connection, $booking_query);
@@ -37,7 +34,7 @@ if (mysqli_num_rows($booking_result) == 0) {
             foreach ($booking_layout as $val) {
                 $layout .= "<div class='center'>
                     <div class='card' style='width: 18rem;'>
-                        <img src='../Imagess/{$val["picture"]}' class='card-img-top' alt='Course Image'>
+                        <img src='../Images/{$val["picture"]}' class='card-img-top' alt='Course Image'>
                         <div class='card-body'>
                             <h5 class='card-title'>{$val["subject"]}</h5>
                             <p class='card-text'>Date: {$val["date"]}</p>
@@ -65,6 +62,7 @@ if (mysqli_num_rows($booking_result) == 0) {
 
 <body>
     <a href="createCourses.php">Create a new Course</a>
+    <a href="updateProfileTrainer.php">Update Profile</a>
     <?= $layout ?>
 
 </body>

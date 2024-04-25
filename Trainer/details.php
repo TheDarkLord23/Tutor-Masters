@@ -12,43 +12,73 @@ if (isset($_SESSION["user"])) {
 
 require_once "../db_connection.php";
 
+// Show all the students that are taking this course==================
+
 $id = $_GET["id"];
 
-// if (isset($_SESSION["trainer"])) {
-    $sqlUser= "SELECT courses.*, users.firstName,users.secondName,users.email FROM courses JOIN users ON courses.fk_user_id = users.id WHERE courses.id = $id";
-    $runSqlUser = mysqli_query($connection, $sqlUser);
-    // $rowsUser = mysqli_fetch_assoc($runSqlUser);
+    // $sqlGetUsers = "SELECT * FROM `users`
+    //                  WHERE `id` in (SELECT fk_user_id from bookings where fk_course_id = $id)";
+    $sqlGetUsers = "SELECT * FROM `users`
+                    JOIN `bookings` ON id = fk_user_id WHERE fk_course_id = $id";
 
-    $layout = "";
 
-    if (mysqli_num_rows($runSqlUser) == 0) {
-        $layout = "There are no Course yet!";
+    $res = mysqli_query($connection, $sqlGetUsers);
+
+    $layout1 = "";
+
+    if (mysqli_num_rows($res) == 0) {
+        $layout1 = "There are no Course yet!";
     } else {
             // Abfrage, um die Details des Kurses abzurufen
-            $row = mysqli_fetch_all($runSqlUser, MYSQLI_ASSOC); 
-            foreach ($row as $val) {
+            $data = mysqli_fetch_all($res, MYSQLI_ASSOC); 
+            foreach ($data as $val) {
                 // Kursdetails anzeigen
-                $layout .= "
-                            <img scr='../Images/{$val["picture"]}' alt='image'>
-                            <p>Subject: {$val["subject"]}</p>
-                            <p>University: {$val["university"]}</p>
-                            <p>RoomNumb: {$val["roomNumb"]}</p>
-                            <p>Language: {$val["language"]}</p>
-                            <p>Units: {$val["units"]}</p>
-                            <p>Duration: {$val["duration"]}</p>
-                            <p>Availability: {$val["availability"]}</p>
-                            <p>Name: {$val["name"]}</p>
-                            <p>Teacher: {$val["teacher"]}</p>
-                            <p>Date: {$val["date"]}</p>
-                            <p>Student First Name: {$val["firstName"]}</p>
-                            <p>Student Second Name: {$val["secondName"]}</p>
-                            <p>Student email: {$val["email"]}</p>
+                $layout1 .= "
+                <p>Student First Name: {$val["firstName"]}</p>
+                <p>Student Second Name: {$val["secondName"]}</p>
+                <p>Student email: {$val["email"]}</p>
+                <a href='removeStudent.php?studentId={$val["booking_id"]}'>Remove student</a>
                     ";
             }
     
     }
 
-// }
+
+    //=============================================
+
+// Select the details from the course=============
+
+    $sqlUser= "SELECT * FROM `courses` WHERE `id` = $id";
+    $runSqlUser = mysqli_query($connection, $sqlUser);
+
+    $layout = "";
+    
+    if (mysqli_num_rows($runSqlUser) == 0) {
+        $layout = "There are no Course yet!";
+    } else {
+        // Abfrage, um die Details des Kurses abzurufen
+        $row = mysqli_fetch_all($runSqlUser, MYSQLI_ASSOC); 
+        foreach ($row as $val) {
+            // Kursdetails anzeigen
+                $layout .= "
+
+                <img scr='../Images/{$val["picture"]}' alt='image'>
+                <p>Subject: {$val["subject"]}</p>
+                <p>University: {$val["university"]}</p>
+                <p>RoomNumb: {$val["roomNumb"]}</p>
+                <p>Language: {$val["language"]}</p>
+                <p>Units: {$val["units"]}</p>
+                <p>Duration: {$val["duration"]}</p>
+                <p>Availability: {$val["availability"]}</p>
+                <p>Name: {$val["name"]}</p>
+                <p>Teacher: {$val["teacher"]}</p>
+                <p>Date: {$val["date"]}</p>
+                    ";
+            }
+    
+    }
+
+// ====================================================
 
 ?>
 
@@ -60,6 +90,12 @@ $id = $_GET["id"];
     <title>Document</title>
 </head>
 <body>
+
+    <h1>Course:</h1>
     <?= $layout ?>
+    <br>
+    <br>
+    <h1>All the students, that takes this course:</h1>
+    <?= $layout1 ?>
 </body>
 </html>
