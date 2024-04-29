@@ -56,7 +56,7 @@ if (isset($_POST["update"])) {
         $class = "alert alert-success";
         $message = "The record was successfully updated";
         $uploadError = ($pictureArray != 0) ? $pictureArray : '';
-        header("refresh:3;url=indexUser.php?id={$session}");
+        header("refresh:3;url=dashboardUser.php?id={$session}");
     } else {
         $class = "alert alert-danger";
         $message = "Error while updating record : <br>" . $connection->error;

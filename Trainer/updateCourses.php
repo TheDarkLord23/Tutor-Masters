@@ -46,7 +46,7 @@ if (isset($_POST["submit"])) {
 
     if (mysqli_query($connection, $sql)) {
         echo "<p>Course has been updated!</p>";
-        header("refresh: 3; url=indexTrainer.php");
+        header("refresh: 3; url=dashboardTrainer.php");
     } else {
         echo "<p>Something went wrong.Please try again later!</p>";
     }

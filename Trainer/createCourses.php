@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
 
     if (mysqli_query($connection, $sql)) {
         echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
-        header("refresh: 3; url=indexTrainer.php");
+        header("refresh: 3; url=dashboardTrainer.php");
     } else {
         echo "<div class='containerAlert2'><p>Something went wrong.Please try again later!</p></div>";
     }

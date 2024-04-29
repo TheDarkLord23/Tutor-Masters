@@ -13,12 +13,12 @@ if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
 }
 
 if (isset($_SESSION["user"])) {
-    header("Location: ../User/indexUser.php");
-}
-
-if (isset($_SESSION["trainer"])) {
-    header("Location: ../Trainer/indexTrainer.php");
-}
+    header("Location: ../User/dashboardUser.php");
+  }
+  
+  if (isset($_SESSION["trainer"])) {
+    header("Location: ../Trainer/dashboardTrainer.php");
+  }
 
 // validation end
 
@@ -52,7 +52,7 @@ if (isset($_POST["submit"])) {
 
     if (mysqli_query($connection, $sql)) {
         echo "<p>Course has been updated!</p>";
-        header("refresh: 3; url=indexAdmin.php");
+        header("refresh: 3; url=dashboardAdmin.php");
     } else {
         echo "<p>Something went wrong.Please try again later!</p>";
     }
