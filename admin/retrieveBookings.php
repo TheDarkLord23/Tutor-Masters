@@ -9,12 +9,12 @@ if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
 }
 
 if (isset($_SESSION["user"])) {
-    header("Location: ../User/indexUser.php");
-}
-
-if (isset($_SESSION["trainer"])) {
-    header("Location: ../Trainer/indexTrainer.php");
-}
+    header("Location: ../User/dashboardUser.php");
+  }
+  
+  if (isset($_SESSION["trainer"])) {
+    header("Location: ../Trainer/dashboardTrainer.php");
+  }
 
 require_once "../db_connection.php";
 
@@ -42,7 +42,8 @@ if (mysqli_num_rows($booking_result) == 0) {
             $layout .= "
                         <p>Subject: {$val["subject"]}</p>
                         <p>Teacher: {$val["teacher"]}</p>
-                        <p>Date: {$val["date"]}</p>
+                        <p>Start date: {$val["date"]}</p>
+                        <p>End date: {$val["end_date"]}</p>
 
                         <a href='detailsBookings.php?id={$val["booking_id"]}'>Details</a>
                         <a href='deleteBookings.php?id={$val["booking_id"]}'>Delete</a>

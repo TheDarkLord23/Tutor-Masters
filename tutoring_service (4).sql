@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2024 at 12:01 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Erstellungszeit: 29. Apr 2024 um 13:21
+-- Server-Version: 10.4.32-MariaDB
+-- PHP-Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tutoring_service`
+-- Datenbank: `tutoring_service`
 --
 CREATE DATABASE IF NOT EXISTS `tutoring_service` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `tutoring_service`;
@@ -26,35 +26,27 @@ USE `tutoring_service`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bookings`
+-- Tabellenstruktur für Tabelle `bookings`
 --
 
 CREATE TABLE `bookings` (
   `id` int(11) NOT NULL,
   `fk_course_id` int(11) DEFAULT NULL,
-  `fk_user_id` int(11) DEFAULT NULL
+  `fk_user_id` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `bookings`
+-- Daten für Tabelle `bookings`
 --
 
-INSERT INTO `bookings` (`id`, `fk_course_id`, `fk_user_id`) VALUES
-(2, 1, 14),
-(1, 2, 14),
-(10, 1, 15),
-(8, 3, 15),
-(4, 4, 15),
-(5, 5, 15),
-(7, 7, 15),
-(11, 8, 15),
-(6, 9, 15),
-(9, 10, 15);
+INSERT INTO `bookings` (`id`, `fk_course_id`, `fk_user_id`, `date`) VALUES
+(15, 6, 15, '2024-04-29');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courses`
+-- Tabellenstruktur für Tabelle `courses`
 --
 
 CREATE TABLE `courses` (
@@ -62,7 +54,8 @@ CREATE TABLE `courses` (
   `subject` varchar(50) DEFAULT NULL,
   `university` varchar(50) DEFAULT NULL,
   `roomNumb` varchar(50) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
   `teacher` varchar(100) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `picture` varchar(255) DEFAULT NULL,
@@ -74,26 +67,26 @@ CREATE TABLE `courses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `courses`
+-- Daten für Tabelle `courses`
 --
 
-INSERT INTO `courses` (`id`, `subject`, `university`, `roomNumb`, `date`, `teacher`, `email`, `picture`, `language`, `duration`, `units`, `availability`, `name`) VALUES
-(1, 'Mathematics', 'ABC University', 'Room 101', NULL, 'Dr. Smith', 'alice.smith@example.com', 'math.jpg', 'English', '60', '3', 'avaiable', NULL),
-(2, 'Computer Science', 'XYZ College', 'Room 201', NULL, 'Prof. Johnson', 'prof.jhonson@example.com', 'computer.jpg', 'English', '90', '4', NULL, NULL),
-(3, 'Physics', '123 Institute', 'Room 301', NULL, 'Prof. Williams', 'mathias.williams@gmail.com', 'physics.jpg', 'English', '75', '3', NULL, NULL),
-(4, 'Literature', 'DEF School', 'Room 102', NULL, 'Ms. Brown', 'emily.brown@gmail.com', 'literature.jpg', 'English', '45', '2', NULL, NULL),
-(5, 'History', 'GHI University', 'Room 202', NULL, 'Dr. Davis', 'christian.davis@gmail.com', 'history.jpg', 'English', '60', '3', NULL, NULL),
-(6, 'Biology', 'MNO College', 'Room 302', NULL, 'Dr. Martinez', 'rodrigo.martinez@hotmail.com', 'biology.jpg', 'English', '60', '3', NULL, NULL),
-(7, 'Chemistry', 'PQR Institute', 'Room 103', NULL, 'Prof. Thompson', '	\r\njerry.thompson@gmail.com', 'chemistry.jpg', 'English', '90', '4', NULL, NULL),
-(8, 'Geography', 'STU School', 'Room 203', NULL, 'Ms. Garcia', 'emma.garcia@example.com', 'geography.jpg', 'English', '45', '2', NULL, NULL),
-(9, 'Economics', 'VWX College', 'Room 303', NULL, 'Dr. Robinson', 'karin.robinson@gmail.com', 'economics.jpg', 'English', '75', '3', NULL, NULL),
-(10, 'Art', 'YZA University', 'Room 104', NULL, 'Prof. Lee', '	\r\nyung.lee@gmail.com', 'art.jpeg', 'English', '60', '3', NULL, NULL),
-(11, 'Biology', 'university of vienna', 'A293', '2024-04-25 12:00:00', 'Dr.Smith', 'alice.smith@example.com', 'biology.jpg', 'English', '120', '3', 'avaiable', NULL);
+INSERT INTO `courses` (`id`, `subject`, `university`, `roomNumb`, `date`, `end_date`, `teacher`, `email`, `picture`, `language`, `duration`, `units`, `availability`, `name`) VALUES
+(1, 'Mathematics', 'ABC University', 'Room 101', '2024-04-01', '2024-06-06', 'Dr. Smith', 'alice.smith@example.com', 'math.jpg', 'English', '60', '3', 'avaiable', NULL),
+(2, 'Computer Science', 'XYZ College', 'Room 201', '2024-04-01', '2024-06-30', 'Prof. Johnson', 'prof.jhonson@example.com', 'computer.jpg', 'English', '90', '4', NULL, NULL),
+(3, 'Physics', '123 Institute', 'Room 301', '2024-03-01', '2024-05-14', 'Prof. Williams', 'mathias.williams@gmail.com', 'physics.jpg', 'English', '75', '3', NULL, NULL),
+(4, 'Literature', 'DEF School', 'Room 102', '2024-03-12', '2024-06-17', 'Ms. Brown', 'emily.brown@gmail.com', 'literature.jpg', 'English', '45', '2', NULL, NULL),
+(5, 'History', 'GHI University', 'Room 202', '2024-03-03', '2024-04-08', 'Dr. Davis', 'christian.davis@gmail.com', 'history.jpg', 'English', '60', '3', NULL, NULL),
+(6, 'Biology', 'MNO College', 'Room 302', '2024-04-01', '2024-04-24', 'Dr. Martinez', 'rodrigo.martinez@hotmail.com', 'biology.jpg', 'English', '60', '3', NULL, NULL),
+(7, 'Chemistry', 'PQR Institute', 'Room 103', '2024-05-13', '2024-06-10', 'Prof. Thompson', '	\r\njerry.thompson@gmail.com', 'chemistry.jpg', 'English', '90', '4', NULL, NULL),
+(8, 'Geography', 'STU School', 'Room 203', '2024-03-11', '2024-07-22', 'Ms. Garcia', 'emma.garcia@example.com', 'geography.jpg', 'English', '45', '2', NULL, NULL),
+(9, 'Economics', 'VWX College', 'Room 303', '2024-04-11', '2024-06-26', 'Dr. Robinson', 'karin.robinson@gmail.com', 'economics.jpg', 'English', '75', '3', NULL, NULL),
+(10, 'Art', 'YZA University', 'Room 104', '2024-06-12', '2024-06-12', 'Prof. Lee', '	\r\nyung.lee@gmail.com', 'art.jpeg', 'English', '60', '3', NULL, NULL),
+(11, 'Biology', 'university of vienna', 'Room 293', '2024-04-25', '2024-06-18', 'Dr.Smith', 'alice.smith@example.com', 'biology.jpg', 'English', '120', '3', 'avaiable', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review`
+-- Tabellenstruktur für Tabelle `review`
 --
 
 CREATE TABLE `review` (
@@ -106,7 +99,7 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `review`
+-- Daten für Tabelle `review`
 --
 
 INSERT INTO `review` (`id`, `rating`, `comment`, `date`, `fk_course_id`, `fk_user_id`) VALUES
@@ -117,7 +110,7 @@ INSERT INTO `review` (`id`, `rating`, `comment`, `date`, `fk_course_id`, `fk_use
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabellenstruktur für Tabelle `users`
 --
 
 CREATE TABLE `users` (
@@ -133,7 +126,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `users`
+-- Daten für Tabelle `users`
 --
 
 INSERT INTO `users` (`id`, `firstName`, `secondName`, `email`, `password`, `address`, `phoneNumber`, `Status`, `picture`) VALUES
@@ -158,11 +151,11 @@ INSERT INTO `users` (`id`, `firstName`, `secondName`, `email`, `password`, `addr
 (23, 'Johan', 'Darian', 'johan.darian@mail.com', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'Ottakringer Straße', '0192707409123', 'admin', 'defaultPic.jpg');
 
 --
--- Indexes for dumped tables
+-- Indizes der exportierten Tabellen
 --
 
 --
--- Indexes for table `bookings`
+-- Indizes für die Tabelle `bookings`
 --
 ALTER TABLE `bookings`
   ADD PRIMARY KEY (`id`),
@@ -171,13 +164,13 @@ ALTER TABLE `bookings`
   ADD KEY `fk_user_id` (`fk_user_id`);
 
 --
--- Indexes for table `courses`
+-- Indizes für die Tabelle `courses`
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `review`
+-- Indizes für die Tabelle `review`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`id`),
@@ -185,53 +178,53 @@ ALTER TABLE `review`
   ADD KEY `fk_user_id` (`fk_user_id`);
 
 --
--- Indexes for table `users`
+-- Indizes für die Tabelle `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT für exportierte Tabellen
 --
 
 --
--- AUTO_INCREMENT for table `bookings`
+-- AUTO_INCREMENT für Tabelle `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `courses`
+-- AUTO_INCREMENT für Tabelle `courses`
 --
 ALTER TABLE `courses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `review`
+-- AUTO_INCREMENT für Tabelle `review`
 --
 ALTER TABLE `review`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- Constraints for dumped tables
+-- Constraints der exportierten Tabellen
 --
 
 --
--- Constraints for table `bookings`
+-- Constraints der Tabelle `bookings`
 --
 ALTER TABLE `bookings`
   ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`fk_course_id`) REFERENCES `courses` (`id`),
   ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`fk_user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `review`
+-- Constraints der Tabelle `review`
 --
 ALTER TABLE `review`
   ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`fk_course_id`) REFERENCES `courses` (`id`),
