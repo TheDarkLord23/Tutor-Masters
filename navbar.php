@@ -1,7 +1,7 @@
 <nav class="navbar ">
     <div class="container">
         <a href="index.php">
-            <img class="nav-icon" src="images/logo.png" alt="">
+            <img class="nav-icon" src="Images/logo.png" alt="">
 
         </a>
 
@@ -15,7 +15,7 @@
             Contact Us
         </a>
 
-        <a class="navbar-brand" href="../login/login.php">
+        <a class="navbar-brand" href="login/login.php">
             Login
         </a>
     </div>
