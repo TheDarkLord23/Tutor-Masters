@@ -50,12 +50,13 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
   <h5 class="card-title">'.$row["subject"].'</h5>
   <hr>
   <p class="card-text">Teacher: '.$row["teacher"].'</p>
-  <p class="card-text">Date: '.$row["date"].'</p>
+  <p class="card-text">Start date: '.$row["date"].'</p>
+  <p class="card-text">End date: '.$row["end_date"].'</p>
   <p class="card-text">Language: '.$row["language"].'</p>
   <p class="card-text">RoomNumb: '.$row["roomNumb"].'</p>
   <p class="card-text">Units: '.$row["units"].'</p>
   <p class="card-text">University: '.$row["university"].'</p>
-  <p class="card-text">Availability: '.$row["availability"].'</p>
+
   <div class="btnAlign">
  
   </form>

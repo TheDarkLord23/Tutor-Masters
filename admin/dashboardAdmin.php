@@ -59,7 +59,7 @@ if (!$result) {
                 <img class="icon" src="../Images/book-black.png" alt="">
                 <div class="title">All Courses</div>
             </a>
-            <a href="#" class="action" id="action3Btn">
+            <a href="retrieveUser.php" class="action" id="action3Btn">
                 <img class="icon" src="../Images/person-black.png" alt="">
                 <div class="title">All Users</div>
             </a>

@@ -42,6 +42,7 @@ $row = mysqli_fetch_assoc($result);
         <p><?=$row["university"]?></p>
         <p><?=$row["roomNumb"]?></p>
         <p><?=$row["date"]?></p>
+        <p><?=$row["end_date"]?></p>
         <p><?=$row["teacher"]?></p>
         <p><?= $row["language"]?></p>
         <p><?= $row["duration"]?></p>

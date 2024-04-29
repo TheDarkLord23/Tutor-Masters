@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 29. Apr 2024 um 13:21
+-- Erstellungszeit: 29. Apr 2024 um 14:40
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -105,7 +105,8 @@ CREATE TABLE `review` (
 INSERT INTO `review` (`id`, `rating`, `comment`, `date`, `fk_course_id`, `fk_user_id`) VALUES
 (13, 5, 'Absolutely fantastic tutoring service! The tutors are highly knowledgeable and supportive. They helped me grasp complex concepts with ease. I highly recommend them to anyone seeking academic assistance.', '2024-04-25 00:00:00', 2, 14),
 (16, 4, 'Great experience overall! The tutors are friendly and patient. I\'ve seen significant improvement in my understanding of the subjects I struggled with. The only suggestion would be to add more interactive sessions', '2024-07-01 00:00:00', 8, 22),
-(17, 5, 'Outstanding tutoring service! The tutors go above and beyond to ensure students succeed. The sessions are tailored to individual needs, making learning enjoyable and effective. I\'m truly grateful for their help!', '2024-05-03 00:00:00', 1, 10);
+(17, 5, 'Outstanding tutoring service! The tutors go above and beyond to ensure students succeed. The sessions are tailored to individual needs, making learning enjoyable and effective. I\'m truly grateful for their help!', '2024-05-03 00:00:00', 1, 10),
+(18, 4, 'very good teacher', '2024-04-29 00:00:00', 6, 15);
 
 -- --------------------------------------------------------
 
@@ -204,7 +205,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT für Tabelle `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
