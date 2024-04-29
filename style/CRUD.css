@@ -22,6 +22,7 @@
   display: flex;
   justify-content: space-evenly;
   font-size: 27px;
+
   h3 {
     border-bottom: 2px solid #0ca678;
     margin: 0;
@@ -73,6 +74,7 @@
 .fnlNameInput {
   display: flex;
   justify-content: space-between;
+
   .input {
     width: 200px;
   }
@@ -84,6 +86,17 @@
 }
 
 /* retrieve section =================================================== */
+.course {
+  display: flex;
+  justify-content: space-between;
+  height: 200px;
+}
+
+.course-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .card-holder {
   padding: 0 !important;
@@ -118,55 +131,30 @@
   transition: all 100ms ease-in;
 }
 
-.courses {
-  margin: 50px auto;
-}
-
-.users {
-  margin: 50px auto;
-}
-
-.course-left {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .info {
   width: 70%;
   padding-top: 20px;
 }
 
-.course {
-  display: flex;
-  justify-content: space-between;
-  height: 200px;
+.courses {
+  margin: 50px auto;
+}
+
+.list {
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  border-radius: 0.8rem;
+  padding: 10px;
+  height: fit-content;
+}
+
+.submitBtnContainer {
 }
 
 .splitter {
-  width: 100%;
+  width: 95%;
   margin: 5px auto;
   height: 3px;
   background-color: white;
   border-radius: 0.8rem;
-}
-
-.listCourses {
-  width: 100%;
-  background-color: rgb(230, 230, 230);
-  border-radius: 0.8rem;
-  padding: 10px;
-}
-
-.user {
-  display: flex;
-  justify-content: space-between;
-  height: 200px;
-}
-
-.listUsers {
-  width: 100%;
-  background-color: rgb(230, 230, 230);
-  border-radius: 0.8rem;
-  padding: 10px;
 }
