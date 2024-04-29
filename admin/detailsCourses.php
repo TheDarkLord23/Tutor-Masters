@@ -2,6 +2,20 @@
 
 session_start();
 
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
+["user"])) {
+    header("Location: ../login/login.php");
+}
+
+if (isset($_SESSION["user"])) {
+    header("Location: ../User/dashboardUser.php");
+  }
+  
+  if (isset($_SESSION["trainer"])) {
+    header("Location: ../Trainer/dashboardTrainer.php");
+  }
+  
+
 
 require_once "../db_connection.php";
 

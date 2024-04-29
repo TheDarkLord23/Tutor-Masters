@@ -11,11 +11,11 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
 }
 
 if (isset($_SESSION["user"])) {
-  header("Location: ../User/indexUser.php");
+  header("Location: ../User/dashboardUser.php");
 }
 
 if (isset($_SESSION["trainer"])) {
-  header("Location: ../Trainer/indexTrainer.php");
+  header("Location: ../Trainer/dashboardTrainer.php");
 }
 
 // validation end
@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
 
   if (mysqli_query($connection, $sql)) {
     echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
-    header("refresh: 3; url=indexAdmin.php");
+    header("refresh: 3; url=dashboardAdmin.php");
   } else {
     echo "<div class='containerAlert2'><p>Something went wrong.Please try again later!</p></div>";
   }

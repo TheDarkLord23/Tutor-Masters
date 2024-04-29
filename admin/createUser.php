@@ -7,12 +7,13 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
 }
 
 if (isset($_SESSION["user"])) {
-  header("Location: ../User/indexUser.php");
+  header("Location: ../User/dashboardUser.php");
 }
 
 if (isset($_SESSION["trainer"])) {
-  header("Location: ../Trainer/indexTrainer.php");
+  header("Location: ../Trainer/dashboardTrainer.php");
 }
+
 
 require "../db_connection.php";
 require "../login/file_upload.php";
@@ -110,7 +111,7 @@ if (isset($_POST["submit"])) {
     if ($result) {
       echo "Your are registered now!";
       $firstName = $secondName = $email = $phoneNumber = $address = $password = "";
-      header("refresh: 3; url=indexAdmin.php");
+      header("refresh: 3; url=dashboardAdmin.php");
     } else {
       echo "Error";
     }
