@@ -161,9 +161,9 @@ if (isset($_POST["submit"])) {
         </div>
         <label for="status">Status:</label>
         <select name="status" required>
-          <option value="user" <?= $row["Status"] == "user" ? 'selected' : '' ?>>user</option>
-          <option value="admin" <?= $row["Status"] == "admin" ? 'selected' : '' ?>>admin</option>
-          <option value="trainer" <?= $row["Status"] == "trainer" ? 'selected' : '' ?>>trainer</option>
+          <option value="user" <?= $row["status"] == "user" ? 'selected' : '' ?>>user</option>
+          <option value="admin" <?= $row["status"] == "admin" ? 'selected' : '' ?>>admin</option>
+          <option value="trainer" <?= $row["status"] == "trainer" ? 'selected' : '' ?>>trainer</option>
         </select>
         <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
       </div>
