@@ -7,8 +7,8 @@ session_start();
 include_once '../db_connection.php';
 
 
-if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
-    header("Location: ../login/login.php");
+if (!isset($_SESSION['admin'])&&!isset($_SESSION['trainer'])&&!isset($_SESSION['user'])) {
+    header('Location: ../login/login.php');
 }
 
 
@@ -19,10 +19,10 @@ $user_id = $_SESSION['user'];
 $review_query = "SELECT * FROM review WHERE fk_user_id = $user_id";
 $review_result = mysqli_query($connection, $review_query);
 
-$layout = "";
+$layout = '';
 
 if (mysqli_num_rows($review_result) == 0) {
-    $layout = "No reviews!";
+    $layout = 'No reviews!';
 } else {
     while ($review_row = mysqli_fetch_assoc($review_result)) {
         $course_id = $review_row['fk_course_id'];
@@ -32,21 +32,43 @@ if (mysqli_num_rows($review_result) == 0) {
         if ($course_result && mysqli_num_rows($course_result) == 1) {
             $course_row = mysqli_fetch_assoc($course_result); // Fetching course details
             // Kursdetails anzeigen
-            $layout .= "<div class='center'>
-                <div class='card' style='width: 18rem;'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>Rating: {$review_row["rating"]}/5</h5>
-                        <p class='card-text'>Comment: {$review_row["comment"]}</p>
-                        <p class='card-text'>Subject: {$course_row["subject"]}</p> 
-                        <p class='card-text'>Teacher: {$course_row["teacher"]}</p> 
-                        <p class='card-text'>Date: {$course_row["date"]}</p> 
-                        <div class='btnAlign'>
-                        <a class='btn btn-warning' href='updatereview.php?id={$review_row['id']}'>Update</a>
-                        <a href='deletereview.php?id={$review_row["id"]}' class='btn btn-success'>Delete</a>
-                      
-                    </div>
+            $layout .= "
+            <div class='plan'>
+            <div class='inner'>
+                <span class='pricing'>
+                    <span>
+                    {$review_row['rating']}/5
+                    </span>
+                </span>
+                <p class='title'>Subject: {$course_row['subject']}</p>
+                <p class='info'>Comment: {$review_row['comment']}</p>
+                <ul class='features'>
+                    <li>
+                        <span class='icon'>
+                            <svg height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='M0 0h24v24H0z' fill='none'></path>
+                                <path fill='currentColor' d='M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z'></path>
+                            </svg>
+                        </span>
+                        <span><strong>Teacher:</strong> {$course_row['teacher']}</span>
+                    </li>
+                    <li>
+                        <span class='icon'>
+                            <svg height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='M0 0h24v24H0z' fill='none'></path>
+                                <path fill='currentColor' d='M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z'></path>
+                            </svg>
+                        </span>
+                        <span><strong>Date:</strong> {$course_row['date']}</span>
+                    </li>
+                </ul>
+                <div class='action'>
+                <a class='button' href='updatereview.php?id={$review_row['id']}'>Update</a>
+                <a href='deletereview.php?id={$review_row['id']}' class='button bg-danger'>Delete</a>
                 </div>
-            </div>";
+            </div>
+        </div>";
+
         }
     
     }
@@ -54,32 +76,27 @@ if (mysqli_num_rows($review_result) == 0) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My reviews</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>My Booked Courses</title>
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
+  <link rel='stylesheet' href='../style/CRUD.css'>
 </head>
 
 <body>
-    <nav class="navbar bg-body-tertiary">
-        <div class="container">
-        <a class="navbar-brand" href="indexUser.php">Home</a>
-        <a class="navbar-brand" href="updateprofile.php">Update profile</a>
-        <a class="navbar-brand" href="../login/logout.php?logout">Logout</a>
-        </div>
-    </nav>
-
-    <div class="container mt-5">
-        <h2 class="text-center">My Reviews</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <?= $layout ?>
-        </div>
+    <div class='container'>
+    <div class='courses'>
+      <h2 class=''>My Reviews</h2>
+      <div class='list2'>
+        <?= $layout ?>
+      </div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz' crossorigin='anonymous'></script>
 </body>
 
 </html>
