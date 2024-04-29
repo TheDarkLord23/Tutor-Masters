@@ -59,80 +59,16 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rate your course</title>
-    <style> .container {
-            max-width: 600px;
-            margin: auto;
-            padding-top: 50px;
-        }
-
-        form {
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        input[type="text"],
-        input[type="file"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        select {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="4"><path fill="%23666" d="M2 0l6 4 6-4"/></svg>') no-repeat right 10px center/8px 4px;
-        }
-
-        textarea {
-            height: 100px;
-        }
-
-        input[type="submit"] {
-            width: auto;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        .alert {
-            margin-top: 20px;
-        }
-        #date{
-            width: 100%; 
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px; box-sizing: border-box;
-        }
-        
-        </style>
+    <title>Create new User</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/CRUD.css">
 </head>
 
 <body>
-<div class="container">
-        <h2>Create review</h2>
+<div class="containerCRUD container mt-5">
+        <div class="crudHeader">
+            <h3 class="mb-4">Update a Review:</h3>
+        </div>
         <?php if (!empty($message)) : ?>
            <!-- ' updateError & massage noch bearbeiten' -->
             <div class="alert alert-<?= $class; ?>" role="alert">
@@ -140,20 +76,22 @@ if (isset($_POST["submit"])) {
                 <a href='indexUser.php'><button class="btn btn-primary" type='button'>Home</button></a>
             </div>
         <?php endif; ?>
-
-        <form method="post" enctype="multipart/form-data">
-    <label for="rating">rating</label>
-    <select id="rating" name="rating">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="lNameInput inputFields">
+                <label style="margin: 0;" for="secondName">Comment</label>
+                <input class="input" type="text" name="comment" value="update your comment">
+            </div>
+            <label style="margin: 0;" for="rating">Rating</label>
+            <select class="input" id="rating" name="rating">
                 <option value="1">★☆☆☆☆</option>
                 <option value="2">★★☆☆☆</option>
                 <option value="3">★★★☆☆</option>
                 <option value="4">★★★★☆</option>
                 <option value="5">★★★★★</option>
             </select>
-    <label for="secondName">comment</label> 
-    <input type="text" name="comment" placeholder="how did you like this course?">
-    <input type="submit" name="submit" value="submit">
-</form>
+        </form>
+        <button type="submit" class="submitBtn" style="width: 100%;" name="submit">Submit</button>
+    </div>
 </body>
 
 </html>

@@ -55,7 +55,7 @@ if (!$result) {
                 <img class="icon" src="../Images/house-black.png" alt="">
                 <div class="title">Dashboard</div>
             </a>
-            <a href="#" class="action" id="action2Btn">
+            <a href="retrieveCourses.php" class="action" id="action2Btn">
                 <img class="icon" src="../Images/book-black.png" alt="">
                 <div class="title">All Courses</div>
             </a>
@@ -63,7 +63,7 @@ if (!$result) {
                 <img class="icon" src="../Images/person-black.png" alt="">
                 <div class="title">All Users</div>
             </a>
-            <a href="#" class="action" id="action4Btn">
+            <a href="retrieveBookings.php" class="action" id="action4Btn">
                 <img class="icon" src="../Images/calendar-black.png" alt="">
                 <div class="title">All Bookings</div>
             </a>
