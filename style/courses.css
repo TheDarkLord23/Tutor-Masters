@@ -102,6 +102,7 @@
   background-color: rgb(230, 230, 230);
   border-radius: 0.8rem;
   padding: 10px;
+  height: fit-content;
 }
 
 .course {
@@ -244,16 +245,19 @@
 .btn-primary,
 .btn-primary:active,
 .btn-primary:visited {
-  background-color: #f99746 !important;
+  background-color: #f99746;
   border: none;
   border-radius: 5rem;
   margin: 5px;
 }
 
 .btn-primary:hover {
-  background-color: #ff7e15 !important;
+  background-color: #d15e00 !important;
 }
 
+.selected {
+  background-color: #d15e00 !important;
+}
 ------------------------------------------------------------------------------------------------------------------------------------------
 /* footer  */
 footer {
