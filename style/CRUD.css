@@ -150,6 +150,7 @@
 
 .list2 {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   background-color: rgb(230, 230, 230);

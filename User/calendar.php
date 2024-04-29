@@ -8,6 +8,29 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
 
 require_once "../db_connection.php";
 require_once "../navbar_session.php";
+  $data = "";
+$sql = "SELECT * FROM `courses`";
+
+$result = mysqli_query($connection,$sql);
+
+if(mysqli_num_rows($result) > 0){
+  $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+  foreach ($rows as  $value) {
+    $data .= "<p>id : '{$value["id"]}'</p>,
+    <p>title : '{$value["subject"]}</p>',
+    start : '{$value["date"]}'
+    end : '{$value["end_date"]}'";
+    
+  }
+}else {
+  $data = "no courses";
+}
+
+echo "<pre>";
+var_dump($data);
+echo "</pre>";
+die();
 
 ?>
 
