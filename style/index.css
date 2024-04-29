@@ -38,14 +38,6 @@
   height: 110%;
 }
 
-.nav-icon {
-  width: 2rem;
-}
-
-.navbar {
-  box-shadow: rgba(30, 30, 34, 0.089) 0px 4px 15px 0px;
-}
-
 .submitInput {
   display: block;
   width: 300px;
