@@ -55,7 +55,6 @@ if (mysqli_num_rows($booking_result) == 0) {
             <button class='submitBtn' style=''><a href=''>Delete</button>
           </div>
           
-          <a href='deletereview.php?id={$review_row["id"]}' class='btn btn-success'>Delete</a>
       </div>
       <div class='splitter'></div>";
     }
