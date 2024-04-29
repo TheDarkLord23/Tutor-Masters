@@ -88,33 +88,6 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <style>
-       .detailsProp{
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border: black solid 2px;
-       }
-       .textRow{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-       }
-       .card-text, .card-title{
-        text-align: center;
-        text-decoration: none;
-        color: black;
-        align-items: center;
-        align-content: center;
-       }
-       .btnAlign{
-        display: flex;
-        justify-content: space-around;
-       }
-    </style>
-    
-
 </head>
 
 <body>
