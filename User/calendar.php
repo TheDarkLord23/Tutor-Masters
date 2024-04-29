@@ -8,7 +8,8 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
 
 require_once "../db_connection.php";
 require_once "../navbar_session.php";
-  $data = "";
+
+ $data = "";
 $sql = "SELECT * FROM `courses`";
 
 $result = mysqli_query($connection,$sql);
@@ -17,9 +18,9 @@ if(mysqli_num_rows($result) > 0){
   $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
 
   foreach ($rows as  $value) {
-    $data .= "<p>id : '{$value["id"]}'</p>,
-    <p>title : '{$value["subject"]}</p>',
-    start : '{$value["date"]}'
+    $data .= "id : '{$value["id"]}',
+    title : '{$value["subject"]},
+    start : '{$value["date"]}',
     end : '{$value["end_date"]}'";
     
   }
@@ -27,10 +28,7 @@ if(mysqli_num_rows($result) > 0){
   $data = "no courses";
 }
 
-echo "<pre>";
-var_dump($data);
-echo "</pre>";
-die();
+
 
 ?>
 
@@ -43,21 +41,22 @@ die();
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
+        let data = [];
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
-          events : [{
-            id: "a",
-            title : "html course",
-            start : "2024-05-01",
-            end : "2024-05-15"
-          }]
         });
         calendar.render();
       });
 
     </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/index.css">
   </head>
   <body>
-    <div id='calendar'></div>
+      <div id='calendar'></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
