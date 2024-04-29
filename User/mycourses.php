@@ -31,6 +31,7 @@ if (mysqli_num_rows($booking_result) == 0) {
     $course_result = mysqli_query($connection, $course_query);
     if ($course_result && mysqli_num_rows($course_result) == 1) {
       $course_row = mysqli_fetch_assoc($course_result);
+      
       // Kursdetails anzeigen
       $layout .= "
       <div class='course'>
@@ -38,7 +39,7 @@ if (mysqli_num_rows($booking_result) == 0) {
               <div class='card-holder'>
                   <img class='card-img' src='/Images/{$course_row["picture"]}' alt='Image description' />
                   <h4 class='card-title'>More Information</h4>
-                  <a href='details4all.php?id={$course_row["id"]}' class='card-btn'>Details</a>
+                  <a href='details.php?id={$course_row["id"]}' class='card-btn'>Details</a>
               </div>
           </div>
           <div class='info'>
@@ -51,7 +52,7 @@ if (mysqli_num_rows($booking_result) == 0) {
               </p>
           </div>
           <div class='submitBtnContainer'>
-            <button class='submitBtn' style=''><a href='deletecourses.php?id={$course_row['id']}'>Delete</button>
+            <button class='submitBtn' style=''><a href='deletecourses.php?id={$booking_row['id']}'>Delete</button>
           </div>
           
       </div>
