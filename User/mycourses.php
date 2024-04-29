@@ -51,8 +51,8 @@ if (mysqli_num_rows($booking_result) == 0) {
               </p>
           </div>
           <div class='submitBtnContainer'>
-            <button class='submitBtn' style=''><a class='btn btn-warning' href='updatereview.php?id={$course_row['id']}'>Update</a></button>
-            <button class='submitBtn' style=''><a href=''>Delete</button>
+            <button class='submitBtn bg-danger' style=''><a style='text-decoration: none; color: #fff;' href='deletecourse.php?id={$course_row['id']}'>Delete</a></button>
+            <button class='submitBtn' style='margin: 0;'><a style='text-decoration: none; color: #fff;' href='details.php?id={$course_row['id']}'>Details</a></button>
           </div>
           
       </div>
