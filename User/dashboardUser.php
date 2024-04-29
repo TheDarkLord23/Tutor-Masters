@@ -54,7 +54,7 @@ if (!$result) {
                 <img class="icon" src="../Images/house-black.png" alt="">
                 <div class="title">Dashboard</div>
             </a>
-            <a href="#" class="action" id="action2Btn">
+            <a href="mycourses.php" class="action" id="action2Btn">
                 <img class="icon" src="../Images/book-black.png" alt="">
                 <div class="title">My Courses</div>
             </a>

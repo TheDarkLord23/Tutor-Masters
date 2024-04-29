@@ -44,6 +44,9 @@
   border-radius: 0.8rem;
   padding: 30px;
   gap: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  white-space: normal;
 }
 
 .center-left {
