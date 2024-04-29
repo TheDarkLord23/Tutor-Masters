@@ -2,6 +2,20 @@
 
 session_start();
 
+if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
+["user"])) {
+    header("Location: ../login/login.php");
+}
+
+if (isset($_SESSION["user"])) {
+    header("Location: ../User/dashboardUser.php");
+  }
+  
+  if (isset($_SESSION["trainer"])) {
+    header("Location: ../Trainer/dashboardTrainer.php");
+  }
+  
+
 
 require_once "../db_connection.php";
 
@@ -28,6 +42,7 @@ $row = mysqli_fetch_assoc($result);
         <p><?=$row["university"]?></p>
         <p><?=$row["roomNumb"]?></p>
         <p><?=$row["date"]?></p>
+        <p><?=$row["end_date"]?></p>
         <p><?=$row["teacher"]?></p>
         <p><?= $row["language"]?></p>
         <p><?= $row["duration"]?></p>

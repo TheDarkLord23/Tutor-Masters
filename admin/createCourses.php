@@ -11,11 +11,11 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
 }
 
 if (isset($_SESSION["user"])) {
-  header("Location: ../User/indexUser.php");
+  header("Location: ../User/dashboardUser.php");
 }
 
 if (isset($_SESSION["trainer"])) {
-  header("Location: ../Trainer/indexTrainer.php");
+  header("Location: ../Trainer/dashboardTrainer.php");
 }
 
 // validation end
@@ -28,6 +28,7 @@ if (isset($_POST["submit"])) {
   $university = $_POST["university"];
   $roomNumb = $_POST["roomNumb"];
   $date = $_POST["date"];
+  $end_date = $_POST["end_date"];
   $teacher = $_POST["teacher"];
   $language = $_POST["language"];
   $availability = $_POST["availability"];
@@ -35,11 +36,11 @@ if (isset($_POST["submit"])) {
   $duration = $_POST["duration"];
   $picture = fileUpload($_FILES["picture"]);
 
-  $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`, `teacher`, `picture`, `language`, `duration`, `units`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$availability}','{$name}')";
+  $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`,  `teacher`, `picture`, `language`, `duration`, `units`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$availability}','{$name}')";
 
   if (mysqli_query($connection, $sql)) {
     echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
-    header("refresh: 3; url=indexAdmin.php");
+    header("refresh: 3; url=dashboardAdmin.php");
   } else {
     echo "<div class='containerAlert2'><p>Something went wrong.Please try again later!</p></div>";
   }
@@ -93,7 +94,10 @@ if (isset($_POST["submit"])) {
           <input class="input" type="text" placeholder="Language" name="language" required>
         </div>
         <div>
-          <input class="input" type="datetime-local" placeholder="Date" name="date" required>
+          <input class="input" type="datetime-local" placeholder="start date" name="date" required>
+        </div>
+        <div>
+          <input class="input" type="datetime-local" placeholder="end date" name="end_date" required>
         </div>
         <div class="d-flex justify-content-between">
           <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
