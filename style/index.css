@@ -205,9 +205,11 @@
 }
 
 .all {
-  padding: 30px;
-  padding-right: 100px;
+  padding: 20px;
+  padding-right: 120px;
+  padding-left: 50px;
   display: flex;
+  align-items: center;
   justify-content: space-around;
 }
 
@@ -224,6 +226,10 @@
 
 .testimonials-pic {
   width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .carousel-control-prev {

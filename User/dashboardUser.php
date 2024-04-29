@@ -16,6 +16,14 @@ if (isset($_SESSION["trainer"])) {
 
 
 
+if (isset($_SESSION["admin"])) {
+    header("Location: ../Admin/dashboardAdmin.php");
+}
+
+if (isset($_SESSION["trainer"])) {
+    header("Location: ../Trainer/dashboardTrainer.php");
+}
+
 require_once "../db_connection.php";
 require_once "../navbar_session.php";
 
@@ -54,21 +62,21 @@ if (!$result) {
     <div class="dashboard-container">
         <div class="left-section">
             <a href="dashboardUser.php" class="action action-active" id="dashboardBtn">
-                <img class="icon" src="../Images/house.png" alt="">
+                <img class="icon" src="../Images/house-black.png" alt="">
                 <div class="title">Dashboard</div>
             </a>
             <a href="#" class="action" id="action2Btn">
-                <div class="icon"></div>
-                <div class="title">Action 2</div>
+                <img class="icon" src="../Images/book-black.png" alt="">
+                <div class="title">My Courses</div>
             </a>
             <a href="#" class="action" id="action3Btn">
-                <div class="icon"></div>
-                <div class="title">Action 3</div>
+                <img class="icon" src="../Images/star-black.png" alt="">
+                <div class="title">My Reviews</div>
             </a>
-            <a href="#" class="action" id="action4Btn">
-                <div class="icon"></div>
+            <!-- <a href="#" class="action" id="action4Btn">
+                <img class="icon" src="../Images/house-black.png" alt="">
                 <div class="title">Action 4</div>
-            </a>
+            </a> -->
         </div>
         <div class="center-section" id="centerSection">
             <div class="center-left">
@@ -121,10 +129,14 @@ if (!$result) {
             <div class="center-right">
                 <div class="profile-info">
                     <?= $layout ?>
-                    <a class="updateInput" href="courses.php">
+                    <a class="updateInput" href="updateprofile.php">
                         <input class="updateBtn" type="submit" name="update" value="Update Profile">
                     </a>
+                    <a class="logoutInput" href="../login/logout.php">
+                        <input class="logout" type="submit" name="logout" value="Logout">
+                    </a>
                 </div>
+
             </div>
         </div>
 

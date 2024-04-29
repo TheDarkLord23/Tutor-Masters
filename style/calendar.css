@@ -1,0 +1,11 @@
+table{
+    table-layout: fixed;
+}
+
+td{
+    width: 33%;
+}
+
+.today{
+    background: yellow;
+}

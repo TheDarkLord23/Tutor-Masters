@@ -60,9 +60,9 @@
 }
 
 .circle-image {
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
+  margin: 10px auto;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -161,6 +161,9 @@
   padding-left: 10px;
   text-decoration: none;
   color: black;
+  background-color: #0dca9217;
+  border-top-left-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
 }
 
 .action-active {
@@ -174,11 +177,13 @@
   color: white;
 }
 
+.action-active img {
+  filter: brightness(0) invert(1);
+}
+
 .icon {
   width: 30px;
   height: 30px;
-  background-color: #ccc;
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -228,4 +233,31 @@
 
 .updateBtn:hover {
   background-color: #087f5b;
+}
+
+.logoutInput {
+  width: 60%;
+  text-decoration: none;
+}
+
+.logout {
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  color: #ffff;
+  background-color: #dc4c64;
+  font-size: 1.2rem;
+  border-radius: 100px;
+  padding: 16px 0px;
+  width: 100%;
+  border: 0;
+  margin: 26px 0;
+  outline: none;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.logout:hover {
+  background-color: #e00e31;
 }
