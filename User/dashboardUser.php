@@ -1,20 +1,14 @@
 <?php
 session_start();
-
 if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSION["user"])) {
     header("Location: ../login/login.php");
 }
-
 require_once "../db_connection.php";
 require_once "../navbar_session.php";
-
 $userId = $_SESSION['user_id'];
-
 $query = "SELECT * FROM users WHERE id = $userId";
 $result = mysqli_query($connection, $query);
-
 $layout = "";
-
 if (!$result) {
     die("Database query failed: " . mysqli_error($connection));
 } else {
@@ -26,7 +20,6 @@ if (!$result) {
         <p>Address: {$user["address"]}</p>
         <p>Phone: {$user["phoneNumber"]}</p>";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +39,7 @@ if (!$result) {
                 <img class="icon" src="../Images/house.png" alt="">
                 <div class="title">Dashboard</div>
             </a>
-            <a href="#" class="action" id="action2Btn">
+            <a href="mycourses.php" class="action" id="action2Btn">
                 <div class="icon"></div>
                 <div class="title">Action 2</div>
             </a>
@@ -102,7 +95,6 @@ if (!$result) {
                             </div>
                         </div>
                         <div class="items-right">
-
                         </div>
                     </div>
                 </div>
@@ -116,12 +108,9 @@ if (!$result) {
                 </div>
             </div>
         </div>
-
     </div>
-
     <script>
         var currentDate = new Date();
-
         var options = {
             weekday: 'long',
             year: 'numeric',
@@ -129,36 +118,28 @@ if (!$result) {
             day: 'numeric'
         };
         var formattedDate = currentDate.toLocaleDateString('en-US', options);
-
         document.getElementById('current-date').textContent = formattedDate;
-
         // Function to handle dashboard button click (refresh page)
         document.getElementById('dashboardBtn').addEventListener('click', function(event) {
             location.reload();
         });
-
         document.addEventListener("DOMContentLoaded", function() {
             // Get reference to center section and action buttons
             var centerSection = document.getElementById("centerSection");
             var actionButtons = document.querySelectorAll(".action");
-
             // Function to handle button click
             function handleButtonClick(event) {
                 event.preventDefault();
-
                 // Check if the clicked button is not already active
                 if (!this.classList.contains("action-active")) {
                     // Remove action-active class from all buttons
                     actionButtons.forEach(function(btn) {
                         btn.classList.remove("action-active");
                     });
-
                     // Add action-active class to the clicked button
                     this.classList.add("action-active");
-
                     // Get the href attribute of the clicked button
                     var href = this.getAttribute("href");
-
                     // Fetch the content from the href
                     fetch(href)
                         .then(response => response.text())
@@ -169,7 +150,6 @@ if (!$result) {
                         .catch(error => console.error("Error:", error));
                 }
             }
-
             // Add click event listeners to action buttons
             actionButtons.forEach(function(btn) {
                 btn.addEventListener("click", handleButtonClick);
