@@ -25,7 +25,7 @@ $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
 
 
-$delete = "DELETE FROM `courses` WHERE id = $id";
+$delete = "DELETE FROM `bookings` WHERE id = $id";
 
 if(mysqli_query($connection, $delete)){
     header("Location: mycourses.php");
