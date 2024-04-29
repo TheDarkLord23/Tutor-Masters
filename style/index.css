@@ -403,8 +403,7 @@ footer {
   }
 }
 @media screen and (max-width: 576px) {
-  .footer-container p
-  .list-footer li,
+  .footer-container p .list-footer li,
   #copyright p {
     font-size: 11px;
   }

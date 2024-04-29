@@ -1,0 +1,172 @@
+@import url(chillax.css);
+
+* {
+  font-family: "Chillax", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* create | update form section ================================================================0 */
+
+.containerCRUD {
+  max-width: 470px;
+  margin: 0 auto;
+  border-radius: 4px;
+  padding: 24px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.crudHeader {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 27px;
+  h3 {
+    border-bottom: 2px solid #0ca678;
+    margin: 0;
+  }
+}
+
+.input {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  width: 100%;
+  padding: 16px;
+  margin: 12px 0;
+  color: #565656;
+  border-radius: 20px;
+  border: 1px solid #565656;
+}
+
+.submitBtn {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  color: #ffff;
+  background-color: #0ca678;
+  font-size: inherit;
+  display: inline-block;
+  border-radius: 20px;
+  padding: 16px 0;
+  width: 100%;
+  border: 0;
+  margin: 26px 0;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 350ms ease-in;
+}
+
+.submitBtn:hover {
+  box-shadow: none;
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+.fnlNameInput {
+  display: flex;
+  justify-content: space-between;
+  .input {
+    width: 200px;
+  }
+}
+
+.errorMessage {
+  color: red;
+  margin-top: 0;
+}
+
+/* retrieve section =================================================== */
+
+.card-holder {
+  padding: 0 !important;
+  position: relative;
+  margin: 10px;
+  height: 80%;
+  background-color: white;
+  border-radius: 0.8rem;
+}
+
+.card-img {
+  object-fit: cover;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+  width: 100%;
+  height: 70%;
+}
+
+.card-title {
+  margin: 10px;
+}
+
+.card-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+  overflow: hidden;
+  border-radius: 0.8rem;
+  transition: all 100ms ease-in;
+}
+
+.courses {
+  margin: 50px auto;
+}
+
+.users {
+  margin: 50px auto;
+}
+
+.course-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info {
+  width: 70%;
+  padding-top: 20px;
+}
+
+.course {
+  display: flex;
+  justify-content: space-between;
+  height: 200px;
+}
+
+.splitter {
+  width: 100%;
+  margin: 5px auto;
+  height: 3px;
+  background-color: white;
+  border-radius: 0.8rem;
+}
+
+.listCourses {
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  border-radius: 0.8rem;
+  padding: 10px;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  height: 200px;
+}
+
+.listUsers {
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  border-radius: 0.8rem;
+  padding: 10px;
+}

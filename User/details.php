@@ -58,7 +58,7 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
 <div class="card-body">
   <h5 class="card-title">'.$row["subject"].'</h5>
   <hr>
-  <p class="card-text">Teacher: '.$row["teacher"].'</p>
+  <a href="teacherDetail.php?email='.$row["email"].'" class="card-text">Teacher: '.$row["teacher"].'</a>
   <p class="card-text">Date: '.$row["date"].'</p>
   <p class="card-text">Language: '.$row["language"].'</p>
   <p class="card-text">RoomNumb: '.$row["roomNumb"].'</p>
@@ -102,6 +102,10 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
        }
        .card-text, .card-title{
         text-align: center;
+        text-decoration: none;
+        color: black;
+        align-items: center;
+        align-content: center;
        }
        .btnAlign{
         display: flex;
