@@ -11,7 +11,7 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
 }
 
 if (isset($_SESSION["user"])) {
-    header("Location: ../User/indexUser.php");
+    header("Location: ../User/dashboardUser.php");
 }
 
 // validation end
