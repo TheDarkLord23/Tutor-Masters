@@ -40,6 +40,7 @@ if (isset($_POST["submit"])) {
     $university = $_POST["university"];
     $roomNumb = $_POST["roomNumb"];
     $date = $_POST["date"];
+    $end_date = $_POST["end_date"];
     $teacher = $_POST["teacher"];
     $language = $_POST["language"];
     $availability = $_POST["availability"];
@@ -47,7 +48,7 @@ if (isset($_POST["submit"])) {
     $duration = $_POST["duration"];
     $picture = fileUpload($_FILES["picture"]);
 
-    $sql = "UPDATE `courses` SET `subject`='{$subject}',`university`='{$university}',`roomNumb`='{$roomNumb}',`date`='{$date}',`teacher`='{$teacher}',`picture`='{$picture[0]}',`language`='{$language}',`duration`='{$duration}',`units`='{$units}',`availability`='{$availability}',`name`='{$name}' WHERE id = $id";
+    $sql = "UPDATE `courses` SET `subject`='{$subject}',`university`='{$university}',`roomNumb`='{$roomNumb}',`date`='{$date}',`end_date`='{$end_date}',`teacher`='{$teacher}',`picture`='{$picture[0]}',`language`='{$language}',`duration`='{$duration}',`units`='{$units}',`availability`='{$availability}',`name`='{$name}' WHERE id = $id";
 
 
     if (mysqli_query($connection, $sql)) {
@@ -87,6 +88,8 @@ mysqli_close($connection);
             <input type="text" value="<?=$row["roomNumb"]?>" name="roomNumb" required>
 
             <input type="datetime-local" value="<?=$row["date"]?>" name="date" required>
+
+            <input type="datetime-local" value="<?=$row["end_date"]?>" name="end_date" required>
 
             <input type="text" value="<?=$row["teacher"]?>"" name="teacher" required>
 
