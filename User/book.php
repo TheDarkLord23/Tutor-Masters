@@ -20,7 +20,7 @@ if (isset($_POST["bookings"])) {
     $user_id = $_SESSION["user"];
     $course_id = $_POST["id"];
     $booking_date = date("Y-m-d");
-    $bookingSql = "INSERT INTO `bookings`(`fk_user_id`, `fk_course_id`) VALUES ('{$user_id}','{$course_id}')";
+    $bookingSql = "INSERT INTO `bookings`(`fk_user_id`, `fk_course_id`, `date`) VALUES ('{$user_id}','{$course_id}', 'NOW()')";
     if (mysqli_query($connection,$adoptionSql)) {
         echo "Course has been booked. Gratulation!";
     } else {

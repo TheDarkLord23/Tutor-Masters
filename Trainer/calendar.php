@@ -53,14 +53,18 @@ function build_calendar($month,$year){
 
         // if seventh column(saturday) reached, start a new row
         if($dayOfWeek == 7){
-            $dayOfWeek == 0;
+            $dayOfWeek = 0;
             $calendar.="</tr><tr>";
         }
 
         $currentDayRel = str_pad($currentDay,2,"0", STR_PAD_LEFT);
         $date = "$year-$month-$currentDayRel";
 
-        $calendar.= "<td><h4>$currentDay</h4>";
+        if($dateToday==$date){
+            $calendar.= "<td><h4>$currentDay</h4>";
+        }else{
+            $calendar.="<td><h4>$currentDay</h4>";
+        }
 
         $calendar.= "</td>";
 
@@ -94,6 +98,7 @@ function build_calendar($month,$year){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/calendar.css">
     <title>Document</title>
 </head>
 <body>
