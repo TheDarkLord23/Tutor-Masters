@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "db_connection.php";
 require_once "navbar.php";
 
@@ -86,49 +86,37 @@ foreach ($reviewsRows as $value) {
         </div>
     </div>
     <div class="info">
-        <div class="grid">
-            <div class="grid-item">
-                <div><img class="icon" src="/Images/star.png" alt=""></div>
-                <div>
-                    <h6>Expert teaching staff comprised of leading educators in various fields.</h6>
-                </div>
+        <div class="grid-info">
+            <div class="grid-items">
+                <img class="icon" src="/Images/star.png" alt="">
+                <h6>Expert teaching staff comprised of leading educators in various fields.</h6>
             </div>
-            <div class="grid-item">
-                <div><img class="icon" src="/Images/person.png" alt=""></div>
-                <div>
-                    <h6>Personalized mentorship tailored to individual learning styles and needs.</h6>
-                </div>
+            <div class="grid-items">
+                <img class="icon" src="/Images/person.png" alt="">
+                <h6>Personalized mentorship tailored to individual learning styles and needs.</h6>
             </div>
-            <div class="grid-item">
-                <div><img class="icon" src="/Images/book.png" alt=""></div>
-                <div>
-                    <h6>Comprehensive study materials and resources to aid in exam preparation.</h6>
-                </div>
+            <div class="grid-items">
+                <img class="icon" src="/Images/book.png" alt="">
+                <h6>Comprehensive study materials and resources to aid in exam preparation.</h6>
             </div>
-            <div class="grid-item">
-                <div><img class="icon" src="/Images/seo.png" alt=""></div>
-                <div>
-                    <h6>Proven strategies and techniques for optimizing academic performance.</h6>
-                </div>
+            <div class="grid-items">
+                <img class="icon" src="/Images/seo.png" alt="">
+                <h6>Proven strategies and techniques for optimizing academic performance.</h6>
             </div>
-            <div class="grid-item">
-                <div><img class="icon" src="/Images/calendar.png" alt=""></div>
-                <div>
-                    <h6>Flexible scheduling options to accommodate busy student lifestyles.</h6>
-                </div>
+            <div class="grid-items">
+                <img class="icon" src="/Images/calendar.png" alt="">
+                <h6>Flexible scheduling options to accommodate busy student lifestyles.</h6>
             </div>
-            <div class="grid-item">
-                <div><img class="icon" src="/Images/flag.png" alt=""></div>
-                <div>
-                    <h6>Continuous support and guidance throughout the university admission process.</h6>
-                </div>
+            <div class="grid-items">
+                <img class="icon" src="/Images/flag.png" alt="">
+                <h6>Continuous support and guidance throughout the university admission process.</h6>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="courses">
             <h3 class="upcoming">Upcoming Courses</h3>
-            <div class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-1">
+            <div class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2">
                 <?= $layout ?>
             </div>
             <a class="submitInput" href="courses.php">
@@ -167,10 +155,11 @@ foreach ($reviewsRows as $value) {
             </button>
         </div>
     </div>
-    <div class="container">
+    <div class="container container-mission">
         <div class="mission">
             <div class="mission-text">
                 <h1>Our Mission</h1>
+                <img class="mission-img-mobile" src="https://www.schooliseasy.com/wp-content/uploads/Picture1.png" alt="">
                 <h5>
                     Our aim to empower students on their journey towards academic success and university admission. We are committed to providing personalized, high-quality tutoring services that cater to each student's unique learning needs. Through our expert guidance, comprehensive study materials, and continuous support, we strive to instill confidence, inspire excellence, and help students achieve their educational goals. We believe in fostering a positive and enriching learning environment where every student can thrive and reach their full potential.
                 </h5>
