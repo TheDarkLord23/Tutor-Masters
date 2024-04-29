@@ -37,7 +37,7 @@ if (isset($_POST["bookings"])) {
     } else {
         // Wenn der Benutzer nicht angemeldet ist, die Buchung durchführen
         $booking_date = date("Y-m-d");
-        $bookingSql = "INSERT INTO `bookings`(`fk_user_id`, `fk_course_id`) VALUES ('{$user_id}','{$course_id}')";
+        $bookingSql = "INSERT INTO `bookings`(`fk_user_id`, `fk_course_id`, 'date') VALUES ('{$user_id}','{$course_id}',date('Y-m-d)";
 
         if (mysqli_query($connection, $bookingSql)) {
             echo "Course has been booked. Gratulation!";
