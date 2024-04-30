@@ -24,16 +24,26 @@ $result = mysqli_query($connection, $query);
 
 $layout = "";
 
+$data = "";
+$sql = "SELECT * FROM `courses`";
+
+$resultCalendar = mysqli_query($connection, $sql);
+
+
+
+
 if (!$result) {
     die("Database query failed: " . mysqli_error($connection));
 } else {
     $user = mysqli_fetch_assoc($result);
     $layout .= "
         <img class='circle-image' src='../Images/{$user["picture"]}' alt=''>
-        <h2>{$user["firstName"]} {$user["secondName"]}</h2>
-        <p>Email: {$user["email"]}</p>
-        <p>Address: {$user["address"]}</p>
-        <p>Phone: {$user["phoneNumber"]}</p>";
+        <div class='profile'>
+            <h2>{$user["firstName"]} {$user["secondName"]}</h2>
+            <p>Email: {$user["email"]}</p>
+            <p>Address: {$user["address"]}</p>
+            <p>Phone: {$user["phoneNumber"]}</p>
+        </div>";
 }
 
 ?>
@@ -46,6 +56,79 @@ if (!$result) {
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/dashboard.css">
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            let data = [];
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                aspectRatio: 2.7,
+                initialView: 'dayGridMonth',
+                selectable: true,
+
+                Boolean,
+                default: true,
+
+                customButtons: {
+                    myCustomButton: {
+                        text: 'To Calendar',
+                        click: function() {
+                            window.location.href = '../User/calendar.php';
+                        }
+                    }
+                },
+                headerToolbar: {
+                    left: 'title',
+                    right: 'prev,next today myCustomButton'
+                },
+
+                events: [
+                    <?php while ($rows = mysqli_fetch_assoc($resultCalendar)) { ?> {
+                            id: "<?= $rows["id"] ?>",
+                            title: "<?= $rows['name'] ?>",
+                            start: "<?= $rows["date"] ?>",
+                            end: "<?= $rows["end_date"] ?>"
+                        },
+                    <?php } ?>
+
+                ],
+
+                dateClick: function(info) {
+                    if (info.dayEl.style.backgroundColor === 'green') {
+                        info.dayEl.style.backgroundColor = 'red';
+                    } else {
+                        info.dayEl.style.backgroundColor = 'green';
+                    }
+                },
+                eventColor: '#0ca678',
+                eventBackgroundColor: '#0ca678', // Standardfarbe für Ereignisse
+                eventBorderColor: 'green', // Standardfarbe für Ereignisrahmen
+            });
+            calendar.render();
+        });
+    </script>
+    <style>
+        .boxCalendar {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #calendar {
+            width: 100%;
+        }
+
+        a.fc-col-header-cell-cushion {
+            text-decoration: none;
+            color: #565656;
+        }
+
+        a.fc-daygrid-day-number {
+            text-decoration: none;
+            color: #565656;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,8 +165,8 @@ if (!$result) {
                         </div>
                     </div>
                     <div class="content">
-                        <div class="items-left">
-                            <!-- <div class="grid">
+                        <!-- <div class="items-left">
+                            <div class="grid">
                             <div class="box">
                                 <div class="icon">Icon 1</div>
                                 <div class="text">Text 1</div>
@@ -100,18 +183,18 @@ if (!$result) {
                                 <div class="icon">Icon 4</div>
                                 <div class="text">Text 4</div>
                             </div>
-                        </div> -->
-                            <div class="box">
-                                <img src="../Images/star-full.png" class="icon-big" alt="">
-                                <h2 class="text">My Reviews</h2>
-                            </div>
-                            <div class="box">
-                                <img src="../Images/open-book.png" class="icon-big" alt="">
-                                <h2 class="text">My Courses</h2>
-                            </div>
                         </div>
+                            <a href="retrieveUser.php" class="box" id="action3Btn">
+                                <img src="../Images/person.png" class="icon-big" alt="">
+                                <h2 class="text">All Users</h2>
+                            </a>
+                            <a href="retrieveCourses.php" class="box" id="action2Btn">
+                                <img src="../Images/book.png" class="icon-big" alt="">
+                                <h2 class="text">All Courses</h2>
+                            </a>
+                        </div> -->
                         <div class="items-right">
-
+                            <div id='calendar'></div>
                         </div>
                     </div>
                 </div>
@@ -119,12 +202,14 @@ if (!$result) {
             <div class="center-right">
                 <div class="profile-info">
                     <?= $layout ?>
-                    <a class="updateInput" href="updateUser.php">
-                        <input class="updateBtn" type="submit" name="update" value="Update Profile">
-                    </a>
-                    <a class="logoutInput" href="../login/logout.php">
-                        <input class="logout" type="submit" name="logout" value="Logout">
-                    </a>
+                    <div class="buttons">
+                        <a class="updateInput" href="updateUser.php">
+                            <input class="updateBtn" type="submit" name="update" value="Update Profile">
+                        </a>
+                        <a class="logoutInput" href="../login/logout.php">
+                            <input class="logout" type="submit" name="logout" value="Logout">
+                        </a>
+                    </div>
                 </div>
 
             </div>
