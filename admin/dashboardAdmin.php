@@ -26,7 +26,6 @@ $layout = "";
 
 $data = "";
 $sql = "SELECT * FROM `courses`";
-
 $resultCalendar = mysqli_query($connection, $sql);
 
 
