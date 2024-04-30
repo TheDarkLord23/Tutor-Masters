@@ -107,6 +107,13 @@ if (!$result) {
                             <div class="box">
                                 <img src="../Images/open-book.png" class="icon-big" alt="">
                                 <h2 class="text">My Courses</h2>
+                                
+
+
+
+
+
+                                
                             </div>
                         </div>
                         <div class="items-right">
