@@ -11,7 +11,6 @@
 .top {
   display: flex;
   align-items: center;
-
   justify-content: space-between;
 }
 
@@ -111,8 +110,54 @@
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 769px) {
-}
-
 @media screen and (max-width: 480px) {
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .createInput {
+    width: 40%;
+    text-decoration: none;
+  }
+
+  .create {
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    color: #ffff;
+    background-color: #0ca678;
+    font-size: 1.2rem;
+    border-radius: 100px;
+    padding: 10px 0px;
+    width: 100%;
+    border: 0;
+    margin: 26px 0;
+    outline: none;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+  }
+
+  .create:hover {
+    background-color: #087f5b;
+  }
+
+  .card {
+    background-color: transparent !important;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }

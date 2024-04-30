@@ -18,30 +18,27 @@ require_once "../db_connection.php";
 
 $user_id = $_SESSION['user_id'];
 
-$booking_query = "SELECT * FROM bookings";
-$booking_result = mysqli_query($connection, $booking_query);
 
 $layout = "";
 
-if (mysqli_num_rows($booking_result) == 0) {
-    $layout = "There are no booked courses yet!";
-} else {
-    $total_courses = mysqli_num_rows($booking_result);
-    $current_course_index = 0;
-    while ($booking_row = mysqli_fetch_assoc($booking_result)) {
-        $course_id = $booking_row['fk_course_id'];
-        $course_query = "SELECT * FROM courses WHERE id = $course_id";
-        $course_result = mysqli_query($connection, $course_query);
-        if ($course_result && mysqli_num_rows($course_result) == 1) {
-            $course_row = mysqli_fetch_assoc($course_result);
 
+       
+
+        $course_query = "SELECT courses.*, bookings.fk_course_id FROM courses JOIN bookings ON courses.id = bookings.fk_course_id GROUP by courses.id";
+       
+        $course_result = mysqli_query($connection, $course_query);
+        if (mysqli_num_rows($course_result) != 0) {
+            $value = mysqli_fetch_all($course_result,MYSQLI_ASSOC);
+                foreach ($value as  $course_row) {
+                    # code...
+             
             $layout .= "
       <div class='course'>
           <div class='course-left'>
               <div class='card-holder'>
                   <img class='card-img' src='/Images/{$course_row["picture"]}' alt='Image description' />
                   <h4 class='card-title'>Details</h4>
-                  <a href='detailsCourses.php?id={$course_row["id"]}' class='card-btn'>Details</a>
+                  <a href='detailsBookings.php?id={$course_row["id"]}' class='card-btn'>Details</a>
               </div>
           </div>
           <div class='info'>
@@ -55,13 +52,13 @@ if (mysqli_num_rows($booking_result) == 0) {
           </div>
           
       </div>";
-            $current_course_index++;
-            if ($current_course_index < $total_courses) {
-                $layout .= "<div class='splitter'></div>";
-            }
+            // $current_course_index++;
+            // if ($current_course_index < $total_courses) {
+            //     $layout .= "<div class='splitter'></div>";
+            // }
         }
     }
-}
+
 ?>
 
 <!DOCTYPE html>

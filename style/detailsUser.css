@@ -49,15 +49,20 @@
   border-top: none;
   border-width: 10px;
   border-color: #F99746;
+  background-color: #E9FAF5;
   z-index: 1;
 }
 
 .nameCard {
   font-size: 50px;
   text-align: center;
+  background-color: #fff;
+  border-radius: 20px;
 }
 
 .infoBox {
   font-size: 25px;
-
+  background-color: #FFF;
+  border-radius: 20px;
+  padding: 20px;
 }
