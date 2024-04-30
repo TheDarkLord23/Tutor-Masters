@@ -2,15 +2,15 @@
 session_start();
 
 if (isset($_SESSION["admin"])) {
-    header("Location: ./admin/indexAdmin.php");
+    header("Location: ../admin/dashboardAdmin.php");
 }
 
 if (isset($_SESSION["user"])) {
-    header("Location: ./User/indexUser.php");
+    header("Location: ../User/dashboardUser.php");
 }
 
 if (isset($_SESSION["trainer"])) {
-    header("Location: ./Trainer/indexTrainer.php");
+    header("Location: ../Trainer/dashboardTrainer.php");
 }
 
 require_once "../db_connection.php";
@@ -53,17 +53,17 @@ if (isset($_POST["submit"])) {
         $row = mysqli_fetch_assoc($result);
 
         if ($count == 1) {
+            $_SESSION["user_id"] = $row["id"];
+
             if ($row["Status"] == "admin") {
                 $_SESSION["admin"] = $row["id"];
-                header("Location: ../admin/indexAdmin.php");
+                header("Location: ../admin/dashboardAdmin.php");
             } else if ($row["Status"] == "user") {
                 $_SESSION["user"] = $row["id"];
-
-                header("Location: ../User/indexUser.php");
+                header("Location: ../User/dashboardUser.php");
             } else {
                 $_SESSION["trainer"] = $row["id"];
-
-                header("Location: ../Trainer/indexTrainer.php");
+                header("Location: ../Trainer/dashboardTrainer.php");
             }
         } else {
             $error_password = "Your email or password is not correct!";
@@ -71,6 +71,7 @@ if (isset($_POST["submit"])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
