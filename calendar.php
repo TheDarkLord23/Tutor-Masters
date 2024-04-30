@@ -6,8 +6,8 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
     header("Location: ../login/login.php");
 }
 
-require_once "../db_connection.php";
-require_once "../navbar_session.php";
+require_once "db_connection.php";
+require_once "navbar.php";
 
  $data = "";
 $sql = "SELECT * FROM `courses`";
