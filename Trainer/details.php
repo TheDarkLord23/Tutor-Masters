@@ -13,6 +13,7 @@ require_once "../db_connection.php";
 
 
 
+
 $userId = $_SESSION['user_id'];
 
 
@@ -77,9 +78,7 @@ if (mysqli_num_rows($courses_result) > 0) {
                 </div>
             </div>
             <div class="detailsBtn">
-                <form method="post" style="margin: 0;">
-                    <input class="btnDetails bg-success" type="submit" name="bookings" value="book course">
-                </form>
+                
                 <div class="btnDetails" style="background-color: #F99646; color: #fff;">
                     <a href="review.php?course_id=' . $row["id"] . '&user_id=' . $id . '">rate this course</a>
                 </div>
@@ -99,65 +98,6 @@ $sqlUser= "SELECT * FROM `courses` WHERE `id` = $userId";
 
 $runSqlUser = mysqli_query($connection, $sqlUser);
 
-$layout1 = "";
-
-if (mysqli_num_rows($runSqlUser) == 0) {
-    $layout1 = "There are no Students yet!";
-} else {
-    // Abfrage, um die Details des Kurses abzurufen
-    $data = mysqli_fetch_all($runSqlUser, MYSQLI_ASSOC);
-    foreach ($data as $val) {
-        // Kursdetails anzeigen
-        $layout1 .= "
-                <p>Student First Name: {$val["firstName"]}</p>
-                <p>Student Second Name: {$val["secondName"]}</p>
-                <p>Student email: {$val["email"]}</p>
-                <a href='removeStudent.php?studentId={$val["booking_id"]}'>Remove student</a>
-                    ";
-
-
-    }};
-
-
-// $booking_query = "SELECT * FROM users WHERE fk_user_id = {$_SESSION['trainer']}";
-
-// $booking_result = mysqli_query($connection, $booking_query);
-
-// foreach ($booking_result as $val) {
-//     $layout .= "<div class='center'>
-//         <div class='card' style='width: 18rem;'>
-//             <img src='../Imagess/{$val["picture"]}' class='card-img-top' alt='Course Image'> <div class='card-body'>
-//             <h5 class='card-title'>{$val["subject"]}</h5>
-//             <p class='card-text'>Date: {$val["date"]}</p>"; };
-
-// // Anzeigen der Studenten, die für den jeweiligen Kurs angemeldet sind
-// $students_table = "";
-// if (isset($_POST["course_id"])) {
-//     $course_id = $_POST["course_id"];
-//     $sqlGetStudents = "SELECT users.firstName, users.secondName, users.email 
-//                         FROM `users`
-//                         JOIN `bookings` ON users.id = bookings.fk_user_id 
-//                         WHERE bookings.fk_course_id = $course_id";
-//     $students_result = mysqli_query($connection, $sqlGetStudents);
-//     if (mysqli_num_rows($students_result) > 0) {
-//         $students_table .= "<table border='1'>
-//                                 <tr>
-//                                     <th>First Name</th>
-//                                     <th>Last Name</th>
-//                                     <th>Email</th>
-//                                 </tr>";
-//         while ($row = mysqli_fetch_assoc($students_result)) {
-//             $students_table .= "<tr>
-//                                     <td>{$row['firstName']}</td>
-//                                     <td>{$row['secondName']}</td>
-//                                     <td>{$row['email']}</td>
-//                                 </tr>";
-//         }
-//         $students_table .= "</table>";
-//     } else {
-//         $students_table = "No students enrolled in this course yet.";
-//     }
-// }
 
 
 // Annahme: $course_id ist die ID des Kurses, die aus der URL oder anderweitig erhalten wurde
@@ -168,10 +108,18 @@ $result1 = mysqli_query($connection, $sqlGetBookingId);
 $booking_id = $row['id'];
 
 
+$sqlGetUser = "SELECT users.id
+                FROM users
+                JOIN bookings ON users.id = bookings.fk_user_id
+                JOIN courses ON bookings.fk_course_id = courses.id
+                WHERE courses.id = $course_id";
+
+// Führen Sie die Abfrage aus und holen Sie die Ergebnisse ab
+$result2 = mysqli_query($connection, $sqlGetUser);
 
 
 // Führen Sie die SQL-Abfrage aus
-$sqlGetUsers = "SELECT users.firstName, users.secondName, users.email
+$sqlGetUsers = "SELECT users.firstName, users.secondName, users.email, users.id
                 FROM users
                 JOIN bookings ON users.id = bookings.fk_user_id
                 JOIN courses ON bookings.fk_course_id = courses.id
@@ -180,37 +128,51 @@ $sqlGetUsers = "SELECT users.firstName, users.secondName, users.email
 // Führen Sie die Abfrage aus und holen Sie die Ergebnisse ab
 $result = mysqli_query($connection, $sqlGetUsers);
 
+$row1 = mysqli_fetch_assoc($result);
+$user_id = $row1['id'];
+
+// var_dump($row1);
+var_dump($result);
+
+$layout1 = "";
 
 if (mysqli_num_rows($result) == 0) {
     $layout1 = "There are no Students yet!";
 } else {
+    $layout1 = "<table class='student-table'>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>";
 
-    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    foreach ($rows as $valu) {
-        // Kursdetails anzeigen
-        $layout1 = "
+                    mysqli_data_seek($result, 0);
 
-        <table class='student-table'>
-    <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Action</th>
-</tr>
-<tr>
-<td>{$valu["firstName"]}</td>
-<td>{$valu["secondName"]}</td>
-<td>{$valu["email"]}</td>
-<td><a href='removeStudent.php?studentId={$booking_id}'>Remove student</a>
-</tr>
-</table>
+    while ($value = mysqli_fetch_assoc($result)) {
+        $layout1 .= "<tr>
+                        <td>{$value["firstName"]}</td>
+                        <td>{$value["secondName"]}</td>
+                        <td>{$value["email"]}</td>
+                        <td><a href='removeStudent.php?courseId={$booking_id}&userid={$value["id"]}'>Remove student</a></td>
+                    </tr>
+                </table>";
+}
+}
+// <tr>
+// <td>{$valu["firstName"]}</td>
+// <td>{$valu["secondName"]}</td>
+// <td>{$valu["email"]}</td>
+// <td><a href='removeStudent.php?courseId={$booking_id}&userid={$user_id}'>Remove student</a>
+// </tr>
+// </table>
         
                 
                 
-                    ";
+//                     ";
 
 
-    }};
+//     }};
 
 
 
