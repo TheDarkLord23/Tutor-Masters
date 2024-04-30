@@ -34,8 +34,7 @@ if (isset($_POST["bookings"])) {
     $checkBookingSql = "SELECT * FROM `bookings` WHERE `fk_user_id` = '{$user_id}' AND `fk_course_id` = '{$course_id}'";
     $checkBookingResult = mysqli_query($connection, $checkBookingSql);
 
-    echo $countCapacity = "SELECT COUNT fk_course_id FROM bookings WHERE fk_course_id = '{$course_id}'";
-    die();
+   $countCapacity = "UPDATE `courses` SET `capacity`= capacity-1 WHERE id =  {$course_id}";
     $checkCapacityResult= mysqli_query($connection, $countCapacity);
     
 
@@ -72,9 +71,13 @@ foreach ($rows as $row) {
                     <li>
                         <p>University: <strong>' . $row["university"] . '</strong></p>
                     </li>
+                   
                     <li>
-                        <p>Units: <strong>' . $row["units"] . '</strong></p>
-                    </li>
+                    <p>Capacity left: <strong>' . $row["capacity"] . '</strong></p>
+                </li>
+                <li>
+                <p>Availability: <strong>' . $row["availability"] . '</strong></p>
+            </li>
                 </ul>
             </div>
             <img src=../Images/' . $row["picture"] . ' class="" alt="...">
@@ -99,17 +102,17 @@ foreach ($rows as $row) {
                 </div>
             </div>
         </div>
-    <div class="detailsBtn">
-        <form method="post" style="margin: 0;">
-            <input class="btnDetails bg-success" type="submit" name="bookings" value="book course">
-        </form>
-        <div class="btnDetails" style="background-color: #F99646; color: #fff;">
-            <a href="review.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '">rate this course</a>
+        <div class="detailsBtn">
+            <form method="post" style="margin: 0;">
+                <input class="btnDetails bg-success" type="submit" name="bookings" value="book course">
+            </form>
+            <div class="btnDetails" style="background-color: #F99646; color: #fff;">
+                <a href="review.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '">rate this course</a>
+            </div>
+            <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
+                <a href="dashboardUser.php">back to home</a></div>
+            </div>
         </div>
-        <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-            <a href="dashboardUser.php">back to home</a></div>
-        </div>
-    </div>
     </div>'; 
 }
 ?>

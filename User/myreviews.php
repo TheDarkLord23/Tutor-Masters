@@ -40,8 +40,8 @@ if (mysqli_num_rows($review_result) == 0) {
                     {$review_row['rating']}/5
                     </span>
                 </span>
-                <p class='title'>Subject: {$course_row['subject']}</p>
-                <p class='info'>Comment: {$review_row['comment']}</p>
+                <p class='title'><strong>Subject:</strong><br> {$course_row['subject']}</p>
+                <p class='info'><strong>Comment:</strong> {$review_row['comment']}</p>
                 <ul class='features'>
                     <li>
                         <span class='icon'>

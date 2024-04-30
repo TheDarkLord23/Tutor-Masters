@@ -73,7 +73,7 @@ if (!$result) {
                     myCustomButton: {
                         text: 'To Calendar',
                         click: function() {
-                            window.location.href = '../User/calendar.php';
+                            window.location.href = '../calendar.php';
                         }
                     }
                 },
@@ -202,7 +202,7 @@ if (!$result) {
                 <div class="profile-info">
                     <?= $layout ?>
                     <div class="buttons">
-                        <a class="updateInput" href="updateUser.php">
+                        <a class="updateInput" href="updateprofile.php">
                             <input class="updateBtn" type="submit" name="update" value="Update Profile">
                         </a>
                         <a class="logoutInput" href="../login/logout.php">
