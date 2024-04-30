@@ -39,10 +39,11 @@ if (isset($_POST["submit"])) {
     $language = $_POST["language"];
     $availability = $_POST["availability"];
     $units = $_POST["units"];
+    $capacity = $_POST["capacity"];
     $duration = $_POST["duration"];
     $picture = fileUpload($_FILES["picture"]);
 
-    $sql = "UPDATE `courses` SET `subject`='{$subject}',`university`='{$university}',`roomNumb`='{$roomNumb}',`date`='{$date}',`end_date`='{$end_date}',`teacher`='{$teacher}',`picture`='{$picture[0]}',`language`='{$language}',`duration`='{$duration}',`units`='{$units}',`availability`='{$availability}',`name`='{$name}' WHERE id = $id";
+    $sql = "UPDATE `courses` SET `subject`='{$subject}',`university`='{$university}',`roomNumb`='{$roomNumb}',`date`='{$date}',`end_date`='{$end_date}',`teacher`='{$teacher}',`picture`='{$picture[0]}',`language`='{$language}',`duration`='{$duration}',`units`='{$units}',`capacity`='{$capacity}',`availability`='{$availability}',`name`='{$name}' WHERE id = $id";
 
 
     if (mysqli_query($connection, $sql)) {
@@ -92,6 +93,8 @@ mysqli_close($connection);
             <input type="text" value="<?=$row["availability"]?>" name="availability" required>
 
             <input type="text" value="<?=$row["units"]?>" name="units" required>
+
+            <input type="text" value="<?=$row["capacity"]?>" name="capacity" required>
 
             <input type="text" value="<?=$row["duration"]?>" name="duration" required>
 

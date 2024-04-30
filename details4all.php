@@ -55,6 +55,8 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
   <p class="card-text">Language: '.$row["language"].'</p>
   <p class="card-text">RoomNumb: '.$row["roomNumb"].'</p>
   <p class="card-text">Units: '.$row["units"].'</p>
+  <p class="card-text">Capacity: '.$row["capacity"].'</p>
+  <p class="card-text">Availability: '.$row["availability"].'</p>
   <p class="card-text">University: '.$row["university"].'</p>
 
   <div class="btnAlign">

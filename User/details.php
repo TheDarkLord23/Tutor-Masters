@@ -34,6 +34,11 @@ if (isset($_POST["bookings"])) {
     $checkBookingSql = "SELECT * FROM `bookings` WHERE `fk_user_id` = '{$user_id}' AND `fk_course_id` = '{$course_id}'";
     $checkBookingResult = mysqli_query($connection, $checkBookingSql);
 
+    echo $countCapacity = "SELECT COUNT fk_course_id FROM bookings WHERE fk_course_id = '{$course_id}'";
+    die();
+    $checkCapacityResult= mysqli_query($connection, $countCapacity);
+    
+
     if (mysqli_num_rows($checkBookingResult) > 0) {
         echo "You already subscribed to this course!";
     } else {
@@ -136,19 +141,3 @@ foreach ($rows as $row) {
 </body>
 
 </html>
-
-<!--'<div>
-<div class="">
-<img style="width:500px; height:600px; object-fit: cover; margin:auto" src=../Images/' . $row["picture"] . ' class="card-img-top" alt="...">
-<div class="card-body">
-  <hr>
-
-
-
-
-  <div class="btnAlign">
-
-</div>
-</div>
-</div>
-';-->
