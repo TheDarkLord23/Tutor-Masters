@@ -71,9 +71,13 @@ foreach ($rows as $row) {
                     <li>
                         <p>University: <strong>' . $row["university"] . '</strong></p>
                     </li>
+                   
                     <li>
-                        <p>Units: <strong>' . $row["units"] . '</strong></p>
-                    </li>
+                    <p>Capacity left: <strong>' . $row["capacity"] . '</strong></p>
+                </li>
+                <li>
+                <p>Availability: <strong>' . $row["availability"] . '</strong></p>
+            </li>
                 </ul>
             </div>
             <img src=../Images/' . $row["picture"] . ' class="" alt="...">
