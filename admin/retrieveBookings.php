@@ -41,7 +41,7 @@ if (mysqli_num_rows($booking_result) == 0) {
               <div class='card-holder'>
                   <img class='card-img' src='/Images/{$course_row["picture"]}' alt='Image description' />
                   <h4 class='card-title'>Details</h4>
-                  <a href='details.php?id={$course_row["id"]}' class='card-btn'>Details</a>
+                  <a href='detailsCourses.php?id={$course_row["id"]}' class='card-btn'>Details</a>
               </div>
           </div>
           <div class='info'>

@@ -31,7 +31,7 @@ function cleanInput($var)
 
 $error = false;
 
-$firstNameError = $firstName = $secondName = $email = $password = $secondNameError = $emailError = $passwordError = $phoneNumber = $phoneNumberError = $address = $addressError = "";
+$firstNameError = $firstName = $secondName = $email = $password = $secondNameError = $emailError = $passwordError = $phoneNumber = $phoneNumberError = $address = $addressError = $status = "";
 
 
 if (isset($_POST["submit"])) {
@@ -162,9 +162,9 @@ if (isset($_POST["submit"])) {
         </div>
         <label for="status">Status:</label>
         <select name="status" required>
-          <option value="user" <?= $row["status"] == "user" ? 'selected' : '' ?>>user</option>
-          <option value="admin" <?= $row["status"] == "admin" ? 'selected' : '' ?>>admin</option>
-          <option value="trainer" <?= $row["status"] == "trainer" ? 'selected' : '' ?>>trainer</option>
+          <option value="user <?= $status  == "user" ? 'selected' : '' ?>">user</option>
+          <option value="admin <?= $status  == "admin" ? 'selected' : '' ?>">admin</option>
+          <option value="trainer <?= $status  == "trainer" ? 'selected' : '' ?>">trainer</option>
         </select>
         <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
       </div>
