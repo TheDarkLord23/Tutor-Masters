@@ -29,41 +29,7 @@ if ($_GET["id"]) {
 }
 
 $user_id = $_SESSION["admin"];
-foreach ($rows as $row) {
-    $layout = '
-    <div class="detailContainer">
-        <div>
-            <h1 class="">' . $row["firstName"]. '</h1>
-            <h1 class="">' . $row["secondName"]. '</h1>
-        </div>
-        <div class="topCard">
-            <div class="leftCard">
-                <ul style="">
-
-                    <li>
-                        <p>Email: <strong>' . $row["email"] . '</strong></p>
-                    </li>
-                   
-                    <li>
-                    <p>Address: <strong>' . $row["address"] . '</strong></p>
-                </li>
-                <li>
-                <p>Phone Number: <strong>' . $row["phoneNumber"] . '</strong></p>
-            </li>
-                <li>
-                <p>Status: <strong>' . $row["Status"] . '</strong></p>
-            </li>
-                </ul>
-            </div>
-            <img src=../Images/' . $row["picture"] . ' class="" alt="...">
-        </div>
-    <div class="detailsBtn">
-        <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-            <a href="dashboardAdmin.php">back to home</a></div>
-        </div>
-    </div>
-    </div>'; 
-}
+foreach ($rows as $row)
 ?>
 
 <!DOCTYPE html>
@@ -74,20 +40,33 @@ foreach ($rows as $row) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/details.css">
+    <link rel="stylesheet" href="../style/detailsUser.css">
 </head>
 
 <body>
-  
-<div>
-        <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
-        <div class="detail">
-            <div>
-
-                <?= $layout ?>
-
-            </div>
+  <div>
+    <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
+    <div class="infoCard">
+      <div class="nameCard">
+        <p><?= $row["firstName"] . ' ' . $row["secondName"] ?></p>
+      </div>
+      <div class="infoBox d-flex justify-content-between">
+        <div>
+          <p>Adress:</p>
+          <p>Email:</p>
+          <p>Phone Number:</p>
+          <p>Status:</p>
         </div>
+        <div>
+          <p><?= $row["address"] ?></p>
+          <p><?= $row["email"] ?></p>
+          <p><?= $row["phoneNumber"] ?></p>
+          <p><?= $row["Status"] ?></p>
+        </div>
+      </div>
+      <div class="imgCard">
+        <img src=../Images/<?= $row["picture"] ?> alt='image'>
+      </div>
     </div>
 
         

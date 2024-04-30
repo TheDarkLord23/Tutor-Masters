@@ -21,14 +21,14 @@ if (isset($_SESSION["user"])) {
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM `bookings` WHERE booking_id = $id";
+$sql = "SELECT * FROM `bookings` WHERE id = $id";
 $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
 if ($row["picture"] != "defaultPic.jpg") {
     unlink("../Images/{$row["picture"]}");
 }
 
-$delete = "DELETE FROM `bookings` WHERE booking_id = $id";
+$delete = "DELETE FROM `bookings` WHERE id = $id";
 
 if(mysqli_query($connection, $delete)){
     header("Location: retrieveBookings.php");
