@@ -29,7 +29,7 @@ $delete = "DELETE FROM bookings WHERE bookings.fk_course_id = $id AND bookings.f
 
 if(mysqli_query($connection, $delete)){
     echo "Your booking has been removed";
-    header("url=details.php");
+    header("url=detailsCourses.php");
 }else {
     echo "Error";
 }
@@ -37,13 +37,6 @@ if(mysqli_query($connection, $delete)){
 mysqli_close($connection);
 
 
-if ($result) {
-    echo "Your review ha been posted!";
-    $rating = $comment = "";
-    header("refresh: 3; url=mycourses.php?id=$userId");
-}else {
-    echo "Error";
-}
 
 
 

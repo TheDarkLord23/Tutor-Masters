@@ -79,11 +79,9 @@ if (mysqli_num_rows($courses_result) > 0) {
             </div>
             <div class="detailsBtn">
                 
-                <div class="btnDetails" style="background-color: #F99646; color: #fff;">
-                    <a href="review.php?course_id=' . $row["id"] . '&user_id=' . $id . '">rate this course</a>
-                </div>
+
                 <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-                    <a href="dashboardUser.php">back to home</a></div>
+                    <a href="dashboardTrainer.php">back to home</a></div>
                 </div>
             </div>
         </div>';
@@ -128,8 +126,13 @@ $sqlGetUsers = "SELECT users.firstName, users.secondName, users.email, users.id
 // Führen Sie die Abfrage aus und holen Sie die Ergebnisse ab
 $result = mysqli_query($connection, $sqlGetUsers);
 
-$row1 = mysqli_fetch_assoc($result);
-$user_id = $row1['id'];
+
+
+// if (($result) == 0) {
+   
+
+// } else {$row1 = mysqli_fetch_assoc($result);
+// $user_id = $row1['id'];}
 
 // var_dump($row1);
 // var_dump($result);
@@ -137,7 +140,7 @@ $user_id = $row1['id'];
 $layout1 = "";
 
 if (mysqli_num_rows($result) == 0) {
-    $layout1 = "There are no Students yet!";
+    $layout1 = "There are no Students enrolled yet!";
 } else {
     $layout1 = "<table class='student-table'>
                     <tr>
@@ -157,6 +160,9 @@ if (mysqli_num_rows($result) == 0) {
                         <td><a href='removeStudent.php?courseId={$booking_id}&userid={$value["id"]}'>Remove student</a></td>
                     </tr>
                 </table>";
+            
+                $row1 = mysqli_fetch_assoc($result);
+                $user_id = $row1['id']; 
 }
 }
 // <tr>
