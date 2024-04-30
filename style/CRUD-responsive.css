@@ -9,7 +9,7 @@
 
 /* create | update form section ================================================================0 */
 
-.containerCRUD {
+/* .containerCRUD {
   max-width: 470px;
   margin: 0 auto;
   border-radius: 4px;
@@ -85,7 +85,7 @@
   margin-top: 0;
 }
 
-/* retrieve section =================================================== */
+retrieve section ===================================================
 .course {
   display: flex;
   justify-content: space-between;
@@ -170,7 +170,7 @@
   border-radius: 0.8rem;
 }
 
-/* test=========================== */
+test===========================
 
 .plan {
   border-radius: 16px;
@@ -294,7 +294,7 @@
 .plan .button:hover,
 .plan .button:focus {
   box-shadow: none;
-}
+} */
 @media screen and (min-width: 770px) and (max-width: 1026px) {
   /* retrieve section =================================================== */
   .course {

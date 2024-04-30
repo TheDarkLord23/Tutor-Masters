@@ -1,0 +1,17 @@
+@import url(chillax.css);
+
+* {
+  font-family: "Chillax", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bkgr {
+  height: 50vh;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: -1;
+  border-bottom: solid;
+}
