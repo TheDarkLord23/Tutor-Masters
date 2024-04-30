@@ -60,7 +60,7 @@
     }
     .leftCard {
       width: 350px;
-      height: 200px;
+      height: 100%;
       background-color: #fff;
       color: #000;
       border-radius: 20px;
