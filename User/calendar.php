@@ -31,6 +31,8 @@ $result = mysqli_query($connection,$sql);
         let data = [];
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
+          selectable: true,
+          Boolean, default: false,
           events : [
             <?php while($rows = mysqli_fetch_assoc($result)) { ?>
               {
