@@ -28,41 +28,99 @@ require_once "../functions.php";
 $userId = $_SESSION['user_id'];
 
 
-$courses_query = "SELECT * FROM courses WHERE ";
-$courses_result = mysqli_query($connection, $courses_query);
+// $courses_query = "SELECT * FROM courses WHERE  ";
+// $courses_result = mysqli_query($connection, $courses_query);
 
 $layout = "";
 
-if (mysqli_num_rows($courses_result) == 0) {
-    $layout = "There are no courses at the moment!";
-} else {
-    $rows = mysqli_fetch_all($courses_result, MYSQLI_ASSOC);
-    foreach ($rows as $index => $course_row) {
-        $layout .= "
-      <div class='course'>
-          <div class='course-left'>
-              <div class='card-holder'>
-                  <img class='card-img' src='/Images/{$course_row["picture"]}' alt='Image description' />
-                  <h4 class='card-title'>Details</h4>
-                  <a href='detailsCourses.php?id={$course_row["id"]}' class='card-btn'>Details</a>
-              </div>
-          </div>
-          <div class='info'>
-              <h4 class='course-title'>{$course_row["subject"]}(m/w/d)</h4>
-              <p class='course-date'>Duration: {$course_row["duration"]}mins.</p>
-              <p class='course description'>
-                  The media group around the oe24 network is one of the young and
-                  dynamic players on the domestic market. With a newly established
-                  internal structure, flat hierarchies and a young management team.
-              </p>
-          </div>
+// if (mysqli_num_rows($courses_result) == 0) {
+//     $layout = "There are no courses at the moment!";
+// } else {
+//     $rows = mysqli_fetch_all($courses_result, MYSQLI_ASSOC);
+//     foreach ($rows as $index => $course_row) {
+//         $layout .= "
+//       <div class='course'>
+//           <div class='course-left'>
+//               <div class='card-holder'>
+//                   <img class='card-img' src='/Images/{$course_row["picture"]}' alt='Image description' />
+//                   <h4 class='card-title'>Details</h4>
+//                   <a href='detailsCourses.php?id={$course_row["id"]}' class='card-btn'>Details</a>
+//               </div>
+//           </div>
+//           <div class='info'>
+//               <h4 class='course-title'>{$course_row["subject"]}(m/w/d)</h4>
+//               <p class='course-date'>Duration: {$course_row["duration"]}mins.</p>
+//               <p class='course description'>
+//                   The media group around the oe24 network is one of the young and
+//                   dynamic players on the domestic market. With a newly established
+//                   internal structure, flat hierarchies and a young management team.
+//               </p>
+//           </div>
           
-      </div>";
-        if ($index < count($rows) - 1) {
-            $layout .= "<div class='splitter'></div>";
-        }
+//       </div>";
+//         if ($index < count($rows) - 1) {
+//             $layout .= "<div class='splitter'></div>";
+//         }
+//     }
+// }
+
+
+
+
+$sqlTrainerDetails = "SELECT * FROM users WHERE id = {$userId}";
+$result = mysqli_query($connection, $sqlTrainerDetails);
+$row = mysqli_fetch_assoc($result);
+$TrainerEmail = $row['email'];
+
+
+// $sqlGetUsers = "SELECT * FROM `users`
+//                  WHERE `id` in (SELECT fk_user_id from bookings where fk_course_id = $id)";
+// $sqlGetUsers = "SELECT users.firstName, users.secondName, users.email, bookings.id
+//                     FROM `users`
+//                     JOIN `bookings` ON users.id = bookings.fk_user_id 
+//                     WHERE bookings.fk_course_id = $id";
+$courses = "";
+$sqlGetCourses = "SELECT * FROM `courses` WHERE email = '{$TrainerEmail}'";
+$courses_result = mysqli_query($connection,$sqlGetCourses);
+if(mysqli_num_rows($courses_result) > 0){
+    $rows = mysqli_fetch_all($courses_result,MYSQLI_ASSOC);
+    foreach ($rows as  $value) {
+        $courses .= "<div class='course'>
+        <div class='course-left'>
+            <div class='card-holder'>
+                <img class='card-img' src='/Images/{$value["picture"]}' alt='Image description' />
+                <h4 class='card-title'>More Information</h4>
+                <a href='details.php?id={$value["id"]}' class='card-btn'>Details</a>
+            </div>
+        </div>
+        <div class='info'>
+            <h4 class='course-title'>{$value["subject"]}(m/w/d)</h4>
+            <p class='course-date'>Duration: {$value["duration"]}mins.</p>
+            <p class='course description'>
+                The media group around the oe24 network is one of the young and
+                dynamic players on the domestic market. With a newly established
+                internal structure, flat hierarchies and a young management team.
+            </p>
+        </div>
+        <div class='submitBtnContainer'>
+          <button class='submitBtn bg-danger' style=''><a style='text-decoration: none; color: #fff;' href='deletecourses.php?id={$value['id']}'>Delete</a></button>
+          <button class='submitBtn' style='margin: 0;'><a style='text-decoration: none; color: #fff;' href='details.php?id={$value['id']}'>Details</a></button>
+        </div>
+        
+    </div>
+    <div class='splitter'></div>";
+        
     }
+}else {
+    $courses = "no courses found";
 }
+
+      
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +140,7 @@ if (mysqli_num_rows($courses_result) == 0) {
         <div class="courses">
             <h2 class="">All Courses</h2>
             <div class="list">
-                <?= $layout ?>
+                <?= $courses ?>
             </div>
         </div>
     </div>
