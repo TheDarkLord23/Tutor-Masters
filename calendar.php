@@ -42,7 +42,7 @@ $result = mysqli_query($connection,$sql);
                 id : "<?= $rows["id"] ?>",
                 title : "<?= $rows['name'] ?>",
                 start : "<?= $rows["date"] ?>",
-                end : "<?= $rows["end_date"] ?>"
+                end : "<?= $rows["end_date"] ?>",
               },
               <?php }?>
               
