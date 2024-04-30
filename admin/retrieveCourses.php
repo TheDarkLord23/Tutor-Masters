@@ -41,7 +41,7 @@ if (mysqli_num_rows($courses_result) == 0) {
           <div class='course-left'>
               <div class='card-holder'>
                   <img class='card-img' src='/Images/{$course_row["picture"]}' alt='Image description' />
-                  <h4 class='card-title'>More Information</h4>
+                  <h4 class='card-title'>Details</h4>
                   <a href='detailsCourses.php?id={$course_row["id"]}' class='card-btn'>Details</a>
               </div>
           </div>
@@ -54,13 +54,11 @@ if (mysqli_num_rows($courses_result) == 0) {
                   internal structure, flat hierarchies and a young management team.
               </p>
           </div>
-          <div class='submitBtnContainer'>
-            <button class='submitBtn bg-warning' style=''><a style='text-decoration: none; color: #fff;' href='updateCourses.php?id={$course_row['id']}'>Update</a></button>
-            <button class='submitBtn' style='margin: 0;'><a style='text-decoration: none; color: #fff;' href='detailsCourses.php?id={$course_row['id']}'>Details</a></button>
-          </div>
           
-      </div>
-      <div class='splitter'></div>";
+      </div>";
+        if ($index < count($rows) - 1) {
+            $layout .= "<div class='splitter'></div>";
+        }
     }
 }
 ?>
@@ -74,12 +72,13 @@ if (mysqli_num_rows($courses_result) == 0) {
     <title>My Booked Courses</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/CRUD.css">
+    <link rel="stylesheet" href="../style/CRUD-responsive.css">
 </head>
 
 <body>
     <div class="container">
         <div class="courses">
-            <h2 class="">My Booked Courses</h2>
+            <h2 class="">All Courses</h2>
             <div class="list">
                 <?= $layout ?>
             </div>

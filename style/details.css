@@ -8,7 +8,7 @@
 }
 
 .bkgr {
-  height: 30vh;
+  height: 33vh;
   width: 100%;
   object-fit: cover;
   position: relative;
@@ -30,15 +30,20 @@
 
 .detailContainer {
   width: 750px;
-  height: 50vh;
-  background-color: #fff;
+  height: 550px;
+  background-color: #E9FAF5;
   border-radius: 20px;
   padding: 40px;
+  position: relative;
     h1 {
-      color: #0ca678;
-      font-size: 100px;
+      color: #fff;
+      font-size: 80px;
       text-align: center;
-      padding-bottom: 20px;
+      background-color: #2ACC9B;
+      border-radius: 20px;
+      margin: 0 0 20px 0;
+      padding: 10px;
+      
     }
 }
 
@@ -46,15 +51,92 @@
   display: flex;
   justify-content: space-between;
     img {
-      width: 300px;
-      height: 300üx;
-      object-fit: contain;
+      width: 250px;
+      height: 200px;
+      object-fit: cover;
       display: inline;
-      border: 12px solid #0ca678;
+      border: 12px solid #099268;
       border-radius: 20px;
     }
-    p {
-      display: inline;
-      color: #0ca678;
+    .leftCard {
+      width: 350px;
+      height: 200px;
+      background-color: #fff;
+      color: #000;
+      border-radius: 20px;
+      padding: 10px;
+        ul {
+          margin: 0;
+          padding: 0;
+          font-size: 20px;
+          list-style: none;
+            li {
+              padding: 15px 0;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+                p {
+                  margin: 0;
+                }
+                a {
+                  text-decoration: none;
+                  color: #000;
+                }
+            }
+        }
     }
+}
+
+.infoBox {
+  margin: 20px 0;
+}
+
+.infoContainer {
+  background-color: #F99646;
+  border-radius: 20px;
+  padding: 20px 20px 20px 70px;
+  position: relative;
+    .imgCard {
+      position: absolute;
+      top: 60px;
+      left: -20px;
+      background-color: #38D9A9;
+      padding: 5px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      border-top-left-radius: 20px;
+    }
+    p {
+      margin: 6px 0;
+    }
+}
+
+.detailsBtn {
+  position: absolute;
+  bottom: 80px;
+  right: -135px;
+}
+
+.btnDetails {
+  text-align: start;
+  width: 150px;
+  margin: 20px 0;
+  padding: 10px;
+  font-weight: 600;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border: none;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 350ms ease;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    
+}
+
+.btnDetails:hover {
+  transform: scale(1.1);
 }

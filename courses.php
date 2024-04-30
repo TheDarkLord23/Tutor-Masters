@@ -73,8 +73,6 @@ if (mysqli_num_rows($readResult) == 0) {
                 <h3 class="title">The courses in Tutor Masters</h3>
                 <h5>Our courses are designed to empower students with the knowledge and skills needed for university admission success. We offer personalized tutoring sessions tailored to individual learning styles, comprehensive study materials, and expert guidance from leading educators. Our goal is to provide a supportive and enriching learning experience that enables students to excel academically and achieve their educational aspirations.</h5>
             </div>
-            <div class="right">
-            </div>
         </div>
     </div>
     <div class="container">

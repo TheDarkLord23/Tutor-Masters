@@ -942,12 +942,16 @@ footer {
 
 @media screen and (min-width: 770px) and (max-width: 1026px) {
   .background {
-    height: 100vh;
+    height: 25vh;
   }
   .hero {
     padding: 10px;
-    height: 100vh;
+    height: 25vh;
     gap: 0 !important;
+  }
+
+  .bkgr {
+    height: 100%;
   }
 
   .left {
@@ -968,7 +972,7 @@ footer {
   }
 
   .banner {
-    width: 350px;
+    width: 500px;
     height: auto;
   }
 
@@ -984,7 +988,7 @@ footer {
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
       0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     color: #ffff;
-    background-color: #000000;
+    background-color: #0ca678;
     font-size: 1.2rem;
     border-radius: 100px;
     padding: 10px 0px;
@@ -1024,6 +1028,9 @@ footer {
     font-size: 1rem;
     font-weight: 400;
   }
+  .row {
+    gap: 10px;
+  }
 
   .card-holder {
     padding: 0 !important;
@@ -1052,7 +1059,7 @@ footer {
     transition: all 200ms ease-in;
   }
   .testimonials {
-    height: 35vh;
+    height: 25vh;
   }
 
   #testimonials {
@@ -1073,18 +1080,23 @@ footer {
   }
 
   .all {
-    padding: 10px 80px 10px 80px;
+    padding: 10px 100px 10px 80px;
     gap: 20px;
   }
+
+  .mission {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
   .mission-img {
-    display: none;
+    display: block;
+    width: 50%;
+    border-radius: 0.8rem;
   }
 
-  .mission-text {
-    text-align: center;
-  }
   .mission-img-mobile {
-    display: block;
+    display: none;
     width: 70%;
     border-radius: 0.8rem;
     margin: 20px auto;
