@@ -49,7 +49,6 @@ foreach ($rows as $row)
     <div class="infoCard">
       <div class="nameCard">
         <p><?= $row["firstName"] . ' ' . $row["secondName"] ?></p>
-        <hr>
       </div>
       <div class="infoBox d-flex justify-content-between">
         <div>
