@@ -55,7 +55,7 @@ if (mysqli_num_rows($courses_result) == 0) {
               </p>
           </div>
           <div class='submitBtnContainer'>
-            <button class='submitBtn bg-danger' style=''><a style='text-decoration: none; color: #fff;' href='deleteCourses.php?id={$course_row['id']}'>Delete</a></button>
+            <button class='submitBtn bg-warning' style=''><a style='text-decoration: none; color: #fff;' href='updateCourses.php?id={$course_row['id']}'>Update</a></button>
             <button class='submitBtn' style='margin: 0;'><a style='text-decoration: none; color: #fff;' href='detailsCourses.php?id={$course_row['id']}'>Details</a></button>
           </div>
           

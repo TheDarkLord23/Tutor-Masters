@@ -1,20 +1,22 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION["user"])) {
+if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSION["user"])) {
     header("Location: ../login/login.php");
 }
 
 require "../db_connection.php";
 
 
-if($_GET["id"]) {
+if ($_GET["id"]) {
     $id = $_GET["id"];
-    $sql= "SELECT * FROM courses WHERE id = {$id}";
+    $sql = "SELECT * FROM courses WHERE id = {$id}";
     $result = mysqli_query($connection, $sql);
     $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    if(mysqli_num_rows($result) == 1) {
-        $data = mysqli_fetch_assoc($result);}}
+    if (mysqli_num_rows($result) == 1) {
+        $data = mysqli_fetch_assoc($result);
+    }
+}
 //     } else {
 //         // header("location: error.php");
 //     }
@@ -50,32 +52,17 @@ if (isset($_POST["bookings"])) {
 
 
 $user_id = $_SESSION["user"];
-foreach($rows as $row) {
-
-$layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
-<div class="row g-1 container-fluid card shadow-lg bg-card-color">
-<img style="width:500px; height:600px; object-fit: cover; margin:auto" src=../Images/'.$row["picture"].' class="card-img-top" alt="...">
-<div class="card-body">
-  <h5 class="card-title">'.$row["subject"].'</h5>
-  <hr>
-  <a href="teacherDetail.php?email='.$row["email"].'" class="card-text">Teacher: '.$row["teacher"].'</a>
-  <p class="card-text">Start date: '.$row["date"].'</p>
-  <p class="card-text">End date: '.$row["end_date"].'</p>
-  <p class="card-text">Language: '.$row["language"].'</p>
-  <p class="card-text">RoomNumb: '.$row["roomNumb"].'</p>
-  <p class="card-text">Units: '.$row["units"].'</p>
-  <p class="card-text">University: '.$row["university"].'</p>
-
-  <div class="btnAlign">
-  <form method="post">
-  <input class="btn btn-success" type="submit" name="bookings" value="book course">
-  </form>
-  <a class="btn btn-warning" href="review.php?course_id='.$row["id"].'&user_id='.$user_id.'">rate this course</a>
-  <a class="btn btn-danger" href="dashboardUser.php">back to home</a></div>
-</div>
-</div>
-</div>
-';
+foreach ($rows as $row) {
+    $layout = '
+    <div class="detailContainer">
+        <div>
+            <h1 class="">' . $row["subject"] . '</h1>
+        </div>
+        <div class="topCard">
+            <p class="">University: ' . $row["university"] . '</p>
+            <img src=../Images/' . $row["picture"] . ' class="" alt="...">
+        </div>
+    </div>'; 
 }
 ?>
 
@@ -88,16 +75,45 @@ $layout = '<div class=" mb-5 col col-12 d-flex align-items-stretch">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/details.css">
 </head>
 
 <body>
-    <br><br>
-    <div class="container" >
+    <div>
+        <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
+        <div class="detail">
+            <div>
 
-        <?= $layout ?>
+                <?= $layout ?>
 
+            </div>
+        </div>
     </div>
-  
+
 </body>
 
 </html>
+
+<!--'<div>
+<div class="">
+<img style="width:500px; height:600px; object-fit: cover; margin:auto" src=../Images/' . $row["picture"] . ' class="card-img-top" alt="...">
+<div class="card-body">
+  <hr>
+  <a href="teacherDetail.php?email=' . $row["email"] . '" class="card-text">Teacher: ' . $row["teacher"] . '</a>
+  <p class="card-text">Start date: ' . $row["date"] . '</p>
+  <p class="card-text">End date: ' . $row["end_date"] . '</p>
+  <p class="card-text">Language: ' . $row["language"] . '</p>
+  <p class="card-text">RoomNumb: ' . $row["roomNumb"] . '</p>
+  <p class="card-text">Units: ' . $row["units"] . '</p>
+  <p class="card-text">University: ' . $row["university"] . '</p>
+
+  <div class="btnAlign">
+  <form method="post">
+  <input class="btn btn-success" type="submit" name="bookings" value="book course">
+  </form>
+  <a class="btn btn-warning" href="review.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '">rate this course</a>
+  <a class="btn btn-danger" href="dashboardUser.php">back to home</a></div>
+</div>
+</div>
+</div>
+';-->
