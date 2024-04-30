@@ -132,7 +132,7 @@ $row1 = mysqli_fetch_assoc($result);
 $user_id = $row1['id'];
 
 // var_dump($row1);
-var_dump($result);
+// var_dump($result);
 
 $layout1 = "";
 
