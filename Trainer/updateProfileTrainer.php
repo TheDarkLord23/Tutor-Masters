@@ -1,90 +1,122 @@
 <?php
 
+
+
 session_start();
-
-if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
-    header("Location: ../login/login.php");
-}
-
-if (isset($_SESSION["user"])) {
-    header("Location: ../User/dashboardUser.php");
-}
-
-
 
 require_once "../db_connection.php";
 require_once "../login/file_upload.php";
 
-$id = $_SESSION["trainer"];
-$sql = "SELECT * FROM `users` WHERE id = $id";
+$session = 0;
+$goBack = "";
+
+if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSION["user"])) {
+
+    $goBack = "index.php";
+} else {
+    $session = $_SESSION["trainer"];
+    // $goBack = "indexUser.php";
+}
+
+$sql = "SELECT * FROM users WHERE id = {$session}";
 $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
 
-// Get Data from table end
 
-// update start:
-
-if (isset($_POST["submit"])) {
+if (isset($_POST["update"])) {
     $firstName = $_POST["firstName"];
     $secondName = $_POST["secondName"];
     $email = $_POST["email"];
+    $password = $_POST["password"];
+
     $address = $_POST["address"];
     $phoneNumber = $_POST["phoneNumber"];
-    $status = $_POST["status"];
-    $picture = fileUpload($_FILES["picture"]);
-
-    $sql = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}',`Status`='{$status}',`picture`='{$picture[0]}' WHERE id = $id";
+    // $picture = fileUpload($_FILES["picture"]);
 
 
-    if (mysqli_query($connection, $sql)) {
-        echo "<p>User has been updated!</p>";
-        header("refresh: 3; url=dashboardTrainer.php");
+    $pictureArray = fileUpload($_FILES['picture']);
+
+
+    // if ($pictureArray->error == 4) {
+    $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`password`='{$password}',`address`='{$address}',`phoneNumber`='{$phoneNumber}',`picture`='{$pictureArray[0]}' WHERE id = {$session}";
+    // } else {
+    //     if ($row["picture"] != "../Images/defaultPic.jpg") {
+    //         unlink("../images{$row["picture"]}");
+    //     }
+    //     $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}', `picture`='{$pictureArray[0]}' WHERE id = {$session}";
+    // }
+
+    if (mysqli_query($connection, $update)) {
+        $class = "alert alert-success";
+        $message = "The record was successfully updated";
+        $uploadError = ($pictureArray != 0) ? $pictureArray : '';
+        header("refresh:3;url=dashboardTrainer.php?id={$session}");
     } else {
-        echo "<p>Something went wrong.Please try again later!</p>";
+        $class = "alert alert-danger";
+        $message = "Error while updating record : <br>" . $connection->error;
+        // $uploadError = ($pictureArray != 0) ? $pictureArray['ErrorMessage'] : '';
+        header("refresh:3;url=updateProfileTrainer.php?id={$session}");
     }
-}
 
-// update end
-mysqli_close($connection);
+    exit();
 
-
-
-?>
-
+    header("Location: dashboardTrainer.php");
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/CRUD.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <title>Document</title>
 </head>
 <body>
 
-<h5>Update Profile:</h5>
-    <form action="" method="post" enctype="multipart/form-data">
+<div class="containerCRUD container mt-5">
+        <div class="crudHeader mb-3">
+            <h3>Update Profile</h3>
+        </div>
 
-            <input type="text" value="<?=$row["firstName"]?>" name="firstName" required>
 
-            <input type="text" value="<?=$row["secondName"]?>" name="secondName">
+<form method="post" enctype="multipart/form-data">
+            <div class="step active">
+                <div class="progress mb-3" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%; background-color: #099268; border-radius: 20px;"></div>
+                </div>
+                <label for="firstName">First Name</label>
+                <input class="input" type="text" name="firstName" placeholder="Change first name" value="<?= isset($row["firstName"]) ? $row["firstName"] : '' ?>">
+                <label for="secondName">Last Name</label>
+                <input class="input" type="text" name="secondName" placeholder="Change last name" value="<?= isset($row["secondName"]) ? $row["secondName"] : '' ?>">
+                <label for="email">E-mail</label>
+                <input class="input" type="text" name="email" placeholder="Change email" value="<?= isset($row["email"]) ? $row["email"] : '' ?>">
+                <label for="password">Password</label>
+                <input class="input" type="text" name="password" placeholder="Change password">
+                <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
+            </div>
 
-            <input type="text" value="<?=$row["email"]?>" name="email" required>
-
-            <input type="text" value="<?=$row["address"]?>" name="address" required>
-
-            <input type="text" value="<?=$row["phoneNumber"]?>" name="phoneNumber" required>
-            
-            <label for="status">Status:</label>
-                <select name="status" required>
-                    <option value="user" <?= $row["Status"] == "user" ? 'selected' : '' ?>>user</option>
-                    <option value="admin" <?= $row["Status"] == "admin" ? 'selected' : '' ?>>admin</option>
-                    <option value="trainer" <?= $row["Status"] == "trainer" ? 'selected' : '' ?>>trainer</option>
-                 </select>
-
-            <input type="file" name="picture">
-
-            <input type="submit" name="submit">
+            <div class="step">
+                <div class="progress mb-3" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%; background-color: #099268; border-radius: 20px;"></div>
+                </div>
+                <label for="phoneNumber">Phone Number</label>
+                <input class="input" type="text" name="phoneNumber" placeholder="Change phone Number" value="<?= isset($row["phoneNumber"]) ? $row["phoneNumber"] : '' ?>">
+                <label for="address">Address</label>
+                <input class="input" type="text" name="address" placeholder="Change address" value="<?= isset($row["address"]) ? $row["address"] : '' ?>"></input>
+                <br><br>
+                <label for="picture">Change your profile picture</label>
+                <input class="input" type="file" id="picture" name="picture">
+                <br>
+                <br>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
+                    <button type="submit" class="submitBtn" value="Update" name="update" style="width: 200px;">Update</button>
+                </div>
+            </div>
+        </form>
     </form>
-
+</div>
 
 </body>
 </html>

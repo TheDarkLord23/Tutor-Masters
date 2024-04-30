@@ -199,7 +199,7 @@ if (!$result) {
                 <div class="profile-info">
                     <?= $layout ?>
                     <div class="buttons">
-                        <a class="updateInput" href="updateprofile.php">
+                        <a class="updateInput" href="updateProfileTrainer.php">
                             <input class="updateBtn" type="submit" name="update" value="Update Profile">
                         </a>
                         <a class="logoutInput" href="../login/logout.php">
