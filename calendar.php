@@ -6,8 +6,8 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
     header("Location: ../login/login.php");
 }
 
-require_once "../db_connection.php";
-require_once "../navbar_session.php";
+require_once "db_connection.php";
+require_once "navbar.php";
 
  $data = "";
 $sql = "SELECT * FROM `courses`";
@@ -31,17 +31,33 @@ $result = mysqli_query($connection,$sql);
         let data = [];
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
+          selectable: true,
+         
+          Boolean, default: true,
+          
+        
           events : [
             <?php while($rows = mysqli_fetch_assoc($result)) { ?>
               {
                 id : "<?= $rows["id"] ?>",
                 title : "<?= $rows['name'] ?>",
                 start : "<?= $rows["date"] ?>",
-                end : "<?= $rows["end_date"] ?>"
+                end : "<?= $rows["end_date"] ?>",
               },
               <?php }?>
+              
           ],
-          eventColor: '#0ca678'
+
+          dateClick: function(info) {
+            if (info.dayEl.style.backgroundColor === 'green') {
+              info.dayEl.style.backgroundColor = 'red';
+            } else {
+              info.dayEl.style.backgroundColor = 'green';
+            }
+          },
+          eventColor: '#0ca678',
+          eventBackgroundColor: '#0ca678', // Standardfarbe für Ereignisse
+          eventBorderColor: 'green', // Standardfarbe für Ereignisrahmen
         });
         calendar.render();
       });
@@ -49,6 +65,7 @@ $result = mysqli_query($connection,$sql);
     </script>
     <style>
       .boxCalendar{
+        margin-top: 10px;
         display: flex;
         justify-content: center;
       }
@@ -60,7 +77,7 @@ $result = mysqli_query($connection,$sql);
         text-decoration: none;
         color: #565656;
       }
-      a#fc_dom_14{
+      a.fc-daygrid-day-number{
         text-decoration: none;
         color: #565656;
       }

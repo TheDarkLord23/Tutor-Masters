@@ -47,6 +47,7 @@ $row = mysqli_fetch_assoc($result);
         <p><?= $row["language"]?></p>
         <p><?= $row["duration"]?></p>
         <p><?= $row["units"]?></p>
+        <p><?= $row["capacity"]?></p>
         <p><?= $row["availability"]?></p>
         <p><?= $row["name"]?></p>
 </body>

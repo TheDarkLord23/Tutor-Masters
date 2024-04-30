@@ -29,10 +29,11 @@ if (isset($_POST["submit"])) {
     $language = $_POST["language"];
     $availability = $_POST["availability"];
     $units = $_POST["units"];
+    $capacity = $_POST["capacity"];
     $duration = $_POST["duration"];
     $picture = fileUpload($_FILES["picture"]);
 
-    $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`, `teacher`, `picture`, `language`, `duration`, `units`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$availability}','{$name}')";
+    $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`, `teacher`, `picture`, `language`, `duration`, `units`,`capacity`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$capacity}','{$availability}','{$name}')";
 
     if (mysqli_query($connection, $sql)) {
         echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
@@ -116,6 +117,9 @@ if (isset($_POST["submit"])) {
         </div>
         <div>
           <input class="input" type="text" placeholder="Duration" name="duration" required>
+        </div> 
+        <div>
+          <input class="input" type="text" placeholder="capacity" name="capacity" required>
         </div>
         <div class="d-flex justify-content-between">
           <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
