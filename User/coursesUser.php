@@ -143,7 +143,7 @@ if (mysqli_num_rows($readResult) == 0) {
             function filterCourses(filterType, filterId, button) {
 
                 var xhr = new XMLHttpRequest();
-                xhr.open("GET", "filter_courses.php?type=" + filterType + "&id=" + filterId, true);
+                xhr.open("GET", "../filter_courses.php?type=" + filterType + "&id=" + filterId, true);
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState == 4 && xhr.status == 200) {
 

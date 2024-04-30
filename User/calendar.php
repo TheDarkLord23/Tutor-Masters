@@ -14,19 +14,6 @@ $sql = "SELECT * FROM `courses`";
 
 $result = mysqli_query($connection,$sql);
 
-if(mysqli_num_rows($result) > 0){
-  $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
-
-  foreach ($rows as  $value) {
-    $data .= "id : '{$value["id"]}',
-    title : '{$value["subject"]},
-    start : '{$value["date"]}',
-    end : '{$value["end_date"]}'";
-    
-  }
-}else {
-  $data = "no courses";
-}
 
 
 
@@ -44,17 +31,44 @@ if(mysqli_num_rows($result) > 0){
         let data = [];
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
+          events : [
+            <?php while($rows = mysqli_fetch_assoc($result)) { ?>
+              {
+                id : "<?= $rows["id"] ?>",
+                title : "<?= $rows['name'] ?>",
+                start : "<?= $rows["date"] ?>",
+                end : "<?= $rows["end_date"] ?>"
+              },
+              <?php }?>
+          ],
+          eventColor: '#0ca678'
         });
         calendar.render();
       });
 
     </script>
+    <style>
+      .boxCalendar{
+        display: flex;
+        justify-content: center;
+      }
+
+      #calendar{
+        width: 80%;
+      }
+      a.fc-col-header-cell-cushion{
+        text-decoration: none;
+        color: #565656;
+      }
+    </style>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/index.css">
   </head>
   <body>
+    <div class="boxCalendar">
       <div id='calendar'></div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
