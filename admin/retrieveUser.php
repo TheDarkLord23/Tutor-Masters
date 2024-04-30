@@ -65,7 +65,7 @@ if (mysqli_num_rows($runSql) == 0) {
             </a>
         </div>
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-30">
+        <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 g-30">
             <?= $layout ?>
         </div>
     </div>
