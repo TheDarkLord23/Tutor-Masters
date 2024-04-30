@@ -102,17 +102,17 @@ foreach ($rows as $row) {
                 </div>
             </div>
         </div>
-    <div class="detailsBtn">
-        <form method="post" style="margin: 0;">
-            <input class="btnDetails bg-success" type="submit" name="bookings" value="book course">
-        </form>
-        <div class="btnDetails" style="background-color: #F99646; color: #fff;">
-            <a href="review.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '">rate this course</a>
+        <div class="detailsBtn">
+            <form method="post" style="margin: 0;">
+                <input class="btnDetails bg-success" type="submit" name="bookings" value="book course">
+            </form>
+            <div class="btnDetails" style="background-color: #F99646; color: #fff;">
+                <a href="review.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '">rate this course</a>
+            </div>
+            <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
+                <a href="dashboardUser.php">back to home</a></div>
+            </div>
         </div>
-        <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-            <a href="dashboardUser.php">back to home</a></div>
-        </div>
-    </div>
     </div>'; 
 }
 ?>
