@@ -7,3 +7,7 @@ function cleanInput($var)
 
     return $data;
 }
+
+
+// $capacity = 0;
+// function 

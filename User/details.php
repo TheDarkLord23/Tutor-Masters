@@ -34,6 +34,11 @@ if (isset($_POST["bookings"])) {
     $checkBookingSql = "SELECT * FROM `bookings` WHERE `fk_user_id` = '{$user_id}' AND `fk_course_id` = '{$course_id}'";
     $checkBookingResult = mysqli_query($connection, $checkBookingSql);
 
+    echo $countCapacity = "SELECT COUNT fk_course_id FROM bookings WHERE fk_course_id = '{$course_id}'";
+    die();
+    $checkCapacityResult= mysqli_query($connection, $countCapacity);
+    
+
     if (mysqli_num_rows($checkBookingResult) > 0) {
         echo "You already subscribed to this course!";
     } else {
@@ -59,11 +64,52 @@ foreach ($rows as $row) {
             <h1 class="">' . $row["subject"] . '</h1>
         </div>
         <div class="topCard">
-            <p class="">University: ' . $row["university"] . '</p>
-            <p class="">Capacity: ' . $row["capacity"] . '</p>
-            <p class="">Availability: ' . $row["availability"] . '</p>
+            <div class="leftCard">
+                <ul style="">
+                    <li>
+                        <a href="teacherDetail.php?email=' . $row["email"] . '">Teacher: <strong>' . $row["teacher"] . '</strong></a>
+                    </li>
+                    <li>
+                        <p>University: <strong>' . $row["university"] . '</strong></p>
+                    </li>
+                    <li>
+                        <p>Units: <strong>' . $row["units"] . '</strong></p>
+                    </li>
+                </ul>
+            </div>
             <img src=../Images/' . $row["picture"] . ' class="" alt="...">
         </div>
+        <div class="d-flex justify-content-between infoBox">
+            <div class="d-flex infoContainer">
+                <div class="imgCard">
+                    <img src="../Images/flag.png" alt="">
+                </div>
+                <div>
+                    <p>RoomNumb: <strong>' . $row["roomNumb"] . '</strong></p>
+                    <p>Language: <strong>' . $row["language"] . '</strong></p>
+                </div>
+            </div>
+            <div class="d-flex infoContainer">
+                <div class="imgCard">
+                    <img src="../Images/calendar.png" alt="">
+                </div>
+                <div>
+                    <p>Start date: <strong>' . $row["date"] . '</strong></p>
+                    <p>End date: <strong>' . $row["end_date"] . '</strong></p>
+                </div>
+            </div>
+        </div>
+    <div class="detailsBtn">
+        <form method="post" style="margin: 0;">
+            <input class="btnDetails bg-success" type="submit" name="bookings" value="book course">
+        </form>
+        <div class="btnDetails" style="background-color: #F99646; color: #fff;">
+            <a href="review.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '">rate this course</a>
+        </div>
+        <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
+            <a href="dashboardUser.php">back to home</a></div>
+        </div>
+    </div>
     </div>'; 
 }
 ?>

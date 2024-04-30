@@ -6,8 +6,8 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
   header("Location: ../login/login.php");
 }
 
-require_once "../db_connection.php";
-require_once "../navbar_session.php";
+require_once "db_connection.php";
+require_once "navbar.php";
 
 $data = "";
 $sql = "SELECT * FROM `courses`";
@@ -42,7 +42,7 @@ $result = mysqli_query($connection, $sql);
               id: "<?= $rows["id"] ?>",
               title: "<?= $rows['name'] ?>",
               start: "<?= $rows["date"] ?>",
-              end: "<?= $rows["end_date"] ?>"
+              end: "<?= $rows["end_date"] ?>",
             },
           <?php } ?>
 

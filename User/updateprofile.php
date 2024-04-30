@@ -67,7 +67,7 @@ if (isset($_POST["update"])) {
 
     $result = mysqli_query($connection, $update);
 
-    header("Location: {$goBack}");
+    header("Location: dashboardUser.php");
 }
 
 ?>
