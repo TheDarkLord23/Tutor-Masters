@@ -84,9 +84,10 @@ mysqli_close($connection);
                 <option value="3">★★★☆☆</option>
                 <option value="4">★★★★☆</option>
                 <option value="5">★★★★★</option>
-            </select>
+            </select> 
+               <button type="submit" class="submitBtn" style="width: 100%;" name="submit">Submit</button>
         </form>
-        <button type="submit" class="submitBtn" style="width: 100%;" name="submit">Submit</button>
+    
     </div>
 </body>
 
