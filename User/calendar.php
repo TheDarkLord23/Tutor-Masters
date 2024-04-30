@@ -32,7 +32,10 @@ $result = mysqli_query($connection,$sql);
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
           selectable: true,
-          Boolean, default: false,
+         
+          Boolean, default: true,
+          
+        
           events : [
             <?php while($rows = mysqli_fetch_assoc($result)) { ?>
               {
@@ -42,8 +45,19 @@ $result = mysqli_query($connection,$sql);
                 end : "<?= $rows["end_date"] ?>"
               },
               <?php }?>
+              
           ],
-          eventColor: '#0ca678'
+
+          dateClick: function(info) {
+            if (info.dayEl.style.backgroundColor === 'green') {
+              info.dayEl.style.backgroundColor = 'red';
+            } else {
+              info.dayEl.style.backgroundColor = 'green';
+            }
+          },
+          eventColor: '#0ca678',
+          eventBackgroundColor: '#0ca678', // Standardfarbe für Ereignisse
+          eventBorderColor: 'green', // Standardfarbe für Ereignisrahmen
         });
         calendar.render();
       });
@@ -51,6 +65,7 @@ $result = mysqli_query($connection,$sql);
     </script>
     <style>
       .boxCalendar{
+        margin-top: 10px;
         display: flex;
         justify-content: center;
       }
@@ -59,6 +74,10 @@ $result = mysqli_query($connection,$sql);
         width: 80%;
       }
       a.fc-col-header-cell-cushion{
+        text-decoration: none;
+        color: #565656;
+      }
+      a.fc-daygrid-day-number{
         text-decoration: none;
         color: #565656;
       }
