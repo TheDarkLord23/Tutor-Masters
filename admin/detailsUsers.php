@@ -42,14 +42,28 @@ $row = mysqli_fetch_assoc($result);
 <body>
   <div>
     <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
-    <div>
-      <img class='imgCarts' src=../Images/<?= $row["picture"] ?> alt='image'>
-      <p><?= $row["firstName"] ?></p>
-      <p><?= $row["secondName"] ?></p>
-      <p><?= $row["email"] ?></p>
-      <p><?= $row["address"] ?></p>
-      <p><?= $row["phoneNumber"] ?></p>
-      <p><?= $row["Status"] ?></p>
+    <div class="infoCard">
+      <div class="nameCard">
+        <p><?= $row["firstName"] . ' ' . $row["secondName"] ?></p>
+        <hr>
+      </div>
+      <div class="infoBox d-flex justify-content-between">
+        <div>
+          <p>Adress:</p>
+          <p>Email:</p>
+          <p>Phone Number:</p>
+          <p>Status:</p>
+        </div>
+        <div>
+          <p><?= $row["address"] ?></p>
+          <p><?= $row["email"] ?></p>
+          <p><?= $row["phoneNumber"] ?></p>
+          <p><?= $row["Status"] ?></p>
+        </div>
+      </div>
+      <div class="imgCard">
+        <img src=../Images/<?= $row["picture"] ?> alt='image'>
+      </div>
     </div>
   </div>
 
