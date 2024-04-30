@@ -79,7 +79,7 @@ if (!$result) {
                 },
                 headerToolbar: {
                     left: 'title',
-                    right: 'prev,next today myCustomButton'
+                    right: 'prev,next myCustomButton'
                 },
 
                 events: [

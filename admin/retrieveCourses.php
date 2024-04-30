@@ -78,7 +78,12 @@ if (mysqli_num_rows($courses_result) == 0) {
 <body>
     <div class="container">
         <div class="courses">
-            <h2 class="">All Courses</h2>
+            <div class="top">
+                <h2 class="">All Courses</h2>
+                <a class="createInput" id="createUserBtn" href="createCourses.php">
+                    <input class="create" type="submit" name="create" value="Create Course">
+                </a>
+            </div>
             <div class="list">
                 <?= $layout ?>
             </div>

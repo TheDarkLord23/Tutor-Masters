@@ -18,6 +18,9 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
                 <div class='collapse navbar-collapse' id='navbarNav'>
                     <ul class='navbar-nav flex-grow-1'>
                         <li class='nav-item'>
+                            <a class='nav-link' href='index.php'>Home</a>
+                        </li>
+                        <li class='nav-item'>
                             <a class='nav-link' href='User/coursesUser.php'>Courses</a>
                         </li>
                         <li class='nav-item'>
@@ -51,6 +54,9 @@ if (isset($_SESSION["user"])) {
                 </button>
                 <div class='collapse navbar-collapse' id='navbarNav'>
                     <ul class='navbar-nav flex-grow-1'>
+                    <li class='nav-item'>
+                            <a class='nav-link' href='../index.php'>Home</a>
+                        </li>
                         <li class='nav-item'>
                             <a class='nav-link' href='User/coursesUser.php'>Courses</a>
                         </li>
@@ -85,6 +91,9 @@ if (isset($_SESSION["trainer"])) {
                 </button>
                 <div class='collapse navbar-collapse' id='navbarNav'>
                     <ul class='navbar-nav flex-grow-1'>
+                    <li class='nav-item'>
+                            <a class='nav-link' href='../index.php'>Home</a>
+                        </li>
                         <li class='nav-item'>
                             <a class='nav-link' href='courses.php'>Courses</a>
                         </li>
@@ -119,6 +128,9 @@ if (isset($_SESSION["admin"])) {
                 </button>
                 <div class='collapse navbar-collapse' id='navbarNav'>
                     <ul class='navbar-nav flex-grow-1'>
+                    <li class='nav-item'>
+                            <a class='nav-link' href='../index.php'>Home</a>
+                        </li>
                         <li class='nav-item'>
                             <a class='nav-link' href='courses.php'>Courses</a>
                         </li>
