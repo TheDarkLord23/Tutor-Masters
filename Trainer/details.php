@@ -162,7 +162,7 @@ if (mysqli_num_rows($result) == 0) {
                 </table>";
             
                 $row1 = mysqli_fetch_assoc($result);
-                $user_id = $row1['id']; 
+                
 }
 }
 // <tr>
