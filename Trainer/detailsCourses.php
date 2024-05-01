@@ -71,6 +71,16 @@ $sqlTrainerDetails = "SELECT * FROM users WHERE id = {$userId}";
 $result = mysqli_query($connection, $sqlTrainerDetails);
 $row = mysqli_fetch_assoc($result);
 $TrainerEmail = $row['email'];
+
+
+$sqlGetTeacher = "SELECT * FROM `courses` WHERE email = '{$TrainerEmail}'";
+$teacher_result = mysqli_query($connection, $sqlGetTeacher);
+
+
+$teacherRow = mysqli_fetch_assoc($teacher_result);
+$teacherName = $teacherRow['teacher'];
+
+
 // var_dump($TrainerEmail);
 
 // $sqlGetUsers = "SELECT * FROM `users`
@@ -116,8 +126,9 @@ if (mysqli_num_rows($courses_result) > 0) {
     $courses = "no courses found";
 }
 
-
-
+var_dump($userId);
+var_dump($TrainerEmail);
+var_dump($teacherName);
 
 
 
@@ -141,7 +152,7 @@ if (mysqli_num_rows($courses_result) > 0) {
         <div class="courses">
             <div class="top">
                 <h2 class="">My Courses</h2>
-                <a class="createInput" id="createUserBtn" href="createCourses.php">
+                <a class="createInput" id="createUserBtn" href="createCourses.php?teacherName=<?= $teacherName ?>&trainerEmail=<?= $TrainerEmail ?>">
                     <input class="create" type="submit" name="create" value="Create Course">
                 </a>
             </div>

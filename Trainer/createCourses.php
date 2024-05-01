@@ -17,6 +17,9 @@ if (isset($_SESSION["user"])) {
 // validation end
 
 // Create start:
+$teacherName = $_GET["teacherName"];
+$teacherEmail = $_GET["trainerEmail"];
+
 
 if (isset($_POST["submit"])) {
   $subject = $_POST["subject"];
@@ -33,7 +36,7 @@ if (isset($_POST["submit"])) {
   $duration = $_POST["duration"];
   $picture = fileUpload($_FILES["picture"]);
 
-  $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`,`picture`, `language`, `duration`, `units`,`capacity`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$picture[0]}','{$language}','{$duration}','{$units}','{$capacity}','{$availability}','{$name}')";
+  $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`,`picture`, `language`, `duration`, `units`,`capacity`, `availability`, `name`, `email`, `teacher`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$picture[0]}','{$language}','{$duration}','{$units}','{$capacity}','{$availability}','{$name}','{$teacherEmail}','{$teacherName}')";
 
   if (mysqli_query($connection, $sql)) {
     echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";

@@ -26,7 +26,7 @@ $TrainerEmail = $row['email'];
 
 // Kurse abrufen, die dem Trainer zugeordnet sind
 $courses = "";
-$sqlGetCourses = "SELECT * FROM `courses` WHERE email = '{$TrainerEmail}'";
+$sqlGetCourses = "SELECT * FROM `courses` WHERE email = '{$TrainerEmail}' and id = '{$id}'";
 $courses_result = mysqli_query($connection, $sqlGetCourses);
 if (mysqli_num_rows($courses_result) > 0) {
     $rows = mysqli_fetch_all($courses_result, MYSQLI_ASSOC);
