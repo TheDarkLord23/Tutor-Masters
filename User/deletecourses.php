@@ -36,7 +36,7 @@ $checkCapacityResult= mysqli_query($connection, $countCapacity);
 
 if(mysqli_query($connection, $delete)){
     // echo ("the course has been deleted");
-    header("Location: mycourses.php");
+    header("Location: dashboardUser.php");
 }else {
     echo "Error";
 }
