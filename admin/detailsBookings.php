@@ -57,60 +57,60 @@ if (isset($_SESSION["admin"])) {
 
         $layout .= '
 
-            <div class="detailContainer">
-        <div>
-            <h1 class="">' . $row[0]["subject"] . '</h1>
-        </div>
-        <div class="topCard">
-            <div class="leftCard">
-                <ul style="">
-                    <li>
-                        <a href="teacherDetail.php?email=' . $row[0]["email"] . '">Teacher: <strong>' . $row[0]["teacher"] . '</strong></a>
+        <div class="detailContainer">
+            <div>
+                <h1 class="">' . $row[0]["subject"] . '</h1>
+            </div>
+            <div class="topCard">
+                <div class="leftCard">
+                    <ul style="">
+                        <li>
+                            <a href="teacherDetail.php?email=' . $row[0]["email"] . '">Teacher: <strong>' . $row[0]["teacher"] . '</strong></a>
+                        </li>
+                        <li>
+                            <p>University: <strong>' . $row[0]["university"] . '</strong></p>
+                        </li>
+                    
+                        <li>
+                        <p>Capacity left: <strong>' . $row[0]["capacity"] . '</strong></p>
                     </li>
                     <li>
-                        <p>University: <strong>' . $row[0]["university"] . '</strong></p>
-                    </li>
-                   
-                    <li>
-                    <p>Capacity left: <strong>' . $row[0]["capacity"] . '</strong></p>
+                    <p>Availability: <strong>' . $row[0]["availability"] . '</strong></p>
                 </li>
-                <li>
-                <p>Availability: <strong>' . $row[0]["availability"] . '</strong></p>
-            </li>
-                </ul>
+                    </ul>
+                </div>
+                <img src=../Images/' . $row[0]["picture"] . ' class="" alt="...">
             </div>
-            <img src=../Images/' . $row[0]["picture"] . ' class="" alt="...">
+            <div class="d-flex justify-content-between infoBox">
+                <div class="d-flex infoContainer">
+                    <div class="imgCard">
+                        <img src="../Images/flag.png" alt="">
+                    </div>
+                    <div>
+                        <p>RoomNumb: <strong>' . $row[0]["roomNumb"] . '</strong></p>
+                        <p>Language: <strong>' . $row[0]["language"] . '</strong></p>
+                    </div>
+                </div>
+                <div class="d-flex infoContainer">
+                    <div class="imgCard">
+                        <img src="../Images/calendar.png" alt="">
+                    </div>
+                    <div>
+                        <p>Start date: <strong>' . $row[0]["date"] . '</strong></p>
+                        <p>End date: <strong>' . $row[0]["end_date"] . '</strong></p>
+                    </div>
+                </div>
+                </div>
+                <div class="detailsBtn">
+                    <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
+                        <a href="dashboardAdmin.php">Go Back</a>
+                    </div>
+                    <div class="btnDetails" style="background-color: red; color: #fff;">
+                        <a href="deleteBookings.php?id= . $row[0]["booking_id"] . ">Delete</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="d-flex justify-content-between infoBox">
-            <div class="d-flex infoContainer">
-                <div class="imgCard">
-                    <img src="../Images/flag.png" alt="">
-                </div>
-                <div>
-                    <p>RoomNumb: <strong>' . $row[0]["roomNumb"] . '</strong></p>
-                    <p>Language: <strong>' . $row[0]["language"] . '</strong></p>
-                </div>
-            </div>
-            <div class="d-flex infoContainer">
-                <div class="imgCard">
-                    <img src="../Images/calendar.png" alt="">
-                </div>
-                <div>
-                    <p>Start date: <strong>' . $row[0]["date"] . '</strong></p>
-                    <p>End date: <strong>' . $row[0]["end_date"] . '</strong></p>
-                </div>
-            </div>
-        </div>
-    <div class="detailsBtn">
-        <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-            <a href="dashboardAdmin.php">Go Back</a>
-            </div>
-            <div class="btnDetails" style="background-color: red; color: #fff;">
-            <a href="deleteBookings.php?id= . $row[0]["booking_id"] . ">Delete</a>
-            </div>
-        </div>
-    </div>
-    </div>
   ';
     }
 }
