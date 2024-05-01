@@ -7,11 +7,11 @@ session_start();
 // validation start:
 
 if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"])) {
-    header("Location: ../login/login.php");
+  header("Location: ../login/login.php");
 }
 
 if (isset($_SESSION["user"])) {
-    header("Location: ../User/dashboardUser.php");
+  header("Location: ../User/dashboardUser.php");
 }
 
 // validation end
@@ -19,28 +19,28 @@ if (isset($_SESSION["user"])) {
 // Create start:
 
 if (isset($_POST["submit"])) {
-    $subject = $_POST["subject"];
-    $name = $_POST["name"];
-    $university = $_POST["university"];
-    $roomNumb = $_POST["roomNumb"];
-    $date = $_POST["date"];
-    $end_date = $_POST["end_date"];
-    $teacher = $_POST["teacher"];
-    $language = $_POST["language"];
-    $availability = $_POST["availability"];
-    $units = $_POST["units"];
-    $capacity = $_POST["capacity"];
-    $duration = $_POST["duration"];
-    $picture = fileUpload($_FILES["picture"]);
+  $subject = $_POST["subject"];
+  $name = $_POST["name"];
+  $university = $_POST["university"];
+  $roomNumb = $_POST["roomNumb"];
+  $date = $_POST["date"];
+  $end_date = $_POST["end_date"];
+  $teacher = $_POST["teacher"];
+  $language = $_POST["language"];
+  $availability = $_POST["availability"];
+  $units = $_POST["units"];
+  $capacity = $_POST["capacity"];
+  $duration = $_POST["duration"];
+  $picture = fileUpload($_FILES["picture"]);
 
-    $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`, `teacher`, `picture`, `language`, `duration`, `units`,`capacity`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$capacity}','{$availability}','{$name}')";
+  $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`, `teacher`, `picture`, `language`, `duration`, `units`,`capacity`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$capacity}','{$availability}','{$name}')";
 
-    if (mysqli_query($connection, $sql)) {
-        echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
-        header("refresh: 3; url=dashboardTrainer.php");
-    } else {
-        echo "<div class='containerAlert2'><p>Something went wrong.Please try again later!</p></div>";
-    }
+  if (mysqli_query($connection, $sql)) {
+    echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
+    header("refresh: 3; url=dashboardTrainer.php");
+  } else {
+    echo "<div class='containerAlert2'><p>Something went wrong.Please try again later!</p></div>";
+  }
 }
 
 
@@ -89,16 +89,15 @@ if (isset($_POST["submit"])) {
           <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%; background-color: #099268; border-radius: 20px;"></div>
         </div>
         <div>
-          <input class="input" type="text" placeholder="Teacher" name="teacher" required>
-        </div>
-        <div>
           <input class="input" type="text" placeholder="Language" name="language" required>
         </div>
         <div>
-          <input class="input" type="datetime-local" placeholder="Date" name="date" required>
+        <label for="" style="margin: 10px 0 0 0; font-weight: 500;">Start Date & Time</label>
+          <input class="input" type="datetime-local" placeholder="Date" name="date" style="margin: 0 0 10px 0;" required>
         </div>
         <div>
-          <input class="input" type="datetime-local" placeholder="end_date" name="end_date" required>
+          <label for="" style="margin: 10px 0 0 0; font-weight: 500;">End Date & Time</label>
+          <input class="input" type="datetime-local" placeholder="end_date" name="end_date" style="margin: 0 0 10px 0;" required>
         </div>
         <div class="d-flex justify-content-between">
           <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
@@ -119,7 +118,7 @@ if (isset($_POST["submit"])) {
         </div>
         <div>
           <input class="input" type="text" placeholder="Duration" name="duration" required>
-        </div> 
+        </div>
         <div>
           <input class="input" type="text" placeholder="capacity" name="capacity" required>
         </div>

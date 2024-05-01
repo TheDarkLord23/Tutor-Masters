@@ -71,7 +71,7 @@ $sqlTrainerDetails = "SELECT * FROM users WHERE id = {$userId}";
 $result = mysqli_query($connection, $sqlTrainerDetails);
 $row = mysqli_fetch_assoc($result);
 $TrainerEmail = $row['email'];
-
+// var_dump($TrainerEmail);
 
 // $sqlGetUsers = "SELECT * FROM `users`
 //                  WHERE `id` in (SELECT fk_user_id from bookings where fk_course_id = $id)";
@@ -85,7 +85,7 @@ $courses_result = mysqli_query($connection, $sqlGetCourses);
 if (mysqli_num_rows($courses_result) > 0) {
     $rows = mysqli_fetch_all($courses_result, MYSQLI_ASSOC);
     $index = 0;
-
+    
     foreach ($rows as  $value) {
         $courses .= "<div class='course'>
         <div class='course-left'>
