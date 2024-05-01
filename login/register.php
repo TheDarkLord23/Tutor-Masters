@@ -106,13 +106,6 @@ if (isset($_POST["submit"])) {
         $sqlInsert = "INSERT INTO `users`(`firstName`, `secondName`, `email`, `password`, `address`, `phoneNumber`, `picture`) VALUES ('{$firstName}','{$secondName}','{$email}','{$password}','{$address}','{$phoneNumber}','{$picture[0]}')";
 
         $result = mysqli_query($connection, $sqlInsert);
-
-        if ($result) {
-            echo "Your are registered now!";
-            $firstName = $secondName = $email = $phoneNumber = $address = $password = "";
-        } else {
-            echo "Error";
-        }
     }
 }
 
@@ -128,7 +121,24 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="../style/loginRegister.css">
 </head>
 
-<body>
+<body onload="<?php if ($result) {
+                    echo 'showPopup()';
+                } ?>">
+    <!-- Your form here -->
+
+    <!-- Success pop-up that is hidden by default -->
+    <div id="successPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-bg">
+                <img src="../Images/checkmark.png" alt="">
+                <p>Success</p>
+            </div>
+            <div class="popup-text">
+                <p>Congratulations, your account<br> has been successfully created</p>
+                <a href="../login/login.php" class="continueBtn">Continue</a>
+            </div>
+        </div>
+    </div>
     <div class="logoContainer">
         <a href="../index.php"><img class="logo" src="../Images/logo.png" alt="logo"></a>
     </div>
@@ -177,6 +187,17 @@ if (isset($_POST["submit"])) {
             <p>You already have an account? <a class="loginBtn" href="login.php">Login</a></p>
         </div>
     </div>
+
+    <script>
+        function showPopup() {
+            var popup = document.getElementById("successPopup");
+            popup.classList.add("show");
+
+            setTimeout(function() {
+                window.location.href = "login.php";
+            }, 3000);
+        }
+    </script>
 
 </body>
 
