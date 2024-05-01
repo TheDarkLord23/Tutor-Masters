@@ -11,35 +11,34 @@ if (isset($_SESSION["trainer"])) {
     header("Location: ../Trainer/indexTrainer.php");
 }
 
-
-
-
-
-if (isset($_SESSION["admin"])) {
-    header("Location: ../Admin/dashboardAdmin.php");
-}
-
-if (isset($_SESSION["trainer"])) {
-    header("Location: ../Trainer/dashboardTrainer.php");
-}
-
 require_once "../db_connection.php";
 require_once "../navbar_session.php";
+
 $userId = $_SESSION['user_id'];
+
 $query = "SELECT * FROM users WHERE id = $userId";
 $result = mysqli_query($connection, $query);
+
 $layout = "";
+
+$data = "";
+$sql = "SELECT * FROM `courses`";
+$resultCalendar = mysqli_query($connection, $sql);
+
 if (!$result) {
     die("Database query failed: " . mysqli_error($connection));
 } else {
     $user = mysqli_fetch_assoc($result);
     $layout .= "
         <img class='circle-image' src='../Images/{$user["picture"]}' alt=''>
-        <h2>{$user["firstName"]} {$user["secondName"]}</h2>
-        <p>Email: {$user["email"]}</p>
-        <p>Address: {$user["address"]}</p>
-        <p>Phone: {$user["phoneNumber"]}</p>";
+        <div class='profile'>
+            <h2>{$user["firstName"]} {$user["secondName"]}</h2>
+            <p>Email: {$user["email"]}</p>
+            <p>Address: {$user["address"]}</p>
+            <p>Phone: {$user["phoneNumber"]}</p>
+        </div>";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +49,79 @@ if (!$result) {
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/dashboard.css">
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            let data = [];
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                aspectRatio: 2.7,
+                initialView: 'dayGridMonth',
+                selectable: true,
+
+                Boolean,
+                default: true,
+
+                customButtons: {
+                    myCustomButton: {
+                        text: 'To Calendar',
+                        click: function() {
+                            window.location.href = '../User/calendar.php';
+                        }
+                    }
+                },
+                headerToolbar: {
+                    left: 'title',
+                    right: 'prev,next myCustomButton'
+                },
+
+                events: [
+                    <?php while ($rows = mysqli_fetch_assoc($resultCalendar)) { ?> {
+                            id: "<?= $rows["id"] ?>",
+                            title: "<?= $rows['name'] ?>",
+                            start: "<?= $rows["date"] ?>",
+                            end: "<?= $rows["end_date"] ?>"
+                        },
+                    <?php } ?>
+
+                ],
+
+                dateClick: function(info) {
+                    if (info.dayEl.style.backgroundColor === 'green') {
+                        info.dayEl.style.backgroundColor = 'red';
+                    } else {
+                        info.dayEl.style.backgroundColor = 'green';
+                    }
+                },
+                eventColor: '#0ca678',
+                eventBackgroundColor: '#0ca678', // Standardfarbe für Ereignisse
+                eventBorderColor: 'green', // Standardfarbe für Ereignisrahmen
+            });
+            calendar.render();
+        });
+    </script>
+    <style>
+        .boxCalendar {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #calendar {
+            width: 100%;
+        }
+
+        a.fc-col-header-cell-cushion {
+            text-decoration: none;
+            color: #565656;
+        }
+
+        a.fc-daygrid-day-number {
+            text-decoration: none;
+            color: #565656;
+        }
+    </style>
 </head>
 
 <body>
@@ -67,10 +139,6 @@ if (!$result) {
                 <img class="icon" src="../Images/star-black.png" alt="">
                 <div class="title">My Reviews</div>
             </a>
-            <!-- <a href="#" class="action" id="action4Btn">
-                <img class="icon" src="../Images/house-black.png" alt="">
-                <div class="title">Action 4</div>
-            </a> -->
         </div>
         <div class="center-section" id="centerSection">
             <div class="center-left">
@@ -86,35 +154,8 @@ if (!$result) {
                         </div>
                     </div>
                     <div class="content">
-                        <div class="items-left">
-                            <!-- <div class="grid">
-                            <div class="box">
-                                <div class="icon">Icon 1</div>
-                                <div class="text">Text 1</div>
-                            </div>
-                            <div class="box">
-                                <div class="icon">Icon 2</div>
-                                <div class="text">Text 2</div>
-                            </div>
-                            <div class="box">
-                                <div class="icon">Icon 3</div>
-                                <div class="text">Text 3</div>
-                            </div>
-                            <div class="box">
-                                <div class="icon">Icon 4</div>
-                                <div class="text">Text 4</div>
-                            </div>
-                        </div> -->
-                            <div class="box">
-                                <img src="../Images/star-full.png" class="icon-big" alt="">
-                                <h2 class="text">My Reviews</h2>
-                            </div>
-                            <div class="box">
-                                <img src="../Images/open-book.png" class="icon-big" alt="">
-                                <h2 class="text">My Courses</h2>
-                            </div>
-                        </div>
                         <div class="items-right">
+                            <div id='calendar'></div>
                         </div>
                     </div>
                 </div>
@@ -122,19 +163,21 @@ if (!$result) {
             <div class="center-right">
                 <div class="profile-info">
                     <?= $layout ?>
-                    <a class="updateInput" href="updateprofile.php">
-                        <input class="updateBtn" type="submit" name="update" value="Update Profile">
-                    </a>
-                    <a class="logoutInput" href="../login/logout.php">
-                        <input class="logout" type="submit" name="logout" value="Logout">
-                    </a>
+                    <div class="buttons">
+                        <a class="updateInput" href="updateprofile.php">
+                            <input class="updateBtn" type="submit" name="update" value="Update Profile">
+                        </a>
+                        <a class="logoutInput" href="../login/logout.php">
+                            <input class="logout" type="submit" name="logout" value="Logout">
+                        </a>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
     <script>
         var currentDate = new Date();
+
         var options = {
             weekday: 'long',
             year: 'numeric',
@@ -142,28 +185,36 @@ if (!$result) {
             day: 'numeric'
         };
         var formattedDate = currentDate.toLocaleDateString('en-US', options);
+
         document.getElementById('current-date').textContent = formattedDate;
+
         // Function to handle dashboard button click (refresh page)
         document.getElementById('dashboardBtn').addEventListener('click', function(event) {
             location.reload();
         });
+
         document.addEventListener("DOMContentLoaded", function() {
             // Get reference to center section and action buttons
             var centerSection = document.getElementById("centerSection");
             var actionButtons = document.querySelectorAll(".action");
+
             // Function to handle button click
             function handleButtonClick(event) {
                 event.preventDefault();
+
                 // Check if the clicked button is not already active
                 if (!this.classList.contains("action-active")) {
                     // Remove action-active class from all buttons
                     actionButtons.forEach(function(btn) {
                         btn.classList.remove("action-active");
                     });
+
                     // Add action-active class to the clicked button
                     this.classList.add("action-active");
+
                     // Get the href attribute of the clicked button
                     var href = this.getAttribute("href");
+
                     // Fetch the content from the href
                     fetch(href)
                         .then(response => response.text())
@@ -174,6 +225,7 @@ if (!$result) {
                         .catch(error => console.error("Error:", error));
                 }
             }
+
             // Add click event listeners to action buttons
             actionButtons.forEach(function(btn) {
                 btn.addEventListener("click", handleButtonClick);

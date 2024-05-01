@@ -83,7 +83,7 @@ if (!$result) {
                 },
                 headerToolbar: {
                     left: 'title',
-                    right: 'prev,next today myCustomButton'
+                    right: 'prev,next myCustomButton'
                 },
 
                 events: [
@@ -165,34 +165,6 @@ if (!$result) {
                         </div>
                     </div>
                     <div class="content">
-                        <!-- <div class="items-left">
-                            <div class="grid">
-                            <div class="box">
-                                <div class="icon">Icon 1</div>
-                                <div class="text">Text 1</div>
-                            </div>
-                            <div class="box">
-                                <div class="icon">Icon 2</div>
-                                <div class="text">Text 2</div>
-                            </div>
-                            <div class="box">
-                                <div class="icon">Icon 3</div>
-                                <div class="text">Text 3</div>
-                            </div>
-                            <div class="box">
-                                <div class="icon">Icon 4</div>
-                                <div class="text">Text 4</div>
-                            </div>
-                        </div>
-                            <a href="retrieveUser.php" class="box" id="action3Btn">
-                                <img src="../Images/person.png" class="icon-big" alt="">
-                                <h2 class="text">All Users</h2>
-                            </a>
-                            <a href="retrieveCourses.php" class="box" id="action2Btn">
-                                <img src="../Images/book.png" class="icon-big" alt="">
-                                <h2 class="text">All Courses</h2>
-                            </a>
-                        </div> -->
                         <div class="items-right">
                             <div id='calendar'></div>
                         </div>
@@ -211,7 +183,6 @@ if (!$result) {
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
 

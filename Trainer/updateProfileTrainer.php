@@ -64,23 +64,29 @@ if (isset($_POST["update"])) {
 }?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/CRUD.css">
+    <title>Update your Profile</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <title>Document</title>
+    <link rel="stylesheet" href="../style/CRUD.css">
 </head>
-<body>
 
-<div class="containerCRUD container mt-5">
+<body>
+    <div class="containerCRUD container mt-5">
         <div class="crudHeader mb-3">
             <h3>Update Profile</h3>
         </div>
+        <?php if (!empty($message)) : ?>
+            <!-- ' updateError & massage noch bearbeiten' -->
+            <div class="alert alert-<?= $class; ?>" role="alert">
+                <p><?= $message ?></p>
+                <a href='indexUser.php'><button class="btn btn-primary" type='button'>Home</button></a>
+            </div>
+        <?php endif; ?>
 
-
-<form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <div class="step active">
                 <div class="progress mb-3" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%; background-color: #099268; border-radius: 20px;"></div>
@@ -115,8 +121,29 @@ if (isset($_POST["update"])) {
                 </div>
             </div>
         </form>
-    </form>
-</div>
 
+
+        <script>
+            function nextStep() {
+                const currentStep = document.querySelector('.step.active');
+                const nextStep = currentStep.nextElementSibling;
+
+                if (nextStep) {
+                    currentStep.classList.remove('active');
+                    nextStep.classList.add('active');
+                }
+            }
+
+            function prevStep() {
+                const currentStep = document.querySelector('.step.active');
+                const prevStep = currentStep.previousElementSibling;
+
+                if (prevStep) {
+                    currentStep.classList.remove('active');
+                    prevStep.classList.add('active');
+                }
+            }
+        </script>
 </body>
+
 </html>

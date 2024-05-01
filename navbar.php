@@ -21,7 +21,7 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
                             <a class='nav-link' href='index.php'>Home</a>
                         </li>
                         <li class='nav-item'>
-                            <a class='nav-link' href='User/coursesUser.php'>Courses</a>
+                            <a class='nav-link' href='courses.php'>Courses</a>
                         </li>
                         <li class='nav-item'>
                             <a class='nav-link' href='aboutus.php'>About Us</a>

@@ -1,6 +1,7 @@
 <?php 
 
 require_once "../db_connection.php";
+require_once "../login/file_upload.php";
 
 session_start();
 
@@ -19,7 +20,7 @@ if (isset($_SESSION["user"])) {
   
 
 
-$id = $_GET["id"];
+$id = $_GET["delete_id"];
 
 $sql = "SELECT * FROM `courses` WHERE id = $id";
 $result = mysqli_query($connection, $sql);

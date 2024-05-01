@@ -667,8 +667,8 @@ footer {
     visibility: hidden;
   }
   .testimonials-pic {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     margin: 0 auto;
     object-fit: cover;
     border-radius: 50%;
