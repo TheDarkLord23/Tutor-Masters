@@ -66,34 +66,84 @@ mysqli_close($connection);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/CRUD.css">
 </head>
 <body>
 
-<h5>Update a User:</h5>
-    <form action="" method="post" enctype="multipart/form-data">
+    <div class="containerCRUD container mt-5">
+        <div class="crudHeader mb-3">
+            <h3>Update Profile</h3>
+        </div>
+        <?php if (!empty($message)) : ?>
+            <!-- ' updateError & massage noch bearbeiten' -->
+            <div class="alert alert-<?= $class; ?>" role="alert">
+                <p><?= $message ?></p>
+                <a href='indexUser.php'><button class="btn btn-primary" type='button'>Home</button></a>
+            </div>
+        <?php endif; ?>
 
-            <input type="text" value="<?=$row["firstName"]?>" name="firstName" required>
-
-            <input type="text" value="<?=$row["secondName"]?>" name="secondName">
-
-            <input type="text" value="<?=$row["email"]?>" name="email" required>
-
-            <input type="text" value="<?=$row["address"]?>" name="address" required>
-
-            <input type="text" value="<?=$row["phoneNumber"]?>" name="phoneNumber" required>
-            
-            <label for="status">Status:</label>
+        <form method="post" enctype="multipart/form-data">
+            <div class="step active">
+                <div class="progress mb-3" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%; background-color: #099268; border-radius: 20px;"></div>
+                </div>
+                <label for="firstName">First Name</label>
+                <input class="input" type="text" name="firstName" placeholder="Change first name" value="<?= isset($row["firstName"]) ? $row["firstName"] : '' ?>">
+                <label for="secondName">Last Name</label>
+                <input class="input" type="text" name="secondName" placeholder="Change last name" value="<?= isset($row["secondName"]) ? $row["secondName"] : '' ?>">
+                <label for="email">E-mail</label>
+                <input class="input" type="text" name="email" placeholder="Change email" value="<?= isset($row["email"]) ? $row["email"] : '' ?>">
+                <label for="status">Status</label>
                 <select name="status" required>
-                    <option value="user" <?= $row["Status"] == "user" ? 'selected' : '' ?>>user</option>
-                    <option value="admin" <?= $row["Status"] == "admin" ? 'selected' : '' ?>>admin</option>
-                    <option value="trainer" <?= $row["Status"] == "trainer" ? 'selected' : '' ?>>trainer</option>
-                 </select>
+                    <option value="user <?= $row  == "user" ? 'selected' : '' ?>">user</option>
+                    <option value="admin <?= $row  == "admin" ? 'selected' : '' ?>">admin</option>
+                    <option value="trainer <?= $row  == "trainer" ? 'selected' : '' ?>">trainer</option>
+                </select>
+                <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
+            </div>
 
-            <input type="file" name="picture">
+            <div class="step">
+                <div class="progress mb-3" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%; background-color: #099268; border-radius: 20px;"></div>
+                </div>
+                <label for="phoneNumber">Phone Number</label>
+                <input class="input" type="text" name="phoneNumber" placeholder="Change phone Number" value="<?= isset($row["phoneNumber"]) ? $row["phoneNumber"] : '' ?>">
+                <label for="address">Address</label>
+                <input class="input" type="text" name="address" placeholder="Change address" value="<?= isset($row["address"]) ? $row["address"] : '' ?>"></input>
+                <br><br>
+                <label for="picture">Change your profile picture</label>
+                <input class="input" type="file" id="picture" name="picture">
+                <br>
+                <br>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
+                    <button type="submit" class="submitBtn" value="Update" name="submit" style="width: 200px;">Update</button>
+                </div>
+            </div>
+        </form>
 
-            <input type="submit" name="submit">
-    </form>
 
+        <script>
+            function nextStep() {
+                const currentStep = document.querySelector('.step.active');
+                const nextStep = currentStep.nextElementSibling;
 
+                if (nextStep) {
+                    currentStep.classList.remove('active');
+                    nextStep.classList.add('active');
+                }
+            }
+
+            function prevStep() {
+                const currentStep = document.querySelector('.step.active');
+                const prevStep = currentStep.previousElementSibling;
+
+                if (prevStep) {
+                    currentStep.classList.remove('active');
+                    prevStep.classList.add('active');
+                }
+            }
+        </script>
 </body>
 </html>
