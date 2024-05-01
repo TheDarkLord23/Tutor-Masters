@@ -17,6 +17,9 @@ if (isset($_SESSION["user"])) {
 // validation end
 
 // Create start:
+$teacherName = $_GET["teacherName"];
+$teacherEmail = $_GET["trainerEmail"];
+
 
 if (isset($_POST["submit"])) {
   $subject = $_POST["subject"];
@@ -25,7 +28,7 @@ if (isset($_POST["submit"])) {
   $roomNumb = $_POST["roomNumb"];
   $date = $_POST["date"];
   $end_date = $_POST["end_date"];
-  $teacher = $_POST["teacher"];
+  // $teacher = $_POST["teacher"];
   $language = $_POST["language"];
   $availability = $_POST["availability"];
   $units = $_POST["units"];
@@ -33,7 +36,7 @@ if (isset($_POST["submit"])) {
   $duration = $_POST["duration"];
   $picture = fileUpload($_FILES["picture"]);
 
-  $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`, `teacher`, `picture`, `language`, `duration`, `units`,`capacity`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$capacity}','{$availability}','{$name}')";
+  $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`,`picture`, `language`, `duration`, `units`,`capacity`, `availability`, `name`, `email`, `teacher`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$picture[0]}','{$language}','{$duration}','{$units}','{$capacity}','{$availability}','{$name}','{$teacherEmail}','{$teacherName}')";
 
   if (mysqli_query($connection, $sql)) {
     echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
@@ -65,7 +68,7 @@ if (isset($_POST["submit"])) {
     <div class="crudHeader">
       <h3 class="mb-4">Create a course:</h3>
     </div>
-    <form id="multiStepForm" method="post" action="process_form.php" enctype="multipart/form-data">
+    <form id="multiStepForm" method="post" enctype="multipart/form-data">
       <!-- Step 1 -->
       <div class="step active">
         <div class="progress mb-3" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
@@ -141,7 +144,7 @@ if (isset($_POST["submit"])) {
         </div>
         <div class="d-flex justify-content-between">
           <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
-          <button type="submit" class="submitBtn" style="width: 200px;">Submit</button>
+          <button type="submit" name="submit" class="submitBtn" style="width: 200px;">Submit</button>
         </div>
       </div>
     </form>

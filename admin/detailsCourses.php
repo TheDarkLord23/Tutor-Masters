@@ -2,19 +2,18 @@
 
 session_start();
 
-if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
-["user"])) {
+if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSION["user"])) {
     header("Location: ../login/login.php");
 }
 
 if (isset($_SESSION["user"])) {
     header("Location: ../User/dashboardUser.php");
-  }
-  
-  if (isset($_SESSION["trainer"])) {
+}
+
+if (isset($_SESSION["trainer"])) {
     header("Location: ../Trainer/dashboardTrainer.php");
-  }
-  
+}
+
 
 
 require_once "../db_connection.php";
@@ -46,9 +45,9 @@ if (isset($_POST["bookings"])) {
     $checkBookingSql = "SELECT * FROM `bookings` WHERE `fk_user_id` = '{$user_id}' AND `fk_course_id` = '{$course_id}'";
     $checkBookingResult = mysqli_query($connection, $checkBookingSql);
 
-   $countCapacity = "UPDATE `courses` SET `capacity`= capacity-1 WHERE id =  {$course_id}";
-    $checkCapacityResult= mysqli_query($connection, $countCapacity);
-    
+    $countCapacity = "UPDATE `courses` SET `capacity`= capacity-1 WHERE id =  {$course_id}";
+    $checkCapacityResult = mysqli_query($connection, $countCapacity);
+
 
     if (mysqli_num_rows($checkBookingResult) > 0) {
         echo "You already subscribed to this course!";
@@ -116,10 +115,13 @@ foreach ($rows as $row) {
         </div>
     <div class="detailsBtn">
         <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-            <a href="dashboardAdmin.php">back to home</a></div>
+            <a href="dashboardAdmin.php">Go Back</a>
+        </div>
+        <div class="btnDetails" style="background-color: red; color: #fff;">
+            <a href="deleteBookings.php?id= . $row[0]["booking_id"] . ">Delete</a>
         </div>
     </div>
-    </div>'; 
+    </div>';
 }
 ?>
 
