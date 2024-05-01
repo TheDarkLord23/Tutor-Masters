@@ -22,6 +22,12 @@ $readQuery = "SELECT * FROM courses";
 $readResult = mysqli_query($connection, $readQuery);
 
 
+$uniQuery = "SELECT DISTINCT `university` FROM courses";
+$uniResult = mysqli_query($connection, $uniQuery);
+
+$subjQuery = "SELECT DISTINCT `subject` FROM courses";
+$subjResult = mysqli_query($connection, $subjQuery);
+
 $layout = "";
 $universities = "";
 $subjects = "";
@@ -31,6 +37,8 @@ if (mysqli_num_rows($readResult) == 0) {
     $layout = "No courses found!";
 } else {
     $rows = mysqli_fetch_all($readResult, MYSQLI_ASSOC);
+    $uni = mysqli_fetch_all($uniResult, MYSQLI_ASSOC);
+    $sibj = mysqli_fetch_all($subjResult, MYSQLI_ASSOC);
 
     foreach ($rows as $index => $value) {
         $date = strtotime($value["date"]);
@@ -39,7 +47,7 @@ if (mysqli_num_rows($readResult) == 0) {
         <div class='course'>
             <div class='course-left'>
                 <div class='card-holder'>
-                    <img class='card-img' src='/Images/{$value["picture"]}' alt='Image description' />
+                    <img class='card-img' src='../Images/{$value["picture"]}' alt='Image description' />
                     <h4 class='card-title'>More Information</h4>
                     <a href='details.php?id={$value["id"]}' class='card-btn'>Details</a>
                 </div>
@@ -59,10 +67,10 @@ if (mysqli_num_rows($readResult) == 0) {
         }
     }
 
-    foreach ($rows as $value) {
+    foreach ($uni as $value) {
         $universities .= "<button class='btn btn-primary university-filter' type='button' data-filter='university' data-id='{$value['university']}'>{$value['university']}</button>";
     }
-    foreach ($rows as $value) {
+    foreach ($sibj as $value) {
         $subjects .= "<button class='btn btn-primary subject-filter' type='button' data-filter='subject' data-id='{$value['subject']}'>{$value['subject']}</button>";
     }
 }
