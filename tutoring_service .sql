@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2024 at 12:46 PM
+-- Generation Time: May 01, 2024 at 02:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,7 +43,8 @@ CREATE TABLE `bookings` (
 INSERT INTO `bookings` (`id`, `fk_course_id`, `fk_user_id`, `date`) VALUES
 (15, 6, 15, '2024-04-29'),
 (16, 1, 15, '2024-04-29'),
-(17, 1, 14, '2024-05-01');
+(17, 1, 14, '2024-05-01'),
+(18, 5, 12, '2024-07-01');
 
 -- --------------------------------------------------------
 
@@ -74,11 +75,11 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `subject`, `name`, `university`, `roomNumb`, `date`, `end_date`, `teacher`, `email`, `picture`, `language`, `duration`, `units`, `capacity`, `availability`) VALUES
-(1, 'Mathematics', 'Statistik and Mathematics II', 'Brno University of Technology', 'Room 101', '2024-04-01', '2024-04-03', 'Dr. Smith', 'alice.smith@example.com', 'math.jpg', 'English', '60', '3', 29, 'avaiable'),
+(1, 'Mathematics', 'Statistik and Mathematics II', 'Brno University of Technology', 'Room 101', '2024-04-01', '2024-04-03', 'Dr. Smith', 'alice.smith@example.com', 'math.jpg', 'English', '60', '3', 27, 'avaiable'),
 (2, 'Computer Science', 'PHP course beginner', 'University of Chemistry and Technology', 'Room 201', '2024-04-04', '2024-04-05', 'Prof. Johnson', 'prof.jhonson@example.com', 'computer.jpg', 'English', '90', '4', 50, 'avaiable'),
 (3, 'Physics', 'Quantum Physics', 'Charles University Prague', 'Room 301', '2024-04-08', '2024-04-10', 'Prof. Williams', 'mathias.williams@gmail.com', 'physics.jpg', 'English', '75', '3', 60, 'avaiable'),
 (4, 'Literature', 'literature between worldwars', 'Jan Evangelista Purkyne University', 'Room 102', '2024-04-16', '2024-04-18', 'Ms. Brown', 'emily.brown@gmail.com', 'literature.jpg', 'English', '45', '2', 80, 'avaiable'),
-(5, 'History', 'industrial revolution', 'University of Ostrava', 'Room 202', '2024-03-19', '2024-03-21', 'Dr. Davis', 'christian.davis@gmail.com', 'history.jpg', 'English', '60', '3', 40, 'avaiable'),
+(5, 'History', 'industrial revolution', 'University of Ostrava', 'Room 202', '2024-03-19', '2024-03-21', 'Dr. Davis', 'trainer@mail.com', 'history.jpg', 'English', '60', '3', 40, 'avaiable'),
 (6, 'Biology', 'cell biology', 'Charles University Prague', 'Room 302', '2024-04-22', '2024-04-26', 'Dr. Martinez', 'rodrigo.martinez@hotmail.com', 'biology.jpg', 'English', '60', '3', 55, 'avaiable'),
 (7, 'Chemistry', 'nobel gases', 'University of Chemistry and Technology', 'Room 103', '2024-05-01', '2024-05-03', 'Prof. Thompson', '	\r\njerry.thompson@gmail.com', 'chemistry.jpg', 'English', '90', '4', 200, 'avaiable'),
 (8, 'Geography', 'cartography and geoinformation system', 'Masaryk University', 'Room 203', '2024-04-29', '2024-05-02', 'Ms. Garcia', 'emma.garcia@example.com', 'geography.png', 'English', '45', '2', 100, 'avaiable'),
@@ -196,7 +197,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `courses`

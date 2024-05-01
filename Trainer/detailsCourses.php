@@ -56,7 +56,7 @@ $layout = "";
 //                   internal structure, flat hierarchies and a young management team.
 //               </p>
 //           </div>
-          
+
 //       </div>";
 //         if ($index < count($rows) - 1) {
 //             $layout .= "<div class='splitter'></div>";
@@ -81,9 +81,11 @@ $TrainerEmail = $row['email'];
 //                     WHERE bookings.fk_course_id = $id";
 $courses = "";
 $sqlGetCourses = "SELECT * FROM `courses` WHERE email = '{$TrainerEmail}'";
-$courses_result = mysqli_query($connection,$sqlGetCourses);
-if(mysqli_num_rows($courses_result) > 0){
-    $rows = mysqli_fetch_all($courses_result,MYSQLI_ASSOC);
+$courses_result = mysqli_query($connection, $sqlGetCourses);
+if (mysqli_num_rows($courses_result) > 0) {
+    $rows = mysqli_fetch_all($courses_result, MYSQLI_ASSOC);
+    $index = 0;
+
     foreach ($rows as  $value) {
         $courses .= "<div class='course'>
         <div class='course-left'>
@@ -107,15 +109,19 @@ if(mysqli_num_rows($courses_result) > 0){
           <button class='submitBtn' style='margin: 0;'><a style='text-decoration: none; color: #fff;' href='details.php?id={$value['id']}'>Details</a></button>
         </div>
         
-    </div>
-    <div class='splitter'></div>";
-        
+    </div>";
+        $index++;
+
+        // Check if this is not the last row, then add the separator
+        if ($index < mysqli_num_rows($courses_result)) {
+            $layout .= "<div class='splitter'></div>";
+        }
     }
-}else {
+} else {
     $courses = "no courses found";
 }
 
-      
+
 
 
 
