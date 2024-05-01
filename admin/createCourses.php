@@ -94,10 +94,12 @@ if (isset($_POST["submit"])) {
           <input class="input" type="text" placeholder="Language" name="language" required>
         </div>
         <div>
-          <input class="input" type="datetime-local" placeholder="start date" name="date" required>
+          <label for="" style="margin: 10px 0 0 0; font-weight: 500;">Start Date & Time</label>
+          <input class="input" type="datetime-local" placeholder="start date" name="date" style="margin: 0 0 10px 0;" required>
         </div>
         <div>
-          <input class="input" type="datetime-local" placeholder="end date" name="end_date" required>
+          <label for="" style="margin: 10px 0 0 0; font-weight: 500;">End Date & Time</label>
+          <input class="input" type="datetime-local" placeholder="end date" name="end_date" style="margin: 0 0 10px 0;" required>
         </div>
         <div class="d-flex justify-content-between">
           <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
