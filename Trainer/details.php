@@ -78,20 +78,22 @@ if (mysqli_num_rows($courses_result) > 0) {
                 </div>
             </div>
             <div class="detailsBtn">
-                
-
+                <div class="btnDetails" style="background-color: red; color: #fff;">
+                    <a href="deleteCourses.php">Delete Course</a>
+                </div>
                 <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-                    <a href="dashboardTrainer.php">back to home</a></div>
+                    <a href="dashboardTrainer.php">Go Back</a>
                 </div>
             </div>
-        </div>';
+        </div>
+    </div>';
     }
 } else {
     $courses = "No courses found";
 }
 $userId = $_SESSION['user_id'];
 
-$sqlUser= "SELECT * FROM `courses` WHERE `id` = $userId";
+$sqlUser = "SELECT * FROM `courses` WHERE `id` = $userId";
 
 
 $runSqlUser = mysqli_query($connection, $sqlUser);
@@ -129,7 +131,7 @@ $result = mysqli_query($connection, $sqlGetUsers);
 
 
 // if (($result) == 0) {
-   
+
 
 // } else {$row1 = mysqli_fetch_assoc($result);
 // $user_id = $row1['id'];}
@@ -139,31 +141,27 @@ $result = mysqli_query($connection, $sqlGetUsers);
 
 $layout1 = "";
 
-if (mysqli_num_rows($result) == 0) {
-    $layout1 = "There are no Students enrolled yet!";
+if (mysqli_num_rows($result2) == 0) {
+    $layout1 = "There are no students enrolled yet!";
 } else {
-    $layout1 = "<table class='student-table'>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>";
-
-                    mysqli_data_seek($result, 0);
+    $layout1 = "
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>";
 
     while ($value = mysqli_fetch_assoc($result)) {
-        $layout1 .= "<tr>
-                        <td>{$value["firstName"]}</td>
-                        <td>{$value["secondName"]}</td>
-                        <td>{$value["email"]}</td>
-                        <td><a href='removeStudent.php?courseId={$booking_id}&userid={$value["id"]}'>Remove student</a></td>
-                    </tr>
-                </table>";
-            
-                $row1 = mysqli_fetch_assoc($result);
-                
-}
+        $layout1 .= "
+            <tr>
+                <td>{$value["firstName"]}</td>
+                <td>{$value["secondName"]}</td>
+                <td>{$value["email"]}</td>
+                <td><a class='action' href='removeStudent.php?courseId={$booking_id}&userid={$value["id"]}'>Remove student</a></td>
+            </tr>
+        ";
+    }
 }
 // <tr>
 // <td>{$valu["firstName"]}</td>
@@ -172,9 +170,9 @@ if (mysqli_num_rows($result) == 0) {
 // <td><a href='removeStudent.php?courseId={$booking_id}&userid={$user_id}'>Remove student</a>
 // </tr>
 // </table>
-        
-                
-                
+
+
+
 //                     ";
 
 
@@ -194,46 +192,56 @@ if (mysqli_num_rows($result) == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trainer Details</title>
     <link rel="stylesheet" href="../style/details.css">
-<style>.student-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+    <style>
+        .student-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-.student-table th, .student-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
+        .student-table th,
+        .student-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
 
-.student-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
+        .student-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
 
-.student-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
+        .student-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-.student-table tr:hover {
-    background-color: #ddd;
-}
-</style>
+        .student-table tr:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 
 <body>
     <div>
-    <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
-    <div class="detail">
+        <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
+        <div class="detail">
             <div>
-    <?= $courses ?>
-    </div>
+                <?= $courses ?>
+            </div>
         </div>
-    <br> <br> <br> <br> <br> <br>  <br> <br> <br> <br> <br> <br><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-   
-   
+        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 
-    <br><h1>All the students enrolled in this course:</h1>
-    <?= $layout1 ?></div>
+
+
+        <br>
+        <div class="container">
+            <h1 class="title">All the students enrolled in this course</h1>
+            <div class="table">
+                <table class='student-table'>
+                    <?= $layout1 ?>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

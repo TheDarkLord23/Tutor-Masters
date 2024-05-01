@@ -56,7 +56,7 @@ $layout = "";
 //                   internal structure, flat hierarchies and a young management team.
 //               </p>
 //           </div>
-          
+
 //       </div>";
 //         if ($index < count($rows) - 1) {
 //             $layout .= "<div class='splitter'></div>";
@@ -99,10 +99,10 @@ WHERE c.email = '$TrainerEmail'
 
 // var_dump($sqlGetCourses);
 
-$courses_result = mysqli_query($connection,$sqlGetCourses);
+$courses_result = mysqli_query($connection, $sqlGetCourses);
 // var_dump($courses_result);
-if(mysqli_num_rows($courses_result) > 0){
-    $rows = mysqli_fetch_all($courses_result,MYSQLI_ASSOC);
+if (mysqli_num_rows($courses_result) > 0) {
+    $rows = mysqli_fetch_all($courses_result, MYSQLI_ASSOC);
     foreach ($rows as  $value) {
         $courses .= "<div class='col'>
         <div class='card h-100'>
@@ -116,13 +116,12 @@ if(mysqli_num_rows($courses_result) > 0){
             </div>
         </div>
     </div>";
-        
     }
-}else {
+} else {
     $courses = "no courses found";
 }
 
-      
+
 
 
 
@@ -138,15 +137,14 @@ if(mysqli_num_rows($courses_result) > 0){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Booked Courses</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/CRUD.css">
-    <link rel="stylesheet" href="../style/CRUD-responsive.css">
+    <link rel="stylesheet" href="../style/admin-users.css">
 </head>
 
 <body>
     <div class="container">
         <div class="courses">
-            <h2 class="">All Courses</h2>
-            <div class="list">
+            <h2 class="">All Bookings</h2>
+            <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 g-30">
                 <?= $courses ?>
             </div>
         </div>

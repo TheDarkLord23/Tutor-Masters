@@ -665,7 +665,7 @@ test===========================
   }
 
   .createInput {
-    width: 20%;
+    width: 45%;
     text-decoration: none;
   }
 
@@ -678,7 +678,7 @@ test===========================
     background-color: #0ca678;
     font-size: 1.2rem;
     border-radius: 100px;
-    padding: 16px 0px;
+    padding: 10px 0px;
     width: 100%;
     border: 0;
     margin: 26px 0;
