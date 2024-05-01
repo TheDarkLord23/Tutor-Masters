@@ -91,7 +91,7 @@ if (mysqli_num_rows($courses_result) > 0) {
         <div class='course-left'>
             <div class='card-holder'>
                 <img class='card-img' src='/Images/{$value["picture"]}' alt='Image description' />
-                <h4 class='card-title'>More Information</h4>
+                <h4 class='card-title'>Details</h4>
                 <a href='details.php?id={$value["id"]}' class='card-btn'>Details</a>
             </div>
         </div>
@@ -104,11 +104,6 @@ if (mysqli_num_rows($courses_result) > 0) {
                 internal structure, flat hierarchies and a young management team.
             </p>
         </div>
-        <div class='submitBtnContainer'>
-          <button class='submitBtn bg-danger' style=''><a style='text-decoration: none; color: #fff;' href='deletecourses.php?id={$value['id']}'>Delete</a></button>
-          <button class='submitBtn' style='margin: 0;'><a style='text-decoration: none; color: #fff;' href='details.php?id={$value['id']}'>Details</a></button>
-        </div>
-        
     </div>";
         $index++;
 
@@ -144,7 +139,12 @@ if (mysqli_num_rows($courses_result) > 0) {
 <body>
     <div class="container">
         <div class="courses">
-            <h2 class="">All Courses</h2>
+            <div class="top">
+                <h2 class="">My Courses</h2>
+                <a class="createInput" id="createUserBtn" href="createCourses.php">
+                    <input class="create" type="submit" name="create" value="Create Course">
+                </a>
+            </div>
             <div class="list">
                 <?= $courses ?>
             </div>

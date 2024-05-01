@@ -96,9 +96,9 @@ mysqli_close($connection);
                 <input class="input" type="text" name="email" placeholder="Change email" value="<?= isset($row["email"]) ? $row["email"] : '' ?>">
                 <label for="status">Status</label>
                 <select name="status" required>
-                    <option value="user <?= $row  == "user" ? 'selected' : '' ?>">user</option>
-                    <option value="admin <?= $row  == "admin" ? 'selected' : '' ?>">admin</option>
-                    <option value="trainer <?= $row  == "trainer" ? 'selected' : '' ?>">trainer</option>
+                    <option value="user" <?= $row['Status'] == 'user' ? 'selected' : '' ?>>user</option>
+                    <option value="admin" <?= $row['Status'] == 'admin' ? 'selected' : '' ?>>admin</option>
+                    <option value="trainer" <?= $row['Status'] == 'trainer' ? 'selected' : '' ?>>trainer</option>
                 </select>
                 <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
             </div>
