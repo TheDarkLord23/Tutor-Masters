@@ -15,6 +15,7 @@ if (isset($_SESSION["trainer"])) {
 }
 
 require_once "../db_connection.php";
+include_once '../navbar_session.php';
 
 $user_id = $_SESSION['user_id'];
 

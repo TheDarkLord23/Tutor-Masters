@@ -18,6 +18,7 @@ if (isset($_SESSION["trainer"])) {
 // Connection start:
 require_once "../db_connection.php";
 require_once "../functions.php";
+include_once '../navbar_session.php';
 // Connection end
 
 $layout = "";
