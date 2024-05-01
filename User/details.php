@@ -29,6 +29,7 @@ if ($_GET["id"]) {
 if (isset($_POST["bookings"])) {
     $user_id = $_SESSION["user"];
     $course_id = $_GET["id"];
+var_dump($course_id);
 
     // Überprüfen, ob der Benutzer bereits für diesen Kurs angemeldet ist
     $checkBookingSql = "SELECT * FROM `bookings` WHERE `fk_user_id` = '{$user_id}' AND `fk_course_id` = '{$course_id}'";
@@ -46,7 +47,7 @@ if (isset($_POST["bookings"])) {
         $bookingSql = "INSERT INTO `bookings`(`fk_user_id`, `fk_course_id`, `date`) VALUES ('{$user_id}','{$course_id}',CURDATE())";
 
         if (mysqli_query($connection, $bookingSql)) {
-            echo "Course has been booked. Gratulation!";
+            // echo "Course has been booked. Gratulation!";
         } else {
             echo "Something went wrong. Please try again!";
         }
