@@ -58,7 +58,6 @@ if (mysqli_num_rows($booking_result) == 0) {
                   internal structure, flat hierarchies and a young management team.
               </p>
           </div>
-          
       </div>";
       $index++;
 
