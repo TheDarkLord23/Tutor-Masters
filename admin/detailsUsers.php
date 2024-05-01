@@ -62,6 +62,7 @@ foreach ($rows as $row)
           <p><?= $row["email"] ?></p>
           <p><?= $row["phoneNumber"] ?></p>
           <p><?= $row["Status"] ?></p>
+          <a href='updateUser.php?id=<?=$row["id"]?>'class='updateUserBtn'>Update User</a>
         </div>
       </div>
       <div class="imgCard">

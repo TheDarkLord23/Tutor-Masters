@@ -66,3 +66,11 @@
   border-radius: 20px;
   padding: 20px;
 }
+
+.updateUserBtn{
+  background-color: #0ca678;
+  padding: 7px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
