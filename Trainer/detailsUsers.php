@@ -65,7 +65,13 @@ $row = mysqli_fetch_assoc($result);
           <hr>
         </div>
       </div>
+      <div class="detailsBtn">
+        <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
+          <a href="dashboardTrainer.php">Go Back</a>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 
 </html>
