@@ -3,6 +3,7 @@
 session_start();
 
 include_once '../db_connection.php';
+include_once '../navbar_session.php';
 
 
 if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSION["user"])) {
@@ -58,7 +59,6 @@ if (mysqli_num_rows($booking_result) == 0) {
                   internal structure, flat hierarchies and a young management team.
               </p>
           </div>
-          
       </div>";
       $index++;
 

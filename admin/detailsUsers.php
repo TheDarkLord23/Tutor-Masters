@@ -69,6 +69,11 @@ foreach ($rows as $row)
         <img src=../Images/<?= $row["picture"] ?> alt='image'>
       </div>
     </div>
+    <div class="detailsBtn">
+      <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
+          <a href="dashboardAdmin.php">Go Back</a>
+      </div>
+  </div>
 
         
 </body>

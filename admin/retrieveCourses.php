@@ -48,7 +48,6 @@ if (mysqli_num_rows($courses_result) == 0) {
           <div class='info'>
             <div class='divNameAndDeleteBtn'>
               <h4 class='course-title'>{$course_row["subject"]}(m/w/d)</h4>
-              <a href='deleteCourses.php?delete_id={$course_row["id"]}' class='deleteBtnCourses'>Delete</a>
             </div>
               <p class='course-date'>Duration: {$course_row["duration"]}mins.</p>
               <p class='course description'>
