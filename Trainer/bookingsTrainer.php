@@ -97,10 +97,10 @@ WHERE c.email = '$TrainerEmail'
 //                 WHERE courses.id = $course_id";
 
 
-var_dump($sqlGetCourses);
+// var_dump($sqlGetCourses);
 
 $courses_result = mysqli_query($connection,$sqlGetCourses);
-var_dump($courses_result);
+// var_dump($courses_result);
 if(mysqli_num_rows($courses_result) > 0){
     $rows = mysqli_fetch_all($courses_result,MYSQLI_ASSOC);
     foreach ($rows as  $value) {
