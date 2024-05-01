@@ -2,6 +2,8 @@
 
 session_start();
 
+// Validation==========================================================================
+
 if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
 ["user"])) {
     header("Location: ../login/login.php");
@@ -15,6 +17,7 @@ if (isset($_SESSION["user"])) {
     header("Location: ../Trainer/dashboardTrainer.php");
   }
   
+// ==============================================================================
 
 require_once "../db_connection.php";
 
@@ -35,16 +38,20 @@ $usersDetails = "";
         $layout = "There are no Course Bookings yet!";
         
     } else {
-            // Abfrage, um die Details des Kurses abzurufen
+
             $row = mysqli_fetch_all($runSqlUser, MYSQLI_ASSOC); 
           
+// Print info about students that are assigning this course==================================================
+
             foreach ($row as $val) {
                 
-                // Kursdetails anzeigen
-                $usersDetails .= "<p>Student First Name: {$val["firstName"]}</p>
-                <p>Student Second Name: {$val["secondName"]}</p>
-                <p>Student email: {$val["email"]}</p>";
+                $usersDetails .= "<p>First Name: {$val["firstName"]}</p>
+                <p>Second Name: {$val["secondName"]}</p>
+                <p>Email: {$val["email"]}</p>";
             }
+// ================================================================================
+
+// Print info about this course=================================================================
 
             $layout .= '
 
@@ -70,7 +77,7 @@ $usersDetails = "";
             </li>
                 </ul>
             </div>
-            <img scr="../Images/{$row[0]["picture"]}" alt="image">
+            <img src=../Images/' . $row[0]["picture"] . ' class="" alt="...">
         </div>
         <div class="d-flex justify-content-between infoBox">
             <div class="d-flex infoContainer">
@@ -106,6 +113,8 @@ $usersDetails = "";
     }
 }
 
+// ==============================================================================================
+
 ?>
 
 <!DOCTYPE html>
@@ -120,18 +129,17 @@ $usersDetails = "";
 </head>
 
 <body>
-    <div>
-        <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
-        <div class="detail">
-            <div>
-
-                <?= $layout ?>
-                
+    <div class="containerPage">
+        <div>
+            <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
+            <div class="detail">
+                <div>
+                    <?= $layout ?>
+                </div>
             </div>
         </div>
+        <?= $usersDetails ?>
     </div>
-    <?= $usersDetails ?>
-
 </body>
 
 </html>
