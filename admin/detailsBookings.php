@@ -45,22 +45,64 @@ $usersDetails = "";
                 <p>Student Second Name: {$val["secondName"]}</p>
                 <p>Student email: {$val["email"]}</p>";
             }
-            $layout .= "
-            <img scr='../Images/{$row[0]["picture"]}' alt='image'>
-            <p>Subject: {$row[0]["subject"]}</p>
-            <p>University: {$row[0]["university"]}</p>
-            <p>RoomNumb: {$row[0]["roomNumb"]}</p>
-            <p>Language: {$row[0]["language"]}</p>
-            <p>Units: {$row[0]["units"]}</p>
-            <p>Duration: {$row[0]["duration"]}</p>
-            <p>Availability: {$row[0]["availability"]}</p>
-            <p>Name: {$row[0]["name"]}</p>
-            <p>Teacher: {$row[0]["teacher"]}</p>
-            <p>Date: {$row[0]["date"]}</p>
-            $usersDetails
 
-            <a href='deleteBookings.php?id={$row[0]["booking_id"]}'>Delete</a>
-    ";
+            $layout .= '
+
+            <div class="detailContainer">
+        <div>
+            <h1 class="">' . $row[0]["subject"] . '</h1>
+        </div>
+        <div class="topCard">
+            <div class="leftCard">
+                <ul style="">
+                    <li>
+                        <a href="teacherDetail.php?email=' . $row[0]["email"] . '">Teacher: <strong>' . $row[0]["teacher"] . '</strong></a>
+                    </li>
+                    <li>
+                        <p>University: <strong>' . $row[0]["university"] . '</strong></p>
+                    </li>
+                   
+                    <li>
+                    <p>Capacity left: <strong>' . $row[0]["capacity"] . '</strong></p>
+                </li>
+                <li>
+                <p>Availability: <strong>' . $row[0]["availability"] . '</strong></p>
+            </li>
+                </ul>
+            </div>
+            <img scr="../Images/{$row[0]["picture"]}" alt="image">
+        </div>
+        <div class="d-flex justify-content-between infoBox">
+            <div class="d-flex infoContainer">
+                <div class="imgCard">
+                    <img src="../Images/flag.png" alt="">
+                </div>
+                <div>
+                    <p>RoomNumb: <strong>' . $row[0]["roomNumb"] . '</strong></p>
+                    <p>Language: <strong>' . $row[0]["language"] . '</strong></p>
+                </div>
+            </div>
+            <div class="d-flex infoContainer">
+                <div class="imgCard">
+                    <img src="../Images/calendar.png" alt="">
+                </div>
+                <div>
+                    <p>Start date: <strong>' . $row[0]["date"] . '</strong></p>
+                    <p>End date: <strong>' . $row[0]["end_date"] . '</strong></p>
+                </div>
+            </div>
+        </div>
+    <div class="detailsBtn">
+        <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
+            <a href="dashboardAdmin.php">back to home</a>
+            </div>
+            <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
+            <a href="deleteBookings.php?id= . $row[0]["booking_id"] . ">Delete</a>
+            </div>
+        </div>
+    </div>
+    </div>
+  ';
     }
 }
 
@@ -68,12 +110,28 @@ $usersDetails = "";
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/details.css">
 </head>
+
 <body>
-    <?= $layout ?>
+    <div>
+        <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
+        <div class="detail">
+            <div>
+
+                <?= $layout ?>
+                
+            </div>
+        </div>
+    </div>
+    <?= $usersDetails ?>
+
 </body>
+
 </html>
