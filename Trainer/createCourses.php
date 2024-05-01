@@ -64,7 +64,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-  <div class="container mt-5">
+  <div class="containerCRUD container mt-5">
     <div class="crudHeader">
       <h3 class="mb-4">Create a course:</h3>
     </div>
