@@ -18,6 +18,14 @@ require_once "../navbar_session.php";
 
 $userId = $_SESSION['user_id'];
 
+
+
+
+
+
+
+// var_dump($userId);
+
 $query = "SELECT * FROM users WHERE id = $userId";
 $result = mysqli_query($connection, $query);
 
@@ -138,7 +146,7 @@ if (!$result) {
                 <img class="icon" src="../Images/book-black.png" alt="">
                 <div class="title">My Courses</div>
             </a>
-            <a href="details.php" class="action" id="action4Btn">
+            <a href="bookingsTrainer.php" class="action" id="action4Btn">
                 <img class="icon" src="../Images/calendar-black.png" alt="">
                 <div class="title">Bookings</div>
             </a>
