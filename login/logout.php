@@ -7,4 +7,4 @@ unset($_SESSION["trainer"]);
 
 session_destroy();
 
-header("Location: login.php");
+header("Location: ../index.php");

@@ -6,6 +6,14 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
     header("Location: ../login/login.php");
 }
 
+if (isset($_SESSION["admin"])) {
+    header("Location: ../index.php");
+}
+
+if (isset($_SESSION["trainer"])) {
+    header("Location: ../index.php");
+}
+
 require_once "../db_connection.php";
 require_once "../navbar_session.php";
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 
@@ -7,7 +7,7 @@ session_start();
 include_once '../db_connection.php';
 
 
-if (!isset($_SESSION['admin'])&&!isset($_SESSION['trainer'])&&!isset($_SESSION['user'])) {
+if (!isset($_SESSION['admin']) && !isset($_SESSION['trainer']) && !isset($_SESSION['user'])) {
     header('Location: ../login/login.php');
 }
 
@@ -68,9 +68,7 @@ if (mysqli_num_rows($review_result) == 0) {
                 </div>
             </div>
         </div>";
-
         }
-    
     }
 }
 ?>
@@ -79,22 +77,23 @@ if (mysqli_num_rows($review_result) == 0) {
 <html lang='en'>
 
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>My Booked Courses</title>
-  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
-  <link rel='stylesheet' href='../style/CRUD.css'>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>My Booked Courses</title>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
+    <link rel='stylesheet' href='../style/CRUD.css'>
+    <link rel='stylesheet' href='../style/CRUD-responsive.css'>
 </head>
 
 <body>
     <div class='container'>
-    <div class='courses'>
-      <h2 class=''>My Reviews</h2>
-      <div class='list2'>
-        <?= $layout ?>
-      </div>
+        <div class='courses'>
+            <h2 class=''>My Reviews</h2>
+            <div class='list2'>
+                <?= $layout ?>
+            </div>
+        </div>
     </div>
-  </div>
 
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz' crossorigin='anonymous'></script>
 </body>
