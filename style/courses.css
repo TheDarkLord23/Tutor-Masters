@@ -122,6 +122,7 @@
   position: relative;
   margin: 10px;
   height: 80%;
+  width: 250px;
   background-color: white;
   border-radius: 0.8rem;
 }
@@ -444,6 +445,8 @@ footer {
     position: relative;
     margin: 10px;
     height: 200px !important;
+    width: 300px !important;
+
     background-color: white;
     border-radius: 0.8rem;
   }
@@ -457,7 +460,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    width: 300px !important;
   }
 
   .splitter {
@@ -775,6 +778,7 @@ footer {
     position: relative;
     margin: 10px;
     height: 150px !important;
+    width: 200px !important;
     background-color: white;
     border-radius: 0.8rem;
   }
