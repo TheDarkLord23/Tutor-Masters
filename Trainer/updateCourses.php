@@ -86,7 +86,7 @@ mysqli_close($connection);
   </div>
   <div class="containerCRUD container mt-5">
     <div class="crudHeader">
-      <h3 class="mb-4">Create a course:</h3>
+      <h3 class="mb-4">Update a course:</h3>
     </div>
     <form id="multiStepForm" method="post" enctype="multipart/form-data">
       <!-- Step 1 -->
