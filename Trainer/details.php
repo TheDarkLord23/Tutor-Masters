@@ -30,7 +30,7 @@ if (mysqli_num_rows($courses_result) > 0) {
     $rows = mysqli_fetch_all($courses_result, MYSQLI_ASSOC);
     foreach ($rows as $row) {
         $course_id = $row['id'];
-        var_dump($course_id);
+        // var_dump($course_id);
         $courses .= '
         <div class="detailContainer">
             <div>

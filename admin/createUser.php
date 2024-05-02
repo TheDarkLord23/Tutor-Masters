@@ -41,7 +41,7 @@ if (isset($_POST["submit"])) {
   $address = $_POST["address"];
   $phoneNumber = $_POST["phoneNumber"];
   $status = $_POST["status"];
-  $picture = fileUpload($_FILES["picture"]);
+  $picture = fileUpload($_FILES["picture"], 'courses');
   $password = $_POST["password"];
 
 
@@ -168,6 +168,8 @@ if (isset($_POST["submit"])) {
           <option value="trainer <?= $status  == "trainer" ? 'selected' : '' ?>">trainer</option>
         </select>
         <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
+        <a class="btn submitBtn" href="dashboardAdmin.php">Go Back</a>
+
       </div>
 
       <!-- Step 2 -->
