@@ -34,7 +34,7 @@ if (isset($_POST["update"])) {
     // $picture = fileUpload($_FILES["picture"]);
 
 
-    $pictureArray = fileUpload($_FILES['picture'], 'courses');
+    $pictureArray = fileUpload($_FILES['picture']);
 
 
     if($_FILES["picture"]["error"] == 0){
