@@ -36,7 +36,7 @@ if (isset($_POST["update"])) {
     // $picture = fileUpload($_FILES["picture"]);
 
 
-    $pictureArray = fileUpload($_FILES['picture'], 'courses');
+    $pictureArray = fileUpload($_FILES['picture']);
 
 
     if ($_FILES["picture"]["error"] == 0) {
@@ -65,6 +65,7 @@ if (isset($_POST["update"])) {
         $uploadError = ($pictureArray != 0) ? $pictureArray : '';
         header("refresh:3;url=dashboardAdmin.php?id={$session}");
     } else {
+        $class = "alert alert-danger";
         $message = "Error while updating record : <br>" . $connection->error;
         // $uploadError = ($pictureArray != 0) ? $pictureArray['ErrorMessage'] : '';
         header("refresh:3;url=updateprofile.php?id={$session}");

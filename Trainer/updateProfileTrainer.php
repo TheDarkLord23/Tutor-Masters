@@ -34,7 +34,7 @@ if (isset($_POST["update"])) {
     // $picture = fileUpload($_FILES["picture"]);
 
 
-    $pictureArray = fileUpload($_FILES['picture'], 'courses');
+    $pictureArray = fileUpload($_FILES['picture']);
 
 
     if ($_FILES["picture"]["error"] == 0) {
@@ -48,7 +48,7 @@ if (isset($_POST["update"])) {
     }
 
 
-    if ($result = mysqli_query($connection, $update)) {
+    if ($result = mysqli_query($connection, $sql)) {
         $message = "<div id='successPopup' class='popup'>
         <div class='popup-content'>
             <div class='popup-bg'>
@@ -62,18 +62,20 @@ if (isset($_POST["update"])) {
         </div>
     </div>";
         $uploadError = ($pictureArray != 0) ? $pictureArray : '';
-        header("refresh:3;url=dashboardTrainer.php?id={$session}");
+        header("refresh:3;url=dashboardAdmin.php?id={$session}");
     } else {
         $class = "alert alert-danger";
         $message = "Error while updating record : <br>" . $connection->error;
         // $uploadError = ($pictureArray != 0) ? $pictureArray['ErrorMessage'] : '';
-        header("refresh:3;url=updateProfileTrainer.php?id={$session}");
+        header("refresh:3;url=updateprofile.php?id={$session}");
     }
 
-    exit();
 
-    header("Location: dashboardTrainer.php");
-} ?>
+    $results = mysqli_query($connection, $update);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +97,7 @@ if (isset($_POST["update"])) {
         </div>
         <?php if (!empty($message)) : ?>
             <!-- ' updateError & massage noch bearbeiten' -->
-                <p><?= $message ?></p>
+            <p><?= $message ?></p>
         <?php endif; ?>
         <form method="post" enctype="multipart/form-data">
             <div class="step active">
@@ -108,10 +110,9 @@ if (isset($_POST["update"])) {
                 <input class="input" type="text" name="secondName" placeholder="Change last name" value="<?= isset($row["secondName"]) ? $row["secondName"] : '' ?>">
                 <label for="email">E-mail</label>
                 <input class="input" type="text" name="email" placeholder="Change email" value="<?= isset($row["email"]) ? $row["email"] : '' ?>">
-                <label for="password">Password</label>
-                <input class="input" type="text" name="password" placeholder="Change password">
                 <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
-                <a class="btn submitBtn" href="dashboardTrainer.php">Go Back</a>
+                <a class="btn submitBtn" href="dashboardAdmin.php">Go Back</a>
+
             </div>
 
             <div class="step">
