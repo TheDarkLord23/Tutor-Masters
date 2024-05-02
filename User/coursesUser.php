@@ -33,6 +33,7 @@ $universities = "";
 $subjects = "";
 
 
+
 if (mysqli_num_rows($readResult) == 0) {
     $layout = "No courses found!";
 } else {
@@ -49,7 +50,7 @@ if (mysqli_num_rows($readResult) == 0) {
                 <div class='card-holder'>
                     <img class='card-img' src='../Images/{$value["picture"]}' alt='Image description' />
                     <h4 class='card-title'>More Information</h4>
-                    <a href='details.php?id={$value["id"]}' class='card-btn'>Details</a>
+                    <a href='details.php?id={$value["id"]}&path=coursesUser.php' class='card-btn'>Details</a>
                 </div>
             </div>
             <div class='info'>

@@ -67,7 +67,7 @@ if (!$result) {
                     myCustomButton: {
                         text: 'To Calendar',
                         click: function() {
-                            window.location.href = '../User/calendar.php';
+                            window.location.href = '../calendar.php';
                         }
                     }
                 },

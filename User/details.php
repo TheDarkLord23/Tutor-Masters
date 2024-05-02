@@ -24,20 +24,22 @@ if ($_GET["id"]) {
 // } else {
 //     // header("location: error.php");
 // }
+$backBTn = '';
+$path = $_GET['path'];
 
 
 if (isset($_POST["bookings"])) {
     $user_id = $_SESSION["user"];
     $course_id = $_GET["id"];
-// var_dump($course_id);
+    // var_dump($course_id);
 
     // Überprüfen, ob der Benutzer bereits für diesen Kurs angemeldet ist
     $checkBookingSql = "SELECT * FROM `bookings` WHERE `fk_user_id` = '{$user_id}' AND `fk_course_id` = '{$course_id}'";
     $checkBookingResult = mysqli_query($connection, $checkBookingSql);
 
-   $countCapacity = "UPDATE `courses` SET `capacity`= capacity-1 WHERE id =  {$course_id}";
-    $checkCapacityResult= mysqli_query($connection, $countCapacity);
-    
+    $countCapacity = "UPDATE `courses` SET `capacity`= capacity-1 WHERE id =  {$course_id}";
+    $checkCapacityResult = mysqli_query($connection, $countCapacity);
+
 
     if (mysqli_num_rows($checkBookingResult) > 0) {
         echo "You already subscribed to this course!";
@@ -55,24 +57,24 @@ if (isset($_POST["bookings"])) {
 }
 
 
-    $user_id = $_SESSION["user"];
-    $course_id = $_GET["id"];
-    // var_dump($user_id);
-    // var_dump($course_id);
+$user_id = $_SESSION["user"];
+$course_id = $_GET["id"];
+// var_dump($user_id);
+// var_dump($course_id);
 
 $bookedSql = "SELECT * FROM bookings WHERE fk_user_id = $user_id AND fk_course_id = $course_id 
-"; 
+";
 $checkBookings = mysqli_query($connection, $bookedSql);
 
 // var_dump($bookedSql);
 
 // var_dump($checkBookings);
 $layout = '';
-if (mysqli_num_rows($checkBookings) > 0){
+if (mysqli_num_rows($checkBookings) > 0) {
 
 
-foreach ($rows as $row) {
-    $layout = '
+    foreach ($rows as $row) {
+        $layout = '
     <div class="detailContainer">
         <div>
             <h1 class="">' . $row["subject"] . '</h1>
@@ -126,12 +128,12 @@ foreach ($rows as $row) {
                 <a href="review.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '">rate this course</a>
             </div>
             <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-                <a href="dashboardUser.php">back to home</a></div>
+                <a href='  . $path . '>back to home</a></div>
             </div>
         </div>
-    </div>'; 
-}}
-else{
+    </div>';
+    }
+} else {
 
     foreach ($rows as $row) {
         $layout = '
@@ -188,9 +190,9 @@ else{
                     <a href="dashboardUser.php">back to home</a></div>
                 </div>
             </div>
-        </div>'; 
-
-}}
+        </div>';
+    }
+}
 ?>
 
 
