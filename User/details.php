@@ -25,7 +25,7 @@ if ($_GET["id"]) {
 //     // header("location: error.php");
 // }
 $backBTn = '';
-$path = $_GET['path'];
+// $path = $_GET['path'];
 
 
 if (isset($_POST["bookings"])) {
