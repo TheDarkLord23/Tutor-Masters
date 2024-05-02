@@ -78,7 +78,7 @@ if (mysqli_num_rows($courses_result) > 0) {
             </div>
             <div class="detailsBtn">
                 <div class="btnDetails" style="background-color: red; color: #fff;">
-                    <a href="deleteCourses.php">Delete Course</a>
+                    <a href="deleteCourses.php?id=' . $course_id . '">Delete Course</a>
                 </div>
                 <div class="btnDetails" style="background-color: orange; color: #fff;">
                     <a href="updateCourses.php?id=' . $course_id . '">Update Course</a>
