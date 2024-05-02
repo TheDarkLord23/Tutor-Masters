@@ -120,7 +120,7 @@ mysqli_close($connection);
         </div>
         <div>
           <label for="" style="margin: 10px 0 0 0; font-weight: 500;">End Date & Time</label>
-          <input class="input" type="datetime-local" placeholder="end_date" name="end_date" style="margin: 0 0 10px 0;" required>
+          <input class="input" type="datetime-local" value="<?=$row["end_date"]?>" name="end_date" style="margin: 0 0 10px 0;" required>
         </div>
         <div class="d-flex justify-content-between">
           <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
@@ -134,7 +134,7 @@ mysqli_close($connection);
           <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%; background-color: #099268; border-radius: 20px;"></div>
         </div>
         <div>
-          <input class="input" type="text" placeholder="Availability" name="availability" required>
+          <input class="input" type="text" value="<?=$row["availability"]?>" name="availability" required>
         </div>
         <div>
           <input class="input" type="text" placeholder="Number of Units" name="units" required>
@@ -217,13 +217,13 @@ mysqli_close($connection);
 
 <input type="datetime-local"  name="date" required>
 
-<input type="datetime-local" value="<?=$row["end_date"]?>" name="end_date" required>
+<input type="datetime-local"  name="end_date" required>
 
 <input type="text" value="<?=$row["teacher"]?>" name="teacher" required>
 
 <input type="text"  name="language" required>
 
-<input type="text" value="<?=$row["availability"]?>" name="availability" required>
+<input type="text"  name="availability" required>
 
 <input type="text" value="<?=$row["units"]?>" name="units" required>
 
