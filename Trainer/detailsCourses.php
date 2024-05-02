@@ -126,9 +126,9 @@ if (mysqli_num_rows($courses_result) > 0) {
     $courses = "no courses found";
 }
 
-var_dump($userId);
-var_dump($TrainerEmail);
-var_dump($teacherName);
+// var_dump($userId);
+// var_dump($TrainerEmail);
+// var_dump($teacherName);
 
 
 
