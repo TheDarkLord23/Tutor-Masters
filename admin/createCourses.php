@@ -64,7 +64,7 @@ if (isset($_POST["submit"])) {
     <div class="crudHeader">
       <h3 class="mb-4">Create a course:</h3>
     </div>
-    <form id="multiStepForm" method="post" action="process_form.php" enctype="multipart/form-data">
+    <form id="multiStepForm" method="post" enctype="multipart/form-data">
       <!-- Step 1 -->
       <div class="step active">
         <div class="progress mb-3" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
@@ -140,7 +140,7 @@ if (isset($_POST["submit"])) {
         </div>
         <div class="d-flex justify-content-between">
           <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
-          <button type="submit" class="submitBtn" style="width: 200px;">Submit</button>
+          <button type="submit" class="submitBtn" style="width: 200px;" name="submit">Submit</button>
         </div>
       </div>
     </form>

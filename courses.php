@@ -33,7 +33,7 @@ if (mysqli_num_rows($readResult) == 0) {
             <div class='course-left'>
                 <div class='card-holder'>
                     <img class='card-img' src='/Images/{$value["picture"]}' alt='Image description' />
-                    <h4 class='card-title'>More Information</h4>
+                    <h4 class='card-title'>Details</h4>
                     <a href='details4all.php?id={$value["id"]}' class='card-btn'>Details</a>
                 </div>
             </div>

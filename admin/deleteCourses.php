@@ -32,7 +32,7 @@ if ($row["picture"] != "defaultPic.jpg") {
 $delete = "DELETE FROM `courses` WHERE id = $id";
 
 if(mysqli_query($connection, $delete)){
-    header("Location: retrieveCourses.php");
+    header("Location: dashboardAdmin.php");
 }else {
     echo "Error";
 }

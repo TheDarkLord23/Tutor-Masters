@@ -31,7 +31,7 @@ if ($row["picture"] != "defaultPic.jpg") {
 $delete = "DELETE FROM `bookings` WHERE id = $id";
 
 if(mysqli_query($connection, $delete)){
-    header("Location: retrieveBookings.php");
+    header("Location: dashboardAdmin.php");
 }else {
     echo "Error";
 }
