@@ -204,7 +204,7 @@ if (mysqli_num_rows($result2) == 0) {
                 <?= $courses ?>
             </div>
         </div>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br>
+        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br>
         <div class="tableContainer">
             <h1 class="title">All the students enrolled in this course</h1>
             <div class="table">
