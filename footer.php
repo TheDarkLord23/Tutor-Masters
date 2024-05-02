@@ -9,7 +9,7 @@
         <div class="logo-footer-left">
 
           <img src="./Images/logo.png" alt="Logo" class="logo-header">
-          <h2>Name of the Company</h2>
+          <h2>Tutor Masters</h2>
 
         </div>
 
@@ -26,7 +26,7 @@
 
     <div class="footer-right">
 
-      <p><b>[#]</b> in preparing students for university entry exams. With tailored study plans, expert guidance, and a proven track record, we help you build the skills and confidence to succeed. Get ready to reach your academic goals with <b>[#]</b>.</p>
+      <p><b>Tutor Masters</b> in preparing students for university entry exams. With tailored study plans, expert guidance, and a proven track record, we help you build the skills and confidence to succeed. Get ready to reach your academic goals with <b>Tutor Masters</b>.</p>
 
       <div class="list-footer">
 

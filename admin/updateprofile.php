@@ -29,7 +29,7 @@ if (isset($_POST["update"])) {
     $firstName = $_POST["firstName"];
     $secondName = $_POST["secondName"];
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    // $password = $_POST["password"];
 
     $address = $_POST["address"];
     $phoneNumber = $_POST["phoneNumber"];
@@ -39,14 +39,15 @@ if (isset($_POST["update"])) {
     $pictureArray = fileUpload($_FILES['picture']);
 
 
-    // if ($pictureArray->error == 4) {
-    $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`password`='{$password}',`address`='{$address}',`phoneNumber`='{$phoneNumber}',`picture`='{$pictureArray[0]}' WHERE id = {$session}";
-    // } else {
-    //     if ($row["picture"] != "../Images/defaultPic.jpg") {
-    //         unlink("../images{$row["picture"]}");
-    //     }
-    //     $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}', `picture`='{$pictureArray[0]}' WHERE id = {$session}";
-    // }
+    if($_FILES["picture"]["error"] == 0){
+        /* checking if the picture name of the product is not avatar.png to remove it from pictures folder */
+        if($row["picture"] != "../Images/defaultPic.jpg"){
+            unlink("pictures/$row[picture]");
+        }
+        $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}',`picture`='{$pictureArray[0]}' WHERE id = {$session}";
+    }else {
+        $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}' WHERE id = {$session}";
+    }
 
     if (mysqli_query($connection, $sql)) {
         $class = "alert alert-success";

@@ -64,7 +64,7 @@ if (isset($_POST["bookings"])) {
     }
 }
 
-
+$course_id = $_GET["id"];
 
 $user_id = $_SESSION["admin"];
 foreach ($rows as $row) {
@@ -117,8 +117,11 @@ foreach ($rows as $row) {
         <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
             <a href="dashboardAdmin.php">Go Back</a>
         </div>
+        <div class="btnDetails" style="background-color: orange; color: #fff;">
+                    <a href="updateCourses.php?id=' . $course_id .'">Update Course</a>
+                </div>
         <div class="btnDetails" style="background-color: red; color: #fff;">
-            <a href="deleteBookings.php?id= . $row[0]["booking_id"] . ">Delete</a>
+            <a href="deleteCourses.php?delete_id=' . $row["id"] . '">Delete</a>
         </div>
     </div>
     </div>';
