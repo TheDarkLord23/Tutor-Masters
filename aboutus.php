@@ -26,50 +26,64 @@ require_once "navbar.php";
                 <div class="card">
                     <img class="img-content" src="images/team.jpg" alt="">
                     <div class="content">
-                        <p class="heading">Card Hover</p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipii
-                            voluptas ten mollitia pariatur odit, ab
-                            minus ratione adipisci accusamus vel est excepturi laboriosam magnam
-                            necessitatibus dignissimos molestias.
+                        <p class="heading">Tutor Master</p>
+                        <p style="font-weight: 600;">
+                            Elevate your academic journey with our exceptional tutoring services designed for students aspiring to enter university. Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="section1">
+        <section class="company-info">
+            <h2>About Tutor Masters</h2>
+            <p>Tutor Masters is a leading education company dedicated to providing high-quality tutoring services to students of all ages. Our team of experienced tutors are experts in various subjects and are committed to helping students achieve their academic goals.</p>
+            <p>At Tutor Masters, we believe in personalized learning and tailor our tutoring sessions to meet the unique needs of each student. Whether you need help with math, science, language arts, or test preparation, we have a tutor for you.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, quam possimus harum quas vitae eius et, nesciunt illo totam, rem dolorem accusamus impedit mollitia molestias quod. Non doloremque a ad.
+                Voluptatum in quam, porro maxime laudantium nisi. Totam natus quia expedita quas! Nostrum impedit modi inventore quaerat voluptatem quis accusamus aliquam eveniet sint quam, odit in, temporibus distinctio officia quas?
+                Accusamus harum similique numquam unde possimus omnis, error perferendis eos laudantium mollitia dolores tempore repellat quam distinctio, iusto, saepe quisquam dolore voluptatem voluptates? Molestias at voluptatum omnis architecto exercitationem est.
+                Aperiam quia corrupti placeat saepe nihil deserunt labore sapiente repellat, voluptatibus officiis totam officia iste dolores voluptates id incidunt, earum magni repellendus ut atque! Sint fuga rerum et eveniet id!</p>
+        </section>
+    </div>
     <div class="container">
         <div class="heading-container">
-            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo minima recusandae id unde consequatur modi officiis facere, placeat ex, ullam dignissimos molestiae autem atque in doloribus! Laborum quo error officiis!</h5>
+            <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus saepe natus sit porro a, numquam voluptatem ab recusandae esse delectus dignissimos eaque cupiditate nobis cum quisquam rem. Rem, voluptatem suscipit!
+                Nisi non ut dolores est repudiandae voluptas commodi delectus reiciendis? Adipisci totam mollitia eum, architecto fuga odio! Quia voluptate eos architecto excepturi aliquid corrupti asperiores ratione veniam necessitatibus, voluptas tempore!
+                Officia deserunt voluptatum modi pariatur placeat minus, saepe vitae dicta aliquam maiores, voluptatibus, a rerum? Ratione debitis aut natus consequuntur quis. Deleniti omnis recusandae eveniet accusamus similique magnam! Voluptatum, deleniti!
+                Eveniet dolorem excepturi libero, porro perferendis optio modi! Atque, voluptate facere. Non reiciendis ad, magni quae obcaecati corporis fuga soluta aspernatur quasi rem doloribus, distinctio esse iste, tempora voluptate id?
+                Totam expedita velit sit culpa exercitationem eligendi accusantium suscipit inventore omnis sequi libero, mollitia nam vero praesentium ratione ut sunt rem non, dicta explicabo maxime voluptatum labore consequatur? Delectus, amet.</h5>
         </div>
         <div class="card-carousel">
             <div class="card" id="1">
                 <div class="image-container"></div>
-                <p>1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+                <h2 class="name">Marianne Van Zeller</h2>
+                <p>Expert tutor guiding students towards university success.</p>
             </div>
             <div class="card" id="2">
                 <div class="image-container"></div>
-                <p>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+                <h2 class="name">Ai WeiWei</h2>
+                <p>Experienced educator mentoring students for university admissions.</p>
             </div>
             <div class="card" id="3">
                 <div class="image-container"></div>
-                <p>3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+                <h2 class="name">Alicia Keys</h2>
+                <p>Seasoned instructor helping students excel in university entrance.</p>
             </div>
             <div class="card" id="4">
                 <div class="image-container"></div>
-                <p>4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+                <h2 class="name">Ulrich Løvenskjold</h2>
+                <p>Accomplished mentor guiding students into university pathways.</p>
             </div>
             <div class="card" id="5">
                 <div class="image-container"></div>
-                <p>5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+                <h2 class="name">Jessie Combs</h2>
+                <p>Proven tutor facilitating students' journey to university acceptance.</p>
             </div>
         </div>
         <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
     </div>
-    <a href="courses.php">
-        <button>Check Their Courses</button>
-    </a>
+
     <div id="Carousel-slider">
         <section>
             <div class="Carousel-slider">
@@ -85,396 +99,52 @@ require_once "navbar.php";
             </div>
         </section>
     </div>
-    <script>
-        const cardsContainer = document.querySelector(".card-carousel");
-        const cardsController = document.querySelector(".card-carousel + .card-controller")
 
-        class DraggingEvent {
-            constructor(target = undefined) {
-                this.target = target;
-            }
+    <div class="faq">
+        <div class="container2">
+            <div class="titleh2">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Why should I consider university tutoring?</span><span class="icon" aria-hidden="true"></span></button>
+                    <div class="accordion-content">
+                        <p>University tutoring can significantly improve your chances of getting accepted into your desired universities. Our tutors provide personalized guidance, help you prepare for entrance exams, and assist with application essays, increasing your overall competitiveness.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">How do university tutors help students?</span><span class="icon" aria-hidden="true"></span></button>
+                    <div class="accordion-content">
+                        <p>University tutors offer tailored support to students by identifying their strengths and weaknesses, creating customized study plans, providing resources and practice materials, offering feedback on academic performance, and guiding them through the university application process.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">What qualifications do your tutors have?</span><span class="icon" aria-hidden="true"></span></button>
+                    <div class="accordion-content">
+                        <p>Our tutors are highly qualified professionals with extensive experience in university admissions and tutoring. They possess advanced degrees from prestigious universities, undergo rigorous training, and stay updated on the latest educational trends and techniques.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">How can I get started with university tutoring?</span><span class="icon" aria-hidden="true"></span></button>
+                    <div class="accordion-content">
+                        <p>Getting started with university tutoring is easy. Simply contact us to schedule a consultation with one of our tutors. During the consultation, we'll assess your academic goals, discuss your tutoring needs, and create a personalized plan to help you succeed.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title">What sets your university tutoring apart?</span><span class="icon" aria-hidden="true"></span></button>
+                    <div class="accordion-content">
+                        <p>Our university tutoring stands out due to our personalized approach, experienced tutors, comprehensive resources, and track record of success. We prioritize the individual needs of each student, ensuring they receive the support and guidance necessary to excel academically and gain admission to top universities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            event(callback) {
-                let handler;
-
-                this.target.addEventListener("mousedown", e => {
-                    e.preventDefault()
-
-                    handler = callback(e)
-
-                    window.addEventListener("mousemove", handler)
-
-                    document.addEventListener("mouseleave", clearDraggingEvent)
-
-                    window.addEventListener("mouseup", clearDraggingEvent)
-
-                    function clearDraggingEvent() {
-                        window.removeEventListener("mousemove", handler)
-                        window.removeEventListener("mouseup", clearDraggingEvent)
-
-                        document.removeEventListener("mouseleave", clearDraggingEvent)
-
-                        handler(null)
-                    }
-                })
-
-                this.target.addEventListener("touchstart", e => {
-                    handler = callback(e)
-
-                    window.addEventListener("touchmove", handler)
-
-                    window.addEventListener("touchend", clearDraggingEvent)
-
-                    document.body.addEventListener("mouseleave", clearDraggingEvent)
-
-                    function clearDraggingEvent() {
-                        window.removeEventListener("touchmove", handler)
-                        window.removeEventListener("touchend", clearDraggingEvent)
-
-                        handler(null)
-                    }
-                })
-            }
-
-            // Get the distance that the user has dragged
-            getDistance(callback) {
-                function distanceInit(e1) {
-                    let startingX, startingY;
-
-                    if ("touches" in e1) {
-                        startingX = e1.touches[0].clientX
-                        startingY = e1.touches[0].clientY
-                    } else {
-                        startingX = e1.clientX
-                        startingY = e1.clientY
-                    }
-
-
-                    return function(e2) {
-                        if (e2 === null) {
-                            return callback(null)
-                        } else {
-
-                            if ("touches" in e2) {
-                                return callback({
-                                    x: e2.touches[0].clientX - startingX,
-                                    y: e2.touches[0].clientY - startingY
-                                })
-                            } else {
-                                return callback({
-                                    x: e2.clientX - startingX,
-                                    y: e2.clientY - startingY
-                                })
-                            }
-                        }
-                    }
-                }
-
-                this.event(distanceInit)
-            }
-        }
-
-
-        class CardCarousel extends DraggingEvent {
-            constructor(container, controller = undefined) {
-                super(container)
-
-                // DOM elements
-                this.container = container
-                this.controllerElement = controller
-                this.cards = container.querySelectorAll(".card")
-
-                // Carousel data
-                this.centerIndex = (this.cards.length - 1) / 2;
-                this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100
-                this.xScale = {};
-
-                // Resizing
-                window.addEventListener("resize", this.updateCardWidth.bind(this))
-
-                if (this.controllerElement) {
-                    this.controllerElement.addEventListener("keydown", this.controller.bind(this))
-                }
-
-
-                // Initializers
-                this.build()
-
-                // Bind dragging event
-                super.getDistance(this.moveCards.bind(this))
-            }
-
-            updateCardWidth() {
-                this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100
-
-                this.build()
-            }
-
-            build(fix = 0) {
-                for (let i = 0; i < this.cards.length; i++) {
-                    const x = i - this.centerIndex;
-                    const scale = this.calcScale(x)
-                    const scale2 = this.calcScale2(x)
-                    const zIndex = -(Math.abs(i - this.centerIndex))
-
-                    const leftPos = this.calcPos(x, scale2)
-
-
-                    this.xScale[x] = this.cards[i]
-
-                    this.updateCards(this.cards[i], {
-                        x: x,
-                        scale: scale,
-                        leftPos: leftPos,
-                        zIndex: zIndex
-                    })
-                }
-            }
-
-
-            controller(e) {
-                const temp = {
-                    ...this.xScale
-                };
-
-                if (e.keyCode === 39) {
-                    // Left arrow
-                    for (let x in this.xScale) {
-                        const newX = (parseInt(x) - 1 < -this.centerIndex) ? this.centerIndex : parseInt(x) - 1;
-
-                        temp[newX] = this.xScale[x]
-                    }
-                }
-
-                if (e.keyCode == 37) {
-                    // Right arrow
-                    for (let x in this.xScale) {
-                        const newX = (parseInt(x) + 1 > this.centerIndex) ? -this.centerIndex : parseInt(x) + 1;
-
-                        temp[newX] = this.xScale[x]
-                    }
-                }
-
-                this.xScale = temp;
-
-                for (let x in temp) {
-                    const scale = this.calcScale(x),
-                        scale2 = this.calcScale2(x),
-                        leftPos = this.calcPos(x, scale2),
-                        zIndex = -Math.abs(x)
-
-                    this.updateCards(this.xScale[x], {
-                        x: x,
-                        scale: scale,
-                        leftPos: leftPos,
-                        zIndex: zIndex
-                    })
-                }
-            }
-
-            calcPos(x, scale) {
-                let formula;
-
-                if (x < 0) {
-                    formula = (scale * 100 - this.cardWidth) / 2
-
-                    return formula
-
-                } else if (x > 0) {
-                    formula = 100 - (scale * 100 + this.cardWidth) / 2
-
-                    return formula
-                } else {
-                    formula = 100 - (scale * 100 + this.cardWidth) / 2
-
-                    return formula
-                }
-            }
-
-            updateCards(card, data) {
-                if (data.x || data.x == 0) {
-                    card.setAttribute("data-x", data.x)
-                }
-
-                if (data.scale || data.scale == 0) {
-                    card.style.transform = `scale(${data.scale})`
-
-                    if (data.scale == 0) {
-                        card.style.opacity = data.scale
-                    } else {
-                        card.style.opacity = 1;
-                    }
-                }
-
-                if (data.leftPos) {
-                    card.style.left = `${data.leftPos}%`
-                }
-
-                if (data.zIndex || data.zIndex == 0) {
-                    if (data.zIndex == 0) {
-                        card.classList.add("highlight")
-                    } else {
-                        card.classList.remove("highlight")
-                    }
-
-                    card.style.zIndex = data.zIndex
-                }
-            }
-
-            calcScale2(x) {
-                let formula;
-
-                if (x <= 0) {
-                    formula = 1 - -1 / 5 * x
-
-                    return formula
-                } else if (x > 0) {
-                    formula = 1 - 1 / 5 * x
-
-                    return formula
-                }
-            }
-
-            calcScale(x) {
-                const formula = 1 - 1 / 5 * Math.pow(x, 2)
-
-                if (formula <= 0) {
-                    return 0
-                } else {
-                    return formula
-                }
-            }
-
-            checkOrdering(card, x, xDist) {
-                const original = parseInt(card.dataset.x)
-                const rounded = Math.round(xDist)
-                let newX = x
-
-                if (x !== x + rounded) {
-                    if (x + rounded > original) {
-                        if (x + rounded > this.centerIndex) {
-
-                            newX = ((x + rounded - 1) - this.centerIndex) - rounded + -this.centerIndex
-                        }
-                    } else if (x + rounded < original) {
-                        if (x + rounded < -this.centerIndex) {
-
-                            newX = ((x + rounded + 1) + this.centerIndex) - rounded + this.centerIndex
-                        }
-                    }
-
-                    this.xScale[newX + rounded] = card;
-                }
-
-                const temp = -Math.abs(newX + rounded)
-
-                this.updateCards(card, {
-                    zIndex: temp
-                })
-
-                return newX;
-            }
-
-            moveCards(data) {
-                let xDist;
-
-                if (data != null) {
-                    this.container.classList.remove("smooth-return")
-                    xDist = data.x / 250;
-                } else {
-
-
-                    this.container.classList.add("smooth-return")
-                    xDist = 0;
-
-                    for (let x in this.xScale) {
-                        this.updateCards(this.xScale[x], {
-                            x: x,
-                            zIndex: Math.abs(Math.abs(x) - this.centerIndex)
-                        })
-                    }
-                }
-
-                for (let i = 0; i < this.cards.length; i++) {
-                    const x = this.checkOrdering(this.cards[i], parseInt(this.cards[i].dataset.x), xDist),
-                        scale = this.calcScale(x + xDist),
-                        scale2 = this.calcScale2(x + xDist),
-                        leftPos = this.calcPos(x + xDist, scale2)
-
-
-                    this.updateCards(this.cards[i], {
-                        scale: scale,
-                        leftPos: leftPos
-                    })
-                }
-            }
-        }
-
-        const carousel = new CardCarousel(cardsContainer)
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            //------ Slider Begin
-            const CaroS = document.querySelector('.Carousel-slider');
-            const CaroSlider = new MicroSlider(CaroS, {
-                indicators: true,
-                indicatorText: ''
-            });
-            const hammer = new Hammer(CaroS);
-            const CaroSTimer = 2000;
-            let CaroAutoplay = setInterval(() => CaroSlider.next(), CaroSTimer);
-
-            //------- Mouseenter Event
-            CaroS.onmouseenter = function(e) {
-                clearInterval(CaroAutoplay);
-                console.log(e.type + ' mouse detected');
-            }
-
-            //----- Mouseleave Event
-            CaroS.onmouseleave = function(e) {
-                clearInterval(CaroAutoplay);
-                CaroAutoplay = setInterval(() => CaroSlider.next(), CaroSTimer);
-                console.log(e.type + ' mouse detected');
-            }
-
-            //----- Mouseclick Event
-            CaroS.onclick = function(e) {
-                clearInterval(CaroAutoplay);
-                console.log(e.type + ' mouse detected');
-            }
-
-            //------ Gesture Tap Event
-            hammer.on('tap', function(e) {
-                clearInterval(CaroAutoplay);
-                console.log(e.type + ' gesture detected');
-            });
-
-            //----- Gesture Swipe Event
-            hammer.on('swipe', function(e) {
-                clearInterval(CaroAutoplay);
-                CaroAutoplay = setInterval(() => CaroSlider.next(), CaroSTimer);
-                console.log(e.type + ' gesture detected');
-            });
-
-            let slideLink = document.querySelectorAll('.slider-item');
-            if (slideLink && slideLink !== null && slideLink.length > 0) {
-                slideLink.forEach(el => el.addEventListener('click', e => {
-                    e.preventDefault();
-                    let href = el.dataset.href;
-                    let target = el.dataset.target;
-                    if (href !== '#') window.open(href, target);
-                }));
-            }
-
-            //---- Slider End
-
-        });
-    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/micro-slider@1.0.9/dist/micro-slider.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
     <?php include "footer.php" ?>
 </body>
 
