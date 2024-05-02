@@ -21,10 +21,11 @@ if (isset($_SESSION["trainer"])) {
 require_once "../db_connection.php";
 
 $id = $_GET["id"];
+var_dump($id);
 
 if (isset($_SESSION["admin"])) {
 
-    $sqlUser = "SELECT courses.*, users.firstName,users.secondName,users.email, bookings.id as booking_id FROM users JOIN bookings ON bookings.fk_user_id = users.id JOIN courses ON bookings.fk_course_id = courses.id WHERE courses.id = $id";
+    $sqlUser = "SELECT courses.*, users.firstName,users.secondName,users.email, bookings.id as booking_id, users.id as user_id  FROM users JOIN bookings ON bookings.fk_user_id = users.id JOIN courses ON bookings.fk_course_id = courses.id WHERE courses.id = $id";
 
 
     $runSqlUser = mysqli_query($connection, $sqlUser);
@@ -43,13 +44,13 @@ if (isset($_SESSION["admin"])) {
         // Print info about students that are assigning this course==================================================
 
         foreach ($row as $val) {
-            $booking_id = $val["id"];
+          
             $usersDetails .= "
                 <tr>
                 <td>{$val["firstName"]}</td>
                 <td>{$val["secondName"]}</td>
                 <td>{$val["email"]}</td>
-                <td><a class='action' href='removeStudent.php?courseId={$booking_id}&userid={$val["id"]}'>Remove student</a></td>
+                <td><a class='action' href='deleteBookings.php?courseId={$val["booking_id"]}&userid={$val["user_id"]}'>Remove student</a></td>
             </tr>
                 ";
         }

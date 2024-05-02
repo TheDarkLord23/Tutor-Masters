@@ -19,7 +19,7 @@ if (isset($_SESSION["user"])) {
   
 
 
-$id = $_GET["id"];
+$id = $_GET["userid"];
 
 $sql = "SELECT * FROM `bookings` WHERE id = $id";
 $result = mysqli_query($connection, $sql);
@@ -28,7 +28,9 @@ if ($row["picture"] != "defaultPic.jpg") {
     unlink("../Images/{$row["picture"]}");
 }
 
-$delete = "DELETE FROM `bookings` WHERE id = $id";
+$booking_id = $_GET["courseId"];
+
+$delete = "DELETE FROM `bookings` WHERE id = $booking_id";
 
 if(mysqli_query($connection, $delete)){
     header("Location: dashboardAdmin.php");
