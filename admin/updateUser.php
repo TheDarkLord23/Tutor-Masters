@@ -48,7 +48,7 @@ if (isset($_POST["submit"])) {
         unlink("pictures/$row[picture]");
     }
     $sql = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}',`Status`='{$status}',`picture`='{$picture[0]}' WHERE id = $id";}
-else { $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}' WHERE id = {$session}";
+else { $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}' WHERE id = $id";
 }
 
     if ($results = mysqli_query($connection, $sql)) {
