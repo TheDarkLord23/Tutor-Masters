@@ -118,7 +118,7 @@ foreach ($rows as $row) {
             <a href="dashboardAdmin.php">Go Back</a>
         </div>
         <div class="btnDetails" style="background-color: red; color: #fff;">
-            <a href="deleteBookings.php?id= . $row[0]["booking_id"] . ">Delete</a>
+            <a href="deleteCourses.php?delete_id=' . $row["id"] . '">Delete</a>
         </div>
     </div>
     </div>';
