@@ -39,7 +39,7 @@ if (isset($_POST["submit"])) {
 
 
         if ($result) {
-            echo "Your review ha been posted!";
+            echo "Your review has been posted!";
             $rating = $comment = "";
             header("refresh: 2; url=dashboardUser.php");
         }else {
@@ -67,7 +67,7 @@ if (isset($_POST["submit"])) {
 <body>
 <div class="containerCRUD container mt-5">
         <div class="crudHeader">
-            <h3 class="mb-4">Update a Review:</h3>
+            <h3 class="mb-4">Create a Review:</h3>
         </div>
         <?php if (!empty($message)) : ?>
            <!-- ' updateError & massage noch bearbeiten' -->
