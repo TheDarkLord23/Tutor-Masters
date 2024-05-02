@@ -17,13 +17,13 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
         foreach ($filteredCourses as $index => $course) {
             $date = strtotime($course["date"]);
             $date = date("j F Y", $date);
-        
+
             $filteredCoursesHTML .= "
             <div class='course'>
                 <div class='course-left'>
                     <div class='card-holder'>
                         <img class='card-img' src='/Images/{$course["picture"]}' alt='Image description' />
-                        <h4 class='card-title'>More Information</h4>
+                        <h4 class='card-title'>Details</h4>
                         <a href='details4all.php?id={$course["id"]}' class='card-btn'>Details</a>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
                     </p>
                 </div>
             </div>";
-        
+
             if ($index < count($filteredCourses) - 1) {
                 $filteredCoursesHTML .= "<div class='splitter'></div>";
             }
@@ -50,4 +50,3 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
 } else {
     echo "Error: Filter type and ID are required.";
 }
-?>

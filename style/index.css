@@ -699,9 +699,9 @@ footer {
   .rating-inner {
     position: absolute;
     background-color: #f99746;
-    top: 0;
+    top: 1;
     left: 0;
-    height: 20px;
+    height: 18px;
     z-index: 20;
   }
 
@@ -1077,6 +1077,29 @@ footer {
     margin: 0 auto;
     object-fit: cover;
     border-radius: 50%;
+  }
+  .rating-outer {
+    margin-bottom: 20px;
+    height: 20px;
+    width: 100px;
+    position: relative;
+  }
+
+  .rating-inner {
+    position: absolute;
+    background-color: #f99746;
+    top: 1;
+    left: 0;
+    height: 18px;
+    z-index: 20;
+  }
+
+  .rating {
+    position: absolute;
+    top: o;
+    left: 0;
+    width: 100%;
+    z-index: 30;
   }
 
   .all {
