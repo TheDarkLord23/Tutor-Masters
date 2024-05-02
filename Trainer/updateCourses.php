@@ -35,7 +35,6 @@ if (isset($_POST["submit"])) {
     $roomNumb = $_POST["roomNumb"];
     $date = $_POST["date"];
     $end_date = $_POST["end_date"];
-    $teacher = $_POST["teacher"];
     $language = $_POST["language"];
     $availability = $_POST["availability"];
     $units = $_POST["units"];
@@ -43,11 +42,10 @@ if (isset($_POST["submit"])) {
     $duration = $_POST["duration"];
     $picture = fileUpload($_FILES["picture"], 'courses');
 
-    $sql = "UPDATE `courses` SET `subject`='{$subject}',`university`='{$university}',`roomNumb`='{$roomNumb}',`date`='{$date}',`end_date`='{$end_date}',`teacher`='{$teacher}',`picture`='{$picture[0]}',`language`='{$language}',`duration`='{$duration}',`units`='{$units}',`capacity`='{$capacity}',`availability`='{$availability}',`name`='{$name}' WHERE id = $id";
+    $sql = "UPDATE `courses` SET `subject`='{$subject}',`university`='{$university}',`roomNumb`='{$roomNumb}',`date`='{$date}',`end_date`='{$end_date}',`picture`='{$picture[0]}',`language`='{$language}',`duration`='{$duration}',`units`='{$units}',`capacity`='{$capacity}',`availability`='{$availability}',`name`='{$name}' WHERE id = $id";
 
 
-    if (mysqli_query($connection, $sql)) {
-        echo "<p>Course has been updated!</p>";
+    if ($results = mysqli_query($connection, $sql)) {
         header("refresh: 3; url=dashboardTrainer.php");
     } else {
         echo "<p>Something went wrong.Please try again later!</p>";
@@ -67,6 +65,8 @@ mysqli_close($connection);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/CRUD.css">
 </head>
 <body onload="<?php if ($results) {
                 echo 'showPopup()';
@@ -79,7 +79,7 @@ mysqli_close($connection);
         <p>Success</p>
       </div>
       <div class="popup-text">
-        <p>Congratulations, your course<br> has been successfully created</p>
+        <p>Congratulations, your course<br> has been successfully updated</p>
         <a href="../Trainer/dashboardTrainer.php" class="continueBtn">Continue</a>
       </div>
     </div>
@@ -137,13 +137,13 @@ mysqli_close($connection);
           <input class="input" type="text" value="<?=$row["availability"]?>" name="availability" required>
         </div>
         <div>
-          <input class="input" type="text" placeholder="Number of Units" name="units" required>
+          <input class="input" type="text" value="<?=$row["units"]?>" name="units" required>
         </div>
         <div>
-          <input class="input" type="text" placeholder="Duration" name="duration" required>
+          <input class="input" type="text" value="<?=$row["duration"]?>" name="duration" required>
         </div>
         <div>
-          <input class="input" type="text" placeholder="capacity" name="capacity" required>
+          <input class="input" type="text" value="<?=$row["capacity"]?>" name="capacity" required>
         </div>
         <div class="d-flex justify-content-between">
           <button type="button" class="submitBtn" onclick="prevStep()" style="width: 200px; background-color: #38D9A9;">Back</button>
@@ -157,7 +157,7 @@ mysqli_close($connection);
           <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%; background-color: #099268; border-radius: 20px;"></div>
         </div>
         <div>
-          <input class="input" type="text" placeholder="Name" name="name">
+          <input class="input" type="text" value="<?=$row["name"]?>" name="name">
         </div>
         <div>
           <input class="input" type="file" name="picture">
@@ -190,8 +190,6 @@ mysqli_close($connection);
         prevStep.classList.add('active');
       }
     }
-  </script>
-  <script>
     function showPopup() {
       var popup = document.getElementById("successPopup");
       popup.classList.add("show");
@@ -205,32 +203,3 @@ mysqli_close($connection);
 </body>
 
 </html>
-
-<form action="" method="post" enctype="multipart/form-data">
-
-
-<input type="text" value="<?=$row["name"]?>" name="name">
-
-<input type="text"  name="university" required>
-
-<input type="text"  name="roomNumb" required>
-
-<input type="datetime-local"  name="date" required>
-
-<input type="datetime-local"  name="end_date" required>
-
-<input type="text" value="<?=$row["teacher"]?>" name="teacher" required>
-
-<input type="text"  name="language" required>
-
-<input type="text"  name="availability" required>
-
-<input type="text" value="<?=$row["units"]?>" name="units" required>
-
-<input type="text" value="<?=$row["capacity"]?>" name="capacity" required>
-
-<input type="text" value="<?=$row["duration"]?>" name="duration" required>
-
-<input type="file" name="picture">
-
-<input type="submit" name="submit">

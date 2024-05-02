@@ -39,32 +39,39 @@ if (isset($_POST["update"])) {
     $pictureArray = fileUpload($_FILES['picture'], 'courses');
 
 
-    if($_FILES["picture"]["error"] == 0){
+    if ($_FILES["picture"]["error"] == 0) {
         /* checking if the picture name of the product is not avatar.png to remove it from pictures folder */
-        if($row["picture"] != "../Images/defaultPic.jpg"){
+        if ($row["picture"] != "../Images/defaultPic.jpg") {
             unlink("pictures/$row[picture]");
         }
         $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}',`picture`='{$pictureArray[0]}' WHERE id = {$session}";
-    }else {
+    } else {
         $update = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}' WHERE id = {$session}";
     }
 
-    if (mysqli_query($connection, $sql)) {
-        $class = "alert alert-success";
-        $message = "The record was successfully updated";
+    if ($result = mysqli_query($connection, $sql)) {
+        $message = "<div id='successPopup' class='popup'>
+        <div class='popup-content'>
+            <div class='popup-bg'>
+                <img src='../Images/checkmark.png' alt=''>
+                <p>Success</p>
+            </div>
+            <div class='popup-text'>
+                <p>Congratulations, your profile<br> has been successfully updated</p>
+                <a href='../Trainer/dashboardTrainer.php' class='continueBtn'>Continue</a>
+            </div>
+        </div>
+    </div>";
         $uploadError = ($pictureArray != 0) ? $pictureArray : '';
         header("refresh:3;url=dashboardAdmin.php?id={$session}");
     } else {
-        $class = "alert alert-danger";
         $message = "Error while updating record : <br>" . $connection->error;
         // $uploadError = ($pictureArray != 0) ? $pictureArray['ErrorMessage'] : '';
         header("refresh:3;url=updateprofile.php?id={$session}");
     }
 
 
-    $result = mysqli_query($connection, $update);
-
-    header("Location: dashboardAdmin.php");
+    $results = mysqli_query($connection, $update);
 }
 
 ?>
@@ -80,19 +87,18 @@ if (isset($_POST["update"])) {
     <link rel="stylesheet" href="../style/CRUD.css">
 </head>
 
-<body>
+<body onload="<?php if ($result) {
+                    echo 'showPopup()';
+                } ?>">
+
     <div class="containerCRUD container mt-5">
         <div class="crudHeader mb-3">
             <h3>Update Profile</h3>
         </div>
         <?php if (!empty($message)) : ?>
             <!-- ' updateError & massage noch bearbeiten' -->
-            <div class="alert alert-<?= $class; ?>" role="alert">
                 <p><?= $message ?></p>
-                <a href='indexUser.php'><button class="btn btn-primary" type='button'>Home</button></a>
-            </div>
         <?php endif; ?>
-
         <form method="post" enctype="multipart/form-data">
             <div class="step active">
                 <div class="progress mb-3" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
@@ -149,6 +155,16 @@ if (isset($_POST["update"])) {
                     currentStep.classList.remove('active');
                     prevStep.classList.add('active');
                 }
+            }
+        </script>
+        <script>
+            function showPopup() {
+                var popup = document.getElementById("successPopup");
+                popup.classList.add("show");
+
+                setTimeout(function() {
+                    window.location.href = "../Trainer/dashboardTrainer.php";
+                }, 3000);
             }
         </script>
 </body>
