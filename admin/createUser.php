@@ -41,7 +41,7 @@ if (isset($_POST["submit"])) {
   $address = $_POST["address"];
   $phoneNumber = $_POST["phoneNumber"];
   $status = $_POST["status"];
-  $picture = fileUpload($_FILES["picture"], 'courses');
+  $picture = fileUpload($_FILES["picture"]);
   $password = $_POST["password"];
 
 
@@ -110,7 +110,6 @@ if (isset($_POST["submit"])) {
     $result = mysqli_query($connection, $sqlInsert);
 
     if ($result) {
-      echo "Your are registered now!";
       $firstName = $secondName = $email = $phoneNumber = $address = $password = "";
       header("refresh: 3; url=dashboardAdmin.php");
     } else {
@@ -132,7 +131,22 @@ if (isset($_POST["submit"])) {
   <link rel="stylesheet" href="../style/CRUD.css">
 </head>
 
-<body>
+<body onload="<?php if ($result) {
+                echo 'showPopup()';
+              } ?>">
+
+  <div id="successPopup" class="popup">
+    <div class="popup-content">
+      <div class="popup-bg">
+        <img src="../Images/checkmark.png" alt="">
+        <p>Success</p>
+      </div>
+      <div class="popup-text">
+        <p>Congratulations, a user<br> has been successfully created</p>
+        <a href="../Trainer/dashboardTrainer.php" class="continueBtn">Continue</a>
+      </div>
+    </div>
+  </div>
   <div class="containerCRUD container mt-5">
     <div class="crudHeader">
       <h3 class="mb-4">Create new user:</h3>
@@ -215,6 +229,16 @@ if (isset($_POST["submit"])) {
         currentStep.classList.remove('active');
         prevStep.classList.add('active');
       }
+    }
+  </script>
+    <script>
+    function showPopup() {
+      var popup = document.getElementById("successPopup");
+      popup.classList.add("show");
+
+      setTimeout(function() {
+        window.location.href = "../Trainer/dashboardTrainer.php";
+      }, 3000);
     }
   </script>
 

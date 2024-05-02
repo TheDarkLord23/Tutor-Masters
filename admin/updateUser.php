@@ -7,18 +7,17 @@ session_start();
 
 // validation start:
 
-if (!isset($_SESSION["admin"])&&!isset($_SESSION["trainer"])&&!isset($_SESSION
-["user"])) {
+if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSION["user"])) {
     header("Location: ../login/login.php");
 }
 
 if (isset($_SESSION["user"])) {
     header("Location: ../User/dashboardUser.php");
-  }
-  
-  if (isset($_SESSION["trainer"])) {
+}
+
+if (isset($_SESSION["trainer"])) {
     header("Location: ../Trainer/dashboardTrainer.php");
-  }
+}
 // validation end
 
 // Get Data from table start:
@@ -40,13 +39,12 @@ if (isset($_POST["submit"])) {
     $address = $_POST["address"];
     $phoneNumber = $_POST["phoneNumber"];
     $status = $_POST["status"];
-    $picture = fileUpload($_FILES["picture"], 'courses');
+    $picture = fileUpload($_FILES["picture"]);
 
     $sql = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}',`Status`='{$status}',`picture`='{$picture[0]}' WHERE id = $id";
 
 
-    if (mysqli_query($connection, $sql)) {
-        echo "<p>User has been updated!</p>";
+    if ($results = mysqli_query($connection, $sql)) {
         header("refresh: 3; url=dashboardAdmin.php");
     } else {
         echo "<p>Something went wrong.Please try again later!</p>";
@@ -62,6 +60,7 @@ mysqli_close($connection);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,8 +68,23 @@ mysqli_close($connection);
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style/CRUD.css">
 </head>
-<body>
 
+<body onload="<?php if ($results) {
+                    echo 'showPopup()';
+                } ?>">
+
+    <div id="successPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-bg">
+                <img src="../Images/checkmark.png" alt="">
+                <p>Success</p>
+            </div>
+            <div class="popup-text">
+                <p>Congratulations, a user<br> has been successfully updated</p>
+                <a href="../Trainer/dashboardTrainer.php" class="continueBtn">Continue</a>
+            </div>
+        </div>
+    </div>
     <div class="containerCRUD container mt-5">
         <div class="crudHeader mb-3">
             <h3>Update Profile</h3>
@@ -145,5 +159,16 @@ mysqli_close($connection);
                 }
             }
         </script>
+        <script>
+            function showPopup() {
+                var popup = document.getElementById("successPopup");
+                popup.classList.add("show");
+
+                setTimeout(function() {
+                    window.location.href = "../Trainer/dashboardTrainer.php";
+                }, 3000);
+            }
+        </script>
 </body>
+
 </html>
