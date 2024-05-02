@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "db_connection.php";
 require_once "navbar.php";
 ?>
@@ -28,7 +29,7 @@ require_once "navbar.php";
                     <div class="content">
                         <p class="heading">Tutor Master</p>
                         <p style="font-weight: 600;">
-                            Elevate your academic journey with our exceptional tutoring services designed for students aspiring to enter university. Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Welcome to Tutor Masters, where academic excellence meets personalized guidance. We specialize in providing top-tier tutoring services designed to empower students on their journey to educational success. With a dedicated team of experienced tutors and a commitment to individualized learning, we strive to unlock the full potential of every student, ensuring a brighter future ahead.
                         </p>
                     </div>
                 </div>
@@ -38,21 +39,21 @@ require_once "navbar.php";
     <div class="section1">
         <section class="company-info">
             <h2>About Tutor Masters</h2>
-            <p>Tutor Masters is a leading education company dedicated to providing high-quality tutoring services to students of all ages. Our team of experienced tutors are experts in various subjects and are committed to helping students achieve their academic goals.</p>
-            <p>At Tutor Masters, we believe in personalized learning and tailor our tutoring sessions to meet the unique needs of each student. Whether you need help with math, science, language arts, or test preparation, we have a tutor for you.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, quam possimus harum quas vitae eius et, nesciunt illo totam, rem dolorem accusamus impedit mollitia molestias quod. Non doloremque a ad.
-                Voluptatum in quam, porro maxime laudantium nisi. Totam natus quia expedita quas! Nostrum impedit modi inventore quaerat voluptatem quis accusamus aliquam eveniet sint quam, odit in, temporibus distinctio officia quas?
-                Accusamus harum similique numquam unde possimus omnis, error perferendis eos laudantium mollitia dolores tempore repellat quam distinctio, iusto, saepe quisquam dolore voluptatem voluptates? Molestias at voluptatum omnis architecto exercitationem est.
-                Aperiam quia corrupti placeat saepe nihil deserunt labore sapiente repellat, voluptatibus officiis totam officia iste dolores voluptates id incidunt, earum magni repellendus ut atque! Sint fuga rerum et eveniet id!</p>
+            <p> In the heart of a bustling city, Tutor Masters emerged from a simple idea shared among friends at a local coffee shop. Determined to make a difference, CEO Anna and her team of educators poured their passion into building a platform that would redefine tutoring. With personalized learning at its core, Tutor Masters quickly gained traction, attracting students from all walks of life. Through innovative teaching methods and a commitment to excellence, Tutor Masters became a beacon of hope for those striving to achieve academic success. Today, their story continues to inspire, proving that with dedication and vision, anything is possible.</p>
+            <p>Tutor Masters goes beyond traditional tutoring services by offering a holistic approach to education. We understand that academic success is not just about mastering subjects but also about developing critical thinking skills, fostering creativity, and nurturing a love for learning. That's why our tutors are not only experts in their respective fields but also passionate educators who inspire and motivate students to reach their full potential.</p>
+            <p>Our tutoring sessions are not limited to traditional classroom settings. We embrace innovative teaching methods and utilize technology to create engaging and interactive learning experiences. From virtual classrooms to interactive online resources, we provide students with the tools they need to excel in today's digital age.</p>
+            <p>One of the key pillars of Tutor Masters is our commitment to fostering a supportive and inclusive learning environment. We believe that every student deserves access to quality education, regardless of their background or circumstances. That's why we offer flexible scheduling options, affordable rates, and scholarships to ensure that our services are accessible to all.</p>
+            <p>At Tutor Masters, we understand that every student is unique, with their own strengths, weaknesses, and learning styles. That's why we take a personalized approach to tutoring, tailoring our lessons to meet the specific needs of each individual student. Whether you're a visual learner who thrives with hands-on activities or an auditory learner who prefers verbal explanations, our tutors adapt their teaching methods to suit your preferences.</p>
+            <p>Our team of tutors consists of highly qualified professionals with years of experience in education. Many of them hold advanced degrees from top universities and have undergone rigorous training to become experts in their fields. But what truly sets them apart is their dedication to student success. They are not just tutors; they are mentors, role models, and cheerleaders, guiding students every step of the way on their academic journey.</p>
+            <p>So whether you're struggling with calculus, preparing for the SAT, or writing your college application essays, Tutor Masters is here to help. With our personalized approach, experienced tutors, and commitment to excellence, we'll empower you to achieve your academic goals and unlock your full potential.</p>
         </section>
     </div>
-    <div class="container">
+    <div class="container5">
         <div class="heading-container">
-            <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus saepe natus sit porro a, numquam voluptatem ab recusandae esse delectus dignissimos eaque cupiditate nobis cum quisquam rem. Rem, voluptatem suscipit!
-                Nisi non ut dolores est repudiandae voluptas commodi delectus reiciendis? Adipisci totam mollitia eum, architecto fuga odio! Quia voluptate eos architecto excepturi aliquid corrupti asperiores ratione veniam necessitatibus, voluptas tempore!
-                Officia deserunt voluptatum modi pariatur placeat minus, saepe vitae dicta aliquam maiores, voluptatibus, a rerum? Ratione debitis aut natus consequuntur quis. Deleniti omnis recusandae eveniet accusamus similique magnam! Voluptatum, deleniti!
-                Eveniet dolorem excepturi libero, porro perferendis optio modi! Atque, voluptate facere. Non reiciendis ad, magni quae obcaecati corporis fuga soluta aspernatur quasi rem doloribus, distinctio esse iste, tempora voluptate id?
-                Totam expedita velit sit culpa exercitationem eligendi accusantium suscipit inventore omnis sequi libero, mollitia nam vero praesentium ratione ut sunt rem non, dicta explicabo maxime voluptatum labore consequatur? Delectus, amet.</h5>
+            <h5>Meet our exceptional team dedicated to guiding future scholars, ensuring success, and unlocking potential in every student's academic journey. Our tutors are not just educators; they are mentors, motivators, and champions of learning. With years of experience and a passion for teaching, they provide personalized support tailored to each student's unique needs, empowering them to excel in their studies and beyond.
+                <br>
+                In addition to our dedicated team of tutors, we are proud to introduce our talented group of trainers. These professionals bring a wealth of knowledge and expertise to Tutor Masters, enriching our educational programs with innovative teaching methods and real-world experience. Whether it's through interactive workshops, hands-on exercises, or insightful lectures, our trainers inspire students to think critically, solve problems creatively, and embrace lifelong learning. Together, our team of tutors and trainers is committed to nurturing the next generation of scholars and shaping a brighter future for all. We believe in fostering a collaborative and supportive learning environment where every student can thrive and reach their full potential.
+                <h5>
         </div>
         <div class="card-carousel">
             <div class="card" id="1">

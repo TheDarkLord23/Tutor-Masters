@@ -38,8 +38,7 @@ if (isset($_POST["submit"])) {
 
   $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`,  `teacher`, `picture`, `language`, `duration`, `units`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$availability}','{$name}')";
 
-  if (mysqli_query($connection, $sql)) {
-    echo "<div class='containerAlert'><p>New Course has been created. $picture[1]</p></div>";
+  if ($results = mysqli_query($connection, $sql)) {
     header("refresh: 3; url=dashboardAdmin.php");
   } else {
     echo "<div class='containerAlert2'><p>Something went wrong.Please try again later!</p></div>";
@@ -59,7 +58,22 @@ if (isset($_POST["submit"])) {
   <link rel="stylesheet" href="../style/CRUD.css">
 </head>
 
-<body>
+<body onload="<?php if ($results) {
+                echo 'showPopup()';
+              } ?>">
+
+  <div id="successPopup" class="popup">
+    <div class="popup-content">
+      <div class="popup-bg">
+        <img src="../Images/checkmark.png" alt="">
+        <p>Success</p>
+      </div>
+      <div class="popup-text">
+        <p>Congratulations, your course<br> has been successfully created</p>
+        <a href="../admin/dashboardAdmin.php" class="continueBtn">Continue</a>
+      </div>
+    </div>
+  </div>
   <div class="containerCRUD container mt-5">
     <div class="crudHeader">
       <h3 class="mb-4">Create a course:</h3>
@@ -168,6 +182,16 @@ if (isset($_POST["submit"])) {
         currentStep.classList.remove('active');
         prevStep.classList.add('active');
       }
+    }
+  </script>
+  <script>
+    function showPopup() {
+      var popup = document.getElementById("successPopup");
+      popup.classList.add("show");
+
+      setTimeout(function() {
+        window.location.href = "../Trainer/dashboardTrainer.php";
+      }, 3000);
     }
   </script>
 
