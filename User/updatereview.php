@@ -93,7 +93,8 @@ mysqli_close($connection);
                 <option value="5">★★★★★</option>
             </select> 
                <button type="submit" class="submitBtn" style="width: 100%;" name="submit">Submit</button>
-        </form>
+               <a class="btn submitBtn" href="dashboardUser.php">Go Back</a>
+            </form>
     
     </div>
 </body>

@@ -109,6 +109,7 @@ if (isset($_POST["update"])) {
                 <label for="password">Password</label>
                 <input class="input" type="text" name="password" placeholder="Change password">
                 <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
+                <a class="btn submitBtn" href="dashboardUser.php">Go Back</a>
             </div>
 
             <div class="step">

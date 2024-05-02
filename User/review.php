@@ -59,7 +59,7 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create new User</title>
+    <title>Create a Review</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style/CRUD.css">
 </head>
@@ -79,7 +79,7 @@ if (isset($_POST["submit"])) {
         <form action="" method="post" enctype="multipart/form-data">
             <div class="lNameInput inputFields">
                 <label style="margin: 0;" for="secondName">Comment</label>
-                <input class="input" type="text" name="comment" value="update your comment">
+                <input class="input" type="text" name="comment" value="create a comment">
             </div>
             <label style="margin: 0;" for="rating">Rating</label>
             <select class="input" id="rating" name="rating">
@@ -89,6 +89,7 @@ if (isset($_POST["submit"])) {
                 <option value="4">★★★★☆</option>
                 <option value="5">★★★★★</option>
             </select>     <button type="submit" class="submitBtn" style="width: 100%;" name="submit">Submit</button>
+            <a class="btn submitBtn" href="dashboardUser.php">Go Back</a>
         </form>
    
     </div>
