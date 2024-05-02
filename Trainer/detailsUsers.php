@@ -37,5 +37,6 @@ $row = mysqli_fetch_assoc($result);
         <p><?=$row["address"]?></p>
         <p><?=$row["phoneNumber"]?></p>
         <p><?= $row["Status"]?></p>
+        <a href="dashboardTrainer.php">Go back</a>
 </body>
 </html>
