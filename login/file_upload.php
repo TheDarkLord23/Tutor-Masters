@@ -4,7 +4,7 @@ function fileUpload($picture, $source="users")
 
     if ($picture["error"] == 4) { // checking if a file has been selected, it will return 0 if you choose a file, and 4 if you didn't
         $pictureName = "defaultPic.jpg"; // the file name will be product.png (default picture for a product)
-        if ($source == "animal") {
+        if ($source == "courses") {
             $pictureName = "defaultPic.jpg";
         }
         $message = "No picture has been chosen, but you can upload an image later :)";
@@ -17,8 +17,8 @@ function fileUpload($picture, $source="users")
         $ext = strtolower(pathinfo($picture["name"], PATHINFO_EXTENSION)); // taking the extension data from the image
         $pictureName = uniqid("") . "." . $ext; // changing the name of the picture to random string and numbers
         $destination = "../Images/{$pictureName}"; // where the file will be saved
-        if ($source == "users") {
-            $destination = "../images/defaultPic.jpg";
+        if ($source == "courses") {
+            $destination = "../images/{$pictureName}";
         }
         move_uploaded_file($picture["tmp_name"], $destination); // moving the file to the pictures folder
     }
