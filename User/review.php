@@ -64,8 +64,23 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="../style/CRUD.css">
 </head>
 
-<body>
-<div class="containerCRUD container mt-5">
+<body onload="<?php if ($result) {
+                    echo 'showPopup()';
+                } ?>">
+
+    <div id="successPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-bg">
+                <img src="../Images/checkmark.png" alt="">
+                <p>Success</p>
+            </div>
+            <div class="popup-text">
+                <p>Congratulations, your review<br> has been successfully created</p>
+                <a href="../User/dashboardUser.php" class="continueBtn">Continue</a>
+            </div>
+        </div>
+    </div>
+    <div class="containerCRUD container mt-5">
         <div class="crudHeader">
             <h3 class="mb-4">Update a Review:</h3>
         </div>
@@ -92,6 +107,17 @@ if (isset($_POST["submit"])) {
         </form>
    
     </div>
+
+    <script>
+        function showPopup() {
+            var popup = document.getElementById("successPopup");
+            popup.classList.add("show");
+
+            setTimeout(function() {
+                window.location.href = "../User/dashboard.php";
+            }, 3000);
+        }
+    </script>
 </body>
 
 </html>
