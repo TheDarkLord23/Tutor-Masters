@@ -24,8 +24,7 @@ if ($_GET["id"]) {
 // } else {
 //     // header("location: error.php");
 // }
-$backBTn = '';
-// $path = $_GET['path'];
+$path = $_GET['path'];
 
 
 if (isset($_POST["bookings"])) {
@@ -54,6 +53,7 @@ if (isset($_POST["bookings"])) {
             echo "Something went wrong. Please try again!";
         }
     }
+    header("refresh");
 }
 
 
@@ -128,7 +128,7 @@ if (mysqli_num_rows($checkBookings) > 0) {
                 <a href="review.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '">rate this course</a>
             </div>
             <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-                <a href='  . $path . '>back to home</a></div>
+                <a href=' . $path . '>back to home</a></div>
             </div>
         </div>
     </div>';
@@ -187,7 +187,7 @@ if (mysqli_num_rows($checkBookings) > 0) {
                 </form>
                 
                 <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
-                    <a href="dashboardUser.php">back to home</a></div>
+                    <a href=' . $path . '>back to home</a></div>
                 </div>
             </div>
         </div>';
