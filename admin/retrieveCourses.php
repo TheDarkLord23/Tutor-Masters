@@ -51,9 +51,7 @@ if (mysqli_num_rows($courses_result) == 0) {
             </div>
               <p class='course-date'>Duration: {$course_row["duration"]}mins.</p>
               <p class='course description'>
-                  The media group around the oe24 network is one of the young and
-                  dynamic players on the domestic market. With a newly established
-                  internal structure, flat hierarchies and a young management team.
+              Delve into an extensive range of topics with engaging content, meticulously crafted to enrich your skills and knowledge. Experience dynamic learning, igniting growth and development.
               </p>
           </div>
           
