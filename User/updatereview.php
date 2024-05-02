@@ -28,6 +28,13 @@ $id = $_GET["id"];
 $sql = "SELECT * FROM `users` WHERE id = $id";
 $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
+$updateComment = "SELECT * FROM review WHERE id = $id ";
+$commentResult = mysqli_query($connection, $updateComment);
+$commentRow = mysqli_fetch_assoc($commentResult);
+$userComment = $commentRow['comment'];
+
+// var_dump($id);
+// var_dump($userComment);
 
 // Get Data from table end
 
@@ -75,7 +82,7 @@ mysqli_close($connection);
         <form action="" method="post" enctype="multipart/form-data">
             <div class="lNameInput inputFields">
                 <label style="margin: 0;" for="secondName">Comment</label>
-                <input class="input" type="text" name="comment" value="update your comment">
+                <input class="input" type="text" name="comment" value="<?= $userComment ?>">
             </div>
             <label style="margin: 0;" for="rating">Rating</label>
             <select class="input" id="rating" name="rating">

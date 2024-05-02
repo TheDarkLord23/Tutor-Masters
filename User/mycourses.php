@@ -3,7 +3,6 @@
 session_start();
 
 include_once '../db_connection.php';
-include_once '../navbar_session.php';
 
 
 if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSION["user"])) {
@@ -21,7 +20,7 @@ if (isset($_SESSION["trainer"])) {
 
 
 $user_id = $_SESSION['user'];
-
+$path = '';
 
 $booking_query = "SELECT * FROM bookings WHERE fk_user_id = $user_id";
 $booking_result = mysqli_query($connection, $booking_query);
@@ -47,7 +46,7 @@ if (mysqli_num_rows($booking_result) == 0) {
               <div class='card-holder'>
                   <img class='card-img' src='/Images/{$course_row["picture"]}' alt='Image description' />
                   <h4 class='card-title'>Details</h4>
-                  <a href='details.php?id={$course_row["id"]}' class='card-btn'>Details</a>
+                  <a href='details.php?id={$course_row["id"]}&path=dashboardUser.php' class='card-btn'>Details</a>
               </div>
           </div>
           <div class='info'>

@@ -89,7 +89,7 @@ if (mysqli_num_rows($review_result) == 0) {
     <div class='container'>
         <div class='courses'>
             <h2 class=''>My Reviews</h2>
-            <div class='list2'>
+            <div class='list3'>
                 <?= $layout ?>
             </div>
         </div>
