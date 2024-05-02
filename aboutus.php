@@ -46,7 +46,7 @@ require_once "navbar.php";
                 Aperiam quia corrupti placeat saepe nihil deserunt labore sapiente repellat, voluptatibus officiis totam officia iste dolores voluptates id incidunt, earum magni repellendus ut atque! Sint fuga rerum et eveniet id!</p>
         </section>
     </div>
-    <div class="container">
+    <div class="container5">
         <div class="heading-container">
             <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus saepe natus sit porro a, numquam voluptatem ab recusandae esse delectus dignissimos eaque cupiditate nobis cum quisquam rem. Rem, voluptatem suscipit!
                 Nisi non ut dolores est repudiandae voluptas commodi delectus reiciendis? Adipisci totam mollitia eum, architecto fuga odio! Quia voluptate eos architecto excepturi aliquid corrupti asperiores ratione veniam necessitatibus, voluptas tempore!
