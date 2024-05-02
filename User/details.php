@@ -7,7 +7,7 @@ if (!isset($_SESSION["admin"]) && !isset($_SESSION["trainer"]) && !isset($_SESSI
 
 require "../db_connection.php";
 
-
+$path = '';
 if ($_GET["id"]) {
     $id = $_GET["id"];
     $sql = "SELECT * FROM courses WHERE id = {$id}";
@@ -16,7 +16,7 @@ if ($_GET["id"]) {
     if (mysqli_num_rows($result) == 1) {
         $data = mysqli_fetch_assoc($result);
     }
-}
+
 //     } else {
 //         // header("location: error.php");
 //     }
@@ -25,7 +25,7 @@ if ($_GET["id"]) {
 //     // header("location: error.php");
 // }
 $path = $_GET['path'];
-
+}
 
 if (isset($_POST["bookings"])) {
     $user_id = $_SESSION["user"];
@@ -49,6 +49,7 @@ if (isset($_POST["bookings"])) {
 
         if (mysqli_query($connection, $bookingSql)) {
             // echo "Course has been booked. Gratulation!";
+            header("Location: details.php?id= {$course_id}&path=dashboardUser.php");
         } else {
             echo "Something went wrong. Please try again!";
         }
@@ -121,7 +122,7 @@ if (mysqli_num_rows($checkBookings) > 0) {
         </div>
         <div class="detailsBtn">
         <div class="btnDetails" style="background-color: red; color: #fff;">
-        <a href="deletecourses.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '">Remove Course</a>
+        <a href="deletecourses.php?course_id=' . $row["id"] . '&user_id=' . $user_id . '&path='.$path.'">Remove Course</a>
     
     </div>
             <div class="btnDetails" style="background-color: #F99646; color: #fff;">
@@ -192,6 +193,7 @@ if (mysqli_num_rows($checkBookings) > 0) {
             </div>
         </div>';
     }
+    // header("Refresh");
 }
 ?>
 

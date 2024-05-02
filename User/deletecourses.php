@@ -36,7 +36,7 @@ $checkCapacityResult= mysqli_query($connection, $countCapacity);
 var_dump($checkCapacityResult);
 if(mysqli_query($connection, $delete)){
     echo ("the course has been deleted");
-    header("Location: details.php?id= {$course_id}");
+    header("Location: details.php?id= {$course_id}&path=dashboardUser.php");
 }else {
     echo "Error";
 }

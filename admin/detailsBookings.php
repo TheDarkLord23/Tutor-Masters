@@ -21,7 +21,7 @@ if (isset($_SESSION["trainer"])) {
 require_once "../db_connection.php";
 
 $id = $_GET["id"];
-var_dump($id);
+
 
 if (isset($_SESSION["admin"])) {
 
