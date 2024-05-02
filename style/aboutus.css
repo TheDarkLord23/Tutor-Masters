@@ -787,8 +787,69 @@ a:visited {
   max-height: 9em;
   transition: all 200ms linear;
 }
+@media screen and (max-width: 1026px) {
+  .hero {
 
+    h1 {
+      font-size: 50px;
+    }
+  }
+
+  .company-info {
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+
+  .container5 {
+    display: block;
+
+    .heading-container {
+      width: 80%;
+      margin: 0 auto;
+      padding-bottom: 30px;
+      h5 {
+        font-size: 15px;
+      }
+    }
+  }
+  
+}
 @media screen and (max-width: 768px) {
+  .hero {
+
+    h1 {
+      font-size: 40px;
+    }
+  }
+
+  .company-info {
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+
+  .container5 {
+    display: block;
+
+    .heading-container {
+      width: 80%;
+      margin: 0 auto;
+      padding-bottom: 30px;
+      h5 {
+        font-size: 15px;
+      }
+    }
+  }
+  
+
+
   .footer-container {
     display: block;
     padding: 20px;
@@ -839,6 +900,21 @@ a:visited {
 }
 
 @media screen and (max-width: 576px) {
+  .hero {
+    align-items: center;
+  }
+
+  .hero {
+
+    .img-content {
+      height: 10rem;
+    }
+  }
+
+  .card {
+    height: 10rem;
+  }
+
   .footer-container p .list-footer li,
   #copyright p {
     font-size: 11px;
