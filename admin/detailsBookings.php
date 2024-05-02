@@ -21,10 +21,12 @@ if (isset($_SESSION["trainer"])) {
 require_once "../db_connection.php";
 
 $id = $_GET["id"];
+var_dump($id);
 
 if (isset($_SESSION["admin"])) {
 
-    $sqlUser = "SELECT courses.*, users.firstName,users.secondName,users.email, bookings.id as booking_id FROM users JOIN bookings ON bookings.fk_user_id = users.id JOIN courses ON bookings.fk_course_id = courses.id WHERE courses.id = $id";
+    $sqlUser = "SELECT courses.*, users.firstName,users.secondName,users.email, bookings.id as booking_id, users.id as user_id  FROM users JOIN bookings ON bookings.fk_user_id = users.id JOIN courses ON bookings.fk_course_id = courses.id WHERE courses.id = $id";
+
 
     $runSqlUser = mysqli_query($connection, $sqlUser);
     // $rowsUser = mysqli_fetch_assoc($runSqlUser);
@@ -42,12 +44,13 @@ if (isset($_SESSION["admin"])) {
         // Print info about students that are assigning this course==================================================
 
         foreach ($row as $val) {
-
+          
             $usersDetails .= "
                 <tr>
                 <td>{$val["firstName"]}</td>
                 <td>{$val["secondName"]}</td>
                 <td>{$val["email"]}</td>
+                <td><a class='action' href='deleteBookings.php?courseId={$val["booking_id"]}&userid={$val["user_id"]}'>Remove student</a></td>
             </tr>
                 ";
         }
@@ -126,35 +129,32 @@ if (isset($_SESSION["admin"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/details.css">
 </head>
 
 <body>
-    <div class="containerPage">
+    <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
+    <div class="detail">
         <div>
-            <img class="bkgr" src="../Images/courses-banner.jpg" alt="">
-            <div class="detail">
-                <div>
-                    <?= $layout ?>
-                </div>
-            </div>
-        </div>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br>
-        <div class="tableContainer">
-            <h1 class="title">All the students enrolled in this course</h1>
-            <div class="table">
-                <table class='student-table'>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                    </tr>
-                    <?= $usersDetails ?>
-                </table>
-            </div>
+            <?= $layout ?>
         </div>
     </div>
+    </div>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br>
+    <div class="tableContainer">
+        <h1 class="title">All the students enrolled in this course</h1>
+        <div class="table">
+            <table class='student-table'>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                <?= $usersDetails ?>
+            </table>
+        </div>
+
 </body>
 
 </html>

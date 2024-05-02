@@ -124,9 +124,7 @@ if (isset($_POST["submit"])) {
 <body onload="<?php if ($result) {
                     echo 'showPopup()';
                 } ?>">
-    <!-- Your form here -->
 
-    <!-- Success pop-up that is hidden by default -->
     <div id="successPopup" class="popup">
         <div class="popup-content">
             <div class="popup-bg">

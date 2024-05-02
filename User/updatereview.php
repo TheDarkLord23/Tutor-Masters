@@ -48,8 +48,7 @@ if (isset($_POST["submit"])) {
     $sql = "UPDATE `review` SET `rating`='{$rating}',`comment`='{$comment}' WHERE id = $id";
 
 
-    if (mysqli_query($connection, $sql)) {
-        echo "<p>Review has been updated!</p>";
+    if ($results = mysqli_query($connection, $sql)) {
         header("refresh: 3; url=dashboardUser.php");
     } else {
         echo "<p>Something went wrong.Please try again later!</p>";
@@ -74,7 +73,22 @@ mysqli_close($connection);
     <link rel="stylesheet" href="../style/CRUD.css">
 </head>
 
-<body>
+<body onload="<?php if ($results) {
+                    echo 'showPopup()';
+                } ?>">
+
+    <div id="successPopup" class="popup">
+        <div class="popup-content">
+            <div class="popup-bg">
+                <img src="../Images/checkmark.png" alt="">
+                <p>Success</p>
+            </div>
+            <div class="popup-text">
+                <p>Congratulations, your review<br> has been successfully updated</p>
+                <a href="../User/dashboardUser.php" class="continueBtn">Continue</a>
+            </div>
+        </div>
+    </div>
     <div class="containerCRUD container mt-5">
         <div class="crudHeader">
             <h3 class="mb-4">Update a Review:</h3>
@@ -97,6 +111,16 @@ mysqli_close($connection);
             </form>
     
     </div>
+    <script>
+        function showPopup() {
+            var popup = document.getElementById("successPopup");
+            popup.classList.add("show");
+
+            setTimeout(function() {
+                window.location.href = "../User/dashboardUser.php";
+            }, 3000);
+        }
+    </script>
 </body>
 
 </html>
