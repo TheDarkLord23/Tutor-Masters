@@ -33,13 +33,14 @@ $delete = "DELETE FROM `bookings` WHERE fk_user_id = $id AND fk_course_id = $cou
 
 $countCapacity = "UPDATE `courses` SET `capacity`= capacity+1 WHERE id =  {$course_id}";
 $checkCapacityResult= mysqli_query($connection, $countCapacity);
-
+var_dump($checkCapacityResult);
 if(mysqli_query($connection, $delete)){
-    // echo ("the course has been deleted");
-    header("Location: dashboardUser.php");
+    echo ("the course has been deleted");
+    header("Location: details.php?id= {$course_id}");
 }else {
     echo "Error";
 }
+
 
 mysqli_close($connection);
 

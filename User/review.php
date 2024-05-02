@@ -41,7 +41,7 @@ if (isset($_POST["submit"])) {
         if ($result) {
             echo "Your review ha been posted!";
             $rating = $comment = "";
-            header("refresh: 3; url=mycourses.php");
+            header("refresh: 2; url=dashboardUser.php");
         }else {
             echo "Error";
         }
