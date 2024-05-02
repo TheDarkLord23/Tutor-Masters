@@ -41,7 +41,7 @@ if (isset($_POST["submit"])) {
   $address = $_POST["address"];
   $phoneNumber = $_POST["phoneNumber"];
   $status = $_POST["status"];
-  $picture = fileUpload($_FILES["picture"]);
+  $picture = fileUpload($_FILES["picture"], 'courses');
   $password = $_POST["password"];
 
 
