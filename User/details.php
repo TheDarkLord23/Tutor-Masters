@@ -97,7 +97,7 @@ foreach ($rows as $row) {
             </div>
             <img src=../Images/' . $row["picture"] . ' class="" alt="...">
         </div>
-        <div class="d-flex justify-content-between infoBox">
+        <div class="infoBox">
             <div class="d-flex infoContainer">
                 <div class="imgCard">
                     <img src="../Images/flag.png" alt="">

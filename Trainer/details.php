@@ -192,32 +192,6 @@ if (mysqli_num_rows($result2) == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trainer Details</title>
     <link rel="stylesheet" href="../style/details.css">
-    <style>
-        .student-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .student-table th,
-        .student-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .student-table th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-
-        .student-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .student-table tr:hover {
-            background-color: #ddd;
-        }
-    </style>
 </head>
 
 <body>
@@ -229,7 +203,7 @@ if (mysqli_num_rows($result2) == 0) {
             </div>
         </div>
         <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br>
-        <div class="container">
+        <div class="tableContainer">
             <h1 class="title">All the students enrolled in this course</h1>
             <div class="table">
                 <table class='student-table'>

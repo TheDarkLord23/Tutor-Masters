@@ -140,6 +140,10 @@ hr {
     padding: 8px;
   }
 
+  .updateUserBtn {
+    font-size: 17px;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -168,6 +172,10 @@ hr {
   .btnDetails {
     width: 90px;
     padding: 8px;
+  }
+
+  .updateUserBtn {
+    font-size: 14px;
   }
 
 }
@@ -230,7 +238,7 @@ hr {
     padding: 40px;
 
     p {
-      margin: 0;
+      margin: 0 0 10px 0;
     }
   }
 
@@ -245,6 +253,12 @@ hr {
     border-radius: 20px;
     text-align: center;
     margin: 0 auto;
+  }
+
+  .updateUserBtn {
+    width: 100%;
+    font-size: 12px;
+    background-color: #F99746 ;
   }
 
   hr {

@@ -81,7 +81,7 @@ if (isset($_SESSION["admin"])) {
                 </div>
                 <img src=../Images/' . $row[0]["picture"] . ' class="" alt="...">
             </div>
-            <div class="d-flex justify-content-between infoBox">
+            <div class="infoBox">
                 <div class="d-flex infoContainer">
                     <div class="imgCard">
                         <img src="../Images/flag.png" alt="">
@@ -128,32 +128,6 @@ if (isset($_SESSION["admin"])) {
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/details.css">
-    <style>
-        .student-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .student-table th,
-        .student-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .student-table th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-
-        .student-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .student-table tr:hover {
-            background-color: #ddd;
-        }
-    </style>
 </head>
 
 <body>
@@ -167,7 +141,7 @@ if (isset($_SESSION["admin"])) {
             </div>
         </div>
         <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br><br>
-        <div class="container">
+        <div class="tableContainer">
             <h1 class="title">All the students enrolled in this course</h1>
             <div class="table">
                 <table class='student-table'>
