@@ -89,8 +89,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(-45deg, #f89b29 0%, rgb(95, 225, 186) 100%);
   transition: scale 0.6s, rotate 0.6s, filter 1s;
+
 }
 
 /* .card .img-content svg {
@@ -789,6 +789,9 @@ a:visited {
   transition: all 200ms linear;
 }
 @media screen and (max-width: 1026px) {
+  .card .img-content {
+  }
+
   .hero {
 
     h1 {
