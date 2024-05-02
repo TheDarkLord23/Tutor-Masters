@@ -5,7 +5,7 @@ function fileUpload($picture, $source="users")
     if ($picture["error"] == 4) { // checking if a file has been selected, it will return 0 if you choose a file, and 4 if you didn't
         $pictureName = "defaultPic.jpg"; // the file name will be product.png (default picture for a product)
         if ($source == "courses") {
-            $pictureName = "defaultPic.jpg";
+            $pictureName = "defaultPicCourses.webp";
         }
         $message = "No picture has been chosen, but you can upload an image later :)";
     } else {

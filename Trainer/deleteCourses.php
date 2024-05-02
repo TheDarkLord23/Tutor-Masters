@@ -25,7 +25,7 @@ if ($row["picture"] != "defaultPic.jpg") {
 $delete = "DELETE FROM `courses` WHERE id = $id";
 
 if(mysqli_query($connection, $delete)){
-    header("Location: dashboardTrainer.php");
+    header("Location: defaultPicCourses.webp");
 }else {
     echo "Error";
 }

@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
     $address = $_POST["address"];
     $phoneNumber = $_POST["phoneNumber"];
     $status = $_POST["status"];
-    $picture = fileUpload($_FILES["picture"]);
+    $picture = fileUpload($_FILES["picture"], 'courses');
 
     $sql = "UPDATE `users` SET `firstName`='{$firstName}',`secondName`='{$secondName}',`email`='{$email}',`address`='{$address}',`phoneNumber`='{$phoneNumber}',`Status`='{$status}',`picture`='{$picture[0]}' WHERE id = $id";
 
