@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once "../db_connection.php";
 
@@ -24,9 +24,9 @@ if ($row["picture"] != "defaultPic.jpg") {
 
 $delete = "DELETE FROM `courses` WHERE id = $id";
 
-if(mysqli_query($connection, $delete)){
-    header("Location: defaultPicCourses.webp");
-}else {
+if (mysqli_query($connection, $delete)) {
+    header("Location: dashboardTrainer.php");
+} else {
     echo "Error";
 }
 
@@ -36,13 +36,16 @@ mysqli_close($connection);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
-    
+
 </body>
+
 </html>
