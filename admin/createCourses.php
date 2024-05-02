@@ -79,7 +79,10 @@ if (isset($_POST["submit"])) {
         <div>
           <input class="input" type="text" placeholder="Room Number" name="roomNumb" required>
         </div>
+
         <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
+        <a class="btn submitBtn" href="dashboardAdmin.php">Go Back</a>
+
       </div>
 
       <!-- Step 2 -->
