@@ -34,7 +34,7 @@ if (isset($_POST["update"])) {
     // $picture = fileUpload($_FILES["picture"]);
 
 
-    $pictureArray = fileUpload($_FILES['picture']);
+    $pictureArray = fileUpload($_FILES['picture'], 'courses');
 
 
     if($_FILES["picture"]["error"] == 0){
@@ -102,6 +102,7 @@ if (isset($_POST["update"])) {
                 <label for="password">Password</label>
                 <input class="input" type="text" name="password" placeholder="Change password">
                 <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
+                <a class="btn submitBtn" href="dashboardTrainer.php">Go Back</a>
             </div>
 
             <div class="step">

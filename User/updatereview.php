@@ -105,10 +105,11 @@ mysqli_close($connection);
                 <option value="3">★★★☆☆</option>
                 <option value="4">★★★★☆</option>
                 <option value="5">★★★★★</option>
-            </select>
-            <button type="submit" class="submitBtn" style="width: 100%;" name="submit">Submit</button>
-        </form>
-
+            </select> 
+               <button type="submit" class="submitBtn" style="width: 100%;" name="submit">Submit</button>
+               <a class="btn submitBtn" href="dashboardUser.php">Go Back</a>
+            </form>
+    
     </div>
     <script>
         function showPopup() {

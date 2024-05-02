@@ -11,9 +11,6 @@ require_once "../db_connection.php";
 
 
 
-
-
-
 $userId = $_SESSION['user_id'];
 
 
@@ -33,7 +30,7 @@ if (mysqli_num_rows($courses_result) > 0) {
     $rows = mysqli_fetch_all($courses_result, MYSQLI_ASSOC);
     foreach ($rows as $row) {
         $course_id = $row['id'];
-        var_dump($course_id);
+        // var_dump($course_id);
         $courses .= '
         <div class="detailContainer">
             <div>
@@ -84,7 +81,7 @@ if (mysqli_num_rows($courses_result) > 0) {
                     <a href="deleteCourses.php">Delete Course</a>
                 </div>
                 <div class="btnDetails" style="background-color: orange; color: #fff;">
-                    <a href="updateCourses.php?id=' . $course_id .'">Update Course</a>
+                    <a href="updateCourses.php?id=' . $course_id . '">Update Course</a>
                 </div>
                 <div class="btnDetails" style="background-color: #38D9A9; color: #fff;">
                     <a href="dashboardTrainer.php">Go Back</a>

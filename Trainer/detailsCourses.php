@@ -77,6 +77,7 @@ $sqlGetTeacher = "SELECT * FROM `courses` WHERE email = '{$TrainerEmail}'";
 $teacher_result = mysqli_query($connection, $sqlGetTeacher);
 
 
+
 $teacherRow = mysqli_fetch_assoc($teacher_result);
 $teacherName = $teacherRow['teacher'];
 

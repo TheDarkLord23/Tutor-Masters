@@ -160,6 +160,16 @@
   height: fit-content;
 }
 
+.list3 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 0.8rem;
+  padding: 10px;
+  height: fit-content;
+}
+
 .submitBtnContainer {
 }
 
@@ -334,12 +344,12 @@
   background-color: #087f5b;
 }
 
-.divNameAndDeleteBtn{
+.divNameAndDeleteBtn {
   display: flex;
   justify-content: space-between;
 }
 
-.divNameAndDeleteBtn a{
+.divNameAndDeleteBtn a {
   background-color: #0ca678;
   border-radius: 7px;
   color: white;

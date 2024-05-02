@@ -36,7 +36,7 @@ if (isset($_POST["update"])) {
     // $picture = fileUpload($_FILES["picture"]);
 
 
-    $pictureArray = fileUpload($_FILES['picture']);
+    $pictureArray = fileUpload($_FILES['picture'], 'courses');
 
 
     if($_FILES["picture"]["error"] == 0){
@@ -104,9 +104,9 @@ if (isset($_POST["update"])) {
                 <input class="input" type="text" name="secondName" placeholder="Change last name" value="<?= isset($row["secondName"]) ? $row["secondName"] : '' ?>">
                 <label for="email">E-mail</label>
                 <input class="input" type="text" name="email" placeholder="Change email" value="<?= isset($row["email"]) ? $row["email"] : '' ?>">
-                <label for="password">Password</label>
-                <input class="input" type="text" name="password" placeholder="Change password">
                 <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
+                <a class="btn submitBtn" href="dashboardAdmin.php">Go Back</a>
+
             </div>
 
             <div class="step">

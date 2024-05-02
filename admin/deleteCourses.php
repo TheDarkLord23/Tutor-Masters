@@ -25,7 +25,7 @@ $id = $_GET["delete_id"];
 $sql = "SELECT * FROM `courses` WHERE id = $id";
 $result = mysqli_query($connection, $sql);
 $row = mysqli_fetch_assoc($result);
-if ($row["picture"] != "defaultPic.jpg") {
+if ($row["picture"] != "defaultPicCourses.webp") {
     unlink("../Images/{$row["picture"]}");
 }
 

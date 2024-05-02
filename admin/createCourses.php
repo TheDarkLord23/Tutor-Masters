@@ -34,7 +34,7 @@ if (isset($_POST["submit"])) {
   $availability = $_POST["availability"];
   $units = $_POST["units"];
   $duration = $_POST["duration"];
-  $picture = fileUpload($_FILES["picture"]);
+  $picture = fileUpload($_FILES["picture"], 'courses');
 
   $sql = "INSERT INTO `courses`(`subject`, `university`, `roomNumb`, `date`,`end_date`,  `teacher`, `picture`, `language`, `duration`, `units`, `availability`, `name`) VALUES ('{$subject}','{$university}','{$roomNumb}','{$date}','{$end_date}','{$teacher}','{$picture[0]}','{$language}','{$duration}','{$units}','{$availability}','{$name}')";
 
@@ -79,7 +79,10 @@ if (isset($_POST["submit"])) {
         <div>
           <input class="input" type="text" placeholder="Room Number" name="roomNumb" required>
         </div>
+
         <button type="button" class="submitBtn" onclick="nextStep()">Next</button>
+        <a class="btn submitBtn" href="dashboardAdmin.php">Go Back</a>
+
       </div>
 
       <!-- Step 2 -->
