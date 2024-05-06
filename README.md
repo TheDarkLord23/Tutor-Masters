@@ -1,5 +1,9 @@
 Wlecome to Tutor Masters!
-This is a final project for graduating as a Full Stack Developer. The task looks like this:
+
+This is a final project for graduating as a Full Stack Developer. 
+We worked as a team of 5 people. I was the lead of the Front End team. I was in charge of designing the index, courses, dashboard and other pages and making them responsive(With 2 breakpoints for now). 
+
+The task looks like this:
 
 The goal is to create an engaging and professionally styled page for a trainer that prepares students for the entry exams to certain universities in the Czech Republic.
 
@@ -35,5 +39,10 @@ Perform CRUD for the bookings
 Linking of availability calendar with project “tutoring services)
 Option for multiple trainers to exist and to see which trainings they are assigned to.
 
-We worked as a team of 5 people. I 
+
+
+-HOW TO RUN THE PROJECT
+
+For running the project you will need XAMPP and VS Code. Run XAMPP and import the tutoring_service.sql in your PhpMyAdmin database. Open the files in VS Code and serve the project with the "PHP Server" extension.
+
 
